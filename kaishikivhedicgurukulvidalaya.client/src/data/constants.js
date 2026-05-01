@@ -2,16 +2,16 @@
 // NAVIGATION
 // ═══════════════════════════════════════════
 export const NAV_ITEMS = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Activities", href: "#activities" },
-    { label: "Believes", href: "#believes" },
-    { label: "Resources", href: "#resources" },
-    { label: "The Ashram", href: "#the-ashram" },
-    { label: "Founder", href: "#founder" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Get Involved", href: "#get-involved" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "hero" },
+    { label: "About", href: "about" },
+    { label: "Activities", href: "activities" },
+    { label: "Believes", href: "believes" },
+    { label: "Resources", href: "resources" },
+    { label: "The Ashram", href: "ashram" },
+    { label: "Founder", href: "founder" },
+    { label: "Gallery", href: "gallery" },
+    { label: "Get Involved", href: "getInvolved" },
+    { label: "Contact", href: "contact" },
 ];
 
 export const SECTION_IDS = [
