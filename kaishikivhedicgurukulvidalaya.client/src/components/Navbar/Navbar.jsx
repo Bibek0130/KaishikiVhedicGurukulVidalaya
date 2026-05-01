@@ -50,14 +50,14 @@ export default function NavbarSection() {
 
                 <div id="brandbar">
                     <div className="brand-wrap">
-                        <div className="brand-om" aria-hidden="true">ॐ</div>
+                        <div className="brand-om" aria-hidden="true"><a className="brand-om" href="home">ॐ</a></div>
                         <div className="brand-text">
                             <div className="deva-name">कौशिकी वैदिक गुरुकुल विद्यालय</div>
                             <div className="en-name">Kaushiki Vaidik Gurukul Vidyalaya</div>
                             <div className="tagline">Sanskrit · Seva · Sadhana · Since 2001</div>
                         </div>
                     </div>
-                    <a href="#getInvolved" className="donate-btn">🪔 Get Involved</a>
+                    <a href="getInvolved" className="donate-btn">🪔 Get Involved</a>
                 </div>
 
                 <Navbar

@@ -2,7 +2,7 @@
 // NAVIGATION
 // ═══════════════════════════════════════════
 export const NAV_ITEMS = [
-    { label: "Home", href: "hero" },
+    { label: "Home", href: "home" },
     { label: "About", href: "about" },
     { label: "Activities", href: "activities" },
     { label: "Believes", href: "believes" },
