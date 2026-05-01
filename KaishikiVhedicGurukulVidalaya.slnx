@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="kaishikivhedicgurukulvidalaya.client/kaishikivhedicgurukulvidalaya.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="KaishikiVhedicGurukulVidalaya.Server/KaishikiVhedicGurukulVidalaya.Server.csproj" />
+</Solution>
