@@ -208,19 +208,31 @@
 }*/
 
 
+/*make bars sticky when scrolling*/
+.sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar-wrapper {
+    position: relative;
+    width: 100%;
+}
 /* ══════════════════════════════════════════
        TOPBAR
     ══════════════════════════════════════════ */
-    #topbar {
-        background: var(--earth);
-        padding: 6px 7%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 12px;
-        color: rgba(255,255,255,.7);
-        letter-spacing: .04em;
-    }
+#topbar {
+    background: var(--earth);
+    padding: 6px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+    letter-spacing: .04em;
+    position: relative;
+    z-index:10;
+}
 
         #topbar a {
             color: rgba(255,255,255,.65);
@@ -231,7 +243,6 @@
             #topbar a:hover {
                 color: #fff
             }
-
     .topbar-right {
         display: flex;
         gap: 20px;
@@ -246,26 +257,29 @@
 
     .topbar-sep {
         opacity: .3;
-        margin: 0 2px
+        margin: 0;
     }
+
 
     /* ══════════════════════════════════════════
        BRAND BAR
     ══════════════════════════════════════════ */
-    #brandbar {
-        background: var(--cream);
-        border-bottom: 1px solid var(--border);
-        padding: 0 7%;
-        height: 88px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+#brandbar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 7%;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
 
     .brand-wrap {
         display: flex;
         align-items: center;
-        gap: 16px
+        gap: 16px;
     }
 
     .brand-om {
@@ -336,9 +350,6 @@
        NAVBAR
     ══════════════════════════════════════════ */
     #navbar {
-        position: sticky;
-        top: 0;
-        z-index: 200;
         background: rgba(42,28,12,.97);
         backdrop-filter: blur(12px);
         height: 58px;

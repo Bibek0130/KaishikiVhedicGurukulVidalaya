@@ -20,34 +20,35 @@ export default function NavbarSection() {
             for (const id of [...ids].reverse()) {
                 const el = document.getElementById(id);
                 if (el && window.scrollY + 160 >= el.offsetTop) {
-                    setActiveLink(`#${id}`);
+                    setActiveLink(`${id}`);
                     return;
                 }
             }
-            setActiveLink("#home");
+            setActiveLink("home");
         };
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    }, [activeLink]);
 
     return (
         <>
-            <div id="topbar">
-                <div className="topbar-left">
-                    <a href="mailto:kaushiki@vaidik.org">✉ kaushiki@vaidik.org</a>
-                    <span className="topbar-sep">|</span>
-                    <a href="tel:+97798000000">☏ +977 980 000 0000</a>
-                    <span className="topbar-sep">|</span>
-                    <span>Sankhu, Nepal</span>
+            <div className="sticky-bar">
+                <div id="topbar">
+                    <div className="topbar-left">
+                        <a href="mailto:kaushiki@vaidik.org">✉ kaushiki@vaidik.org</a>
+                        <span className="topbar-sep">|</span>
+                        <a href="tel:+97798000000">☏ +977 980 000 0000</a>
+                        <span className="topbar-sep">|</span>
+                        <span>Sankhu, Nepal</span>
+                    </div>
+                    <div className="topbar-right">
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="YouTube">YouTube</a>
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                    </div>
                 </div>
-                <div className="topbar-right">
-                    <a href="#" aria-label="Facebook">Facebook</a>
-                    <a href="#" aria-label="YouTube">YouTube</a>
-                    <a href="#" aria-label="Instagram">Instagram</a>
-                </div>
-            </div>
 
-            <div id="brandbar">
+                <div id="brandbar">
                     <div className="brand-wrap">
                         <div className="brand-om" aria-hidden="true">ॐ</div>
                         <div className="brand-text">
@@ -57,38 +58,40 @@ export default function NavbarSection() {
                         </div>
                     </div>
                     <a href="#getInvolved" className="donate-btn">🪔 Get Involved</a>
+                </div>
+
+                <Navbar
+                    id="navbar"
+                    expand="lg"
+                    className=""
+                    expanded={expanded}
+                    onToggle={setExpanded}
+                    style={{ /* topbar + brandbar */ }}
+                >
+                    <Container fluid>
+                        <Navbar.Toggle aria-controls="nav-ul" />
+                        <Navbar.Collapse id="nav-ul">
+                            <Nav className=" nav-ul">
+                                {NAV_ITEMS.map(({ href, label }) => (
+                                    <Nav.Link
+                                        key={href}
+                                        as={NavLink}
+                                        //className={activeLink === href ? "active" : ""}
+                                        //onClick={() => { setActiveLink(href); setExpanded(false); }}
+                                        to={href}
+                                    >
+                                        {label}
+                                    </Nav.Link>
+                                ))}
+                            </Nav>
+                            {/*<a href="#getInvolved" className="nav-puja" onClick={() => setExpanded(false)}>*/}
+                            {/*    🪔 Getting Involved*/}
+                            {/*</a>*/}
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
             </div>
-
-
-            <Navbar
-                id="navbar"
-                expand="lg"
-                className="main-navbar"
-                expanded={expanded}
-                onToggle={setExpanded}
-                style={{ top: "101px" /* topbar + brandbar */ }}
-            >
-                <Container fluid>
-                    <Navbar.Toggle aria-controls="nav-ul" />
-                    <Navbar.Collapse id="nav-ul">
-                        <Nav className=" nav-ul">
-                            {NAV_ITEMS.map(({ href, label }) => (
-                                <Nav.Link
-                                    key={href}
-                                    href={href}
-                                    className={activeLink === href ? "active" : ""}
-                                    onClick={() => { setActiveLink(href); setExpanded(false); }}
-                                >
-                                    {label}
-                                </Nav.Link>
-                            ))}
-                        </Nav>
-                        {/*<a href="#getInvolved" className="nav-puja" onClick={() => setExpanded(false)}>*/}
-                        {/*    🪔 Getting Involved*/}
-                        {/*</a>*/}
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+               
         </>
     );
 }
