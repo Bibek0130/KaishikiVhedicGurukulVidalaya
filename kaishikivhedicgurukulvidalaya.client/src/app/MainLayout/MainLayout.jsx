@@ -8,7 +8,7 @@ const MainLayout = () => {
         <>
             <NavbarSection />
 
-            <Container>
+            <Container style={scrollable}>
                 <Outlet />
             </Container>
         </>
@@ -16,3 +16,8 @@ const MainLayout = () => {
 }
 
 export default MainLayout;
+
+const scrollable = {
+    position: "sticky",
+    zIndex: 100
+}
