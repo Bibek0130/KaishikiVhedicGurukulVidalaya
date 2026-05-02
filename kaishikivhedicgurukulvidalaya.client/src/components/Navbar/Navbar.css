@@ -1,211 +1,3 @@
-/*.nav {
-    position: sticky;
-    top: 0;
-    z-index: 500;
-    background: rgba(248, 243, 232, 0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 48px;
-    height: 62px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    transition: box-shadow 0.3s;
-}
-
-    .nav.scrolled {
-        box-shadow: 0 2px 20px rgba(42, 28, 12, 0.07);
-    }*/
-
-/* Brand */
-/*.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.emblem {
-    width: 38px;
-    height: 38px;
-    background: var(--saff-lt);
-    border: 1.5px solid rgba(196, 123, 43, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 17px;
-    color: var(--saff);
-    flex-shrink: 0;
-}
-
-.brandText {
-    display: flex;
-    flex-direction: column;
-}
-
-.brandEn {
-    font-family: 'EB Garamond', serif;
-    font-size: 16.5px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.1;
-}
-
-.brandSub {
-    font-size: 10.5px;
-    color: var(--ink-soft);
-    letter-spacing: 0.06em;
-    line-height: 1;
-}*/
-
-/* Links */
-/*.links {
-    display: flex;
-    list-style: none;
-    gap: 0;
-    flex: 1;
-    justify-content: center;
-    flex-wrap: nowrap;
-}
-
-.link {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--ink-mid);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px 11px;
-    border-radius: 20px;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-
-    .link:hover,
-    .link.active {
-        color: var(--saff);
-        background: var(--saff-pale);
-    }*/
-
-/* CTA */
-/*.ctaBtn {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    background: var(--earth);
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background 0.2s;
-    flex-shrink: 0;
-    white-space: nowrap;
-}
-
-    .ctaBtn:hover {
-        background: #3c5430;
-    }*/
-
-/* Hamburger */
-/*.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-}
-
-.bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--ink-mid);
-    border-radius: 1px;
-    transition: all 0.2s;
-}
-
-.barOpen {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--saff);
-    border-radius: 1px;
-    transform: translateY(7px) rotate(45deg);
-}
-
-.barHide {
-    display: none;
-}
-
-.barOpenReverse {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--saff);
-    border-radius: 1px;
-    transform: rotate(-45deg);
-}*/
-
-/* Mobile drawer */
-/*.drawer {
-    position: fixed;
-    top: 62px;
-    left: 0;
-    right: 0;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    z-index: 499;
-    box-shadow: 0 8px 24px rgba(42, 28, 12, 0.08);
-}
-
-.drawerLink {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink-mid);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 12px;
-    text-align: left;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-    .drawerLink:hover {
-        color: var(--saff);
-        background: var(--saff-pale);
-    }
-
-@media (max-width: 1000px) {
-    .nav {
-        padding: 0 24px;
-    }
-
-    .links {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .brandSub {
-        display: none;
-    }
-}*/
 
 
 /*make bars sticky when scrolling*/
@@ -213,10 +5,6 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-.navbar-wrapper {
-    position: relative;
-    width: 100%;
 }
 /* ══════════════════════════════════════════
        TOPBAR
@@ -349,15 +137,19 @@
     /* ══════════════════════════════════════════
        NAVBAR
     ══════════════════════════════════════════ */
-    #navbar {
-        background: rgba(42,28,12,.97);
-        backdrop-filter: blur(12px);
-        height: 58px;
-        display: flex;
-        align-items: center;
-        padding: 0 1%;
-        border-bottom: 1px solid rgba(255,255,255,.05);
-    }
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(42,28,12,.97);
+    backdrop-filter: blur(12px);
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 1%;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
 
     .nav-ul {
         display: flex;
@@ -420,3 +212,38 @@
         .nav-puja:hover {
             background: var(--bark)
         }
+
+/* MOBILE NAV */
+@media (max-width: 992px) {
+
+    #navbar {
+        padding: 0 5%;
+    }
+
+    .nav-ul {
+        flex-direction: column;
+        width: 100%;
+        background: rgba(42,28,12,.98);
+        padding: 10px 0;
+    }
+
+        .nav-ul a {
+            padding: 12px 20px;
+            height: auto;
+            line-height: normal;
+            width: 100%;
+        }
+
+    .navbar-collapse {
+        transition: all 0.3s ease;
+        background: rgba(42,28,12,.98);
+    }
+
+    .navbar-toggler {
+        border: none;
+    }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+}

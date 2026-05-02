@@ -32,7 +32,6 @@ export default function NavbarSection() {
 
     return (
         <>
-            <div className="sticky-bar">
                 <div id="topbar">
                     <div className="topbar-left">
                         <a href="mailto:kaushiki@vaidik.org">✉ kaushiki@vaidik.org</a>
@@ -42,7 +41,8 @@ export default function NavbarSection() {
                         <span>Sankhu, Nepal</span>
                     </div>
                     <div className="topbar-right">
-                        <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="https://wa.me/9840425631" aria-label="Whatsapp">Whatsapp</a>
                         <a href="#" aria-label="YouTube">YouTube</a>
                         <a href="#" aria-label="Instagram">Instagram</a>
                     </div>
@@ -63,7 +63,7 @@ export default function NavbarSection() {
                 <Navbar
                     id="navbar"
                     expand="lg"
-                    className=""
+                    className="sticky-bar"
                     expanded={expanded}
                     onToggle={setExpanded}
                     style={{ /* topbar + brandbar */ }}
@@ -77,7 +77,7 @@ export default function NavbarSection() {
                                         key={href}
                                         as={NavLink}
                                         //className={activeLink === href ? "active" : ""}
-                                        //onClick={() => { setActiveLink(href); setExpanded(false); }}
+                                        onClick={() => {  setExpanded(false); }}
                                         to={href}
                                     >
                                         {label}
@@ -90,8 +90,6 @@ export default function NavbarSection() {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-            </div>
-               
         </>
     );
 }
