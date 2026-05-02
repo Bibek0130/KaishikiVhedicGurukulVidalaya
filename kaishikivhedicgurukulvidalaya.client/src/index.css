@@ -1,4 +1,4 @@
-:root {
+/*:root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -108,4 +108,541 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+*/
+
+/* ═══════════════════════════════════════════
+   GOOGLE FONTS
+═══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind:wght@300;400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+    --cream: #F8F3E8;
+    --cream-dark: #EDE4CC;
+    --cream-deep: #E2D5B8;
+    --saff: #C47B2B;
+    --saff-lt: #F0DFC0;
+    --saff-pale: #FBF6ED;
+    --saff-warm: #D4935A;
+    --earth: #5A7845;
+    --earth-lt: #D4E6C8;
+    --earth-pale: #EEF5E7;
+    --bark: #7A5435;
+    --bark-lt: #C4A882;
+    --ink: #2A1C0C;
+    --ink-mid: #5A4228;
+    --ink-soft: #8A7258;
+    --border: rgba(122,84,53,.13);
+    --border-soft: rgba(122,84,53,.07);
+    --white: #FFFFFF;
+}
+
+/* ═══════════════════════════════════════════
+   RESET — ensure nothing shrinks the viewport
+═══════════════════════════════════════════ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make html+body fill the full browser width — no implicit margins */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    width: 100%;
+    min-width: 320px; /* never narrower than 320 px */
+}
+
+body {
+    font-family: 'Hind', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden; /* clip any accidental horizontal bleed */
+    line-height: 1.72;
+}
+
+/* React mount point — must also be 100 % wide */
+#root,
+.app-root {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+}
+
+/* ── scrollbar ── */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--saff-lt);
+    border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomSlow {
+    from {
+        transform: scale(1.06);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes omPulse {
+    0%,100% {
+        opacity: .07;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .15;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes flicker {
+    0%,100% {
+        opacity: .9;
+    }
+
+    40% {
+        opacity: .55;
+    }
+
+    70% {
+        opacity: .8;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL-REVEAL
+═══════════════════════════════════════════ */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+    .reveal.visible {
+        opacity: 1;
+        transform: none;
+    }
+
+.reveal-delay-1 {
+    transition-delay: .12s;
+}
+
+.reveal-delay-2 {
+    transition-delay: .22s;
+}
+
+.reveal-delay-3 {
+    transition-delay: .32s;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION LAYOUT
+   • .section    — the full-bleed <section> tag
+   • .s-inner    — max-width container centred inside it
+   Both stretch to 100 % of viewport width.
+═══════════════════════════════════════════ */
+.section {
+    width: 100%;
+    padding: 96px 7%; /* horizontal is percentage so scales with viewport */
+}
+
+.s-inner {
+    width: 100%;
+    max-width: 1200px; /* generous cap so nothing looks squeezed on 4K */
+    margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY HELPERS
+═══════════════════════════════════════════ */
+.s-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--saff);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+    .s-eyebrow::before {
+        content: '';
+        width: 20px;
+        height: 1px;
+        background: var(--saff);
+        opacity: .6;
+        flex-shrink: 0;
+    }
+
+.s-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(26px, 4vw, 52px); /* fluid — shrinks smoothly */
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 14px;
+}
+
+    .s-title em {
+        font-style: italic;
+        color: var(--saff);
+    }
+
+.rule {
+    width: 34px;
+    height: 1.5px;
+    background: var(--saff);
+    opacity: .5;
+    border-radius: 1px;
+    margin-bottom: 22px;
+}
+
+/* ═══════════════════════════════════════════
+   ORNAMENT DIVIDER
+═══════════════════════════════════════════ */
+.orn-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 22px 5%;
+}
+
+.orn-line {
+    height: 1px;
+    flex: 1;
+    max-width: 140px;
+    background: linear-gradient(90deg, transparent, var(--cream-deep));
+}
+
+    .orn-line.r {
+        background: linear-gradient(90deg, var(--cream-deep), transparent);
+    }
+
+.orn-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 13px;
+    color: var(--saff);
+    opacity: .5;
+    letter-spacing: .22em;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hind', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: 28px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .25s;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--saff);
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: var(--bark);
+        transform: translateY(-1px);
+    }
+
+.btn-outline {
+    background: transparent;
+    color: var(--saff);
+    border: 1.5px solid var(--saff);
+}
+
+    .btn-outline:hover {
+        background: var(--saff-pale);
+        transform: translateY(-1px);
+    }
+
+.btn-earth {
+    background: var(--earth);
+    color: #fff;
+}
+
+    .btn-earth:hover {
+        background: #3c5430;
+        transform: translateY(-1px);
+    }
+
+/* ═══════════════════════════════════════════
+   FORM ELEMENTS
+═══════════════════════════════════════════ */
+.f-group {
+    margin-bottom: 18px;
+}
+
+.f-label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 7px;
+}
+
+.f-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--cream-deep);
+    border-radius: 4px;
+    background: var(--cream);
+    font-family: 'Hind', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+    .f-input:focus {
+        border-color: rgba(196,123,43,.4);
+    }
+
+textarea.f-input {
+    resize: vertical;
+    min-height: 110px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE GRIDS
+   All two-column and three-column grids that
+   live in inline styles on JSX components are
+   overridden here at the correct breakpoints
+   so the design collapses gracefully without
+   needing to touch any component's inline JSX.
+═══════════════════════════════════════════ */
+
+/* ── 1024 px tablet landscape ── */
+@media (max-width: 1024px) {
+    .section {
+        padding: 80px 6%;
+    }
+
+    /* About two-column → single column */
+    #about .s-inner {
+        grid-template-columns: 1fr !important;
+        gap: 48px !important;
+    }
+
+    /* Activities three-column → two-column */
+    #activities .s-inner > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Believes header two-column → single column */
+    #believes .s-inner > div:first-child {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Believes beliefs grid → two-column (stays, already 1fr 1fr) */
+
+    /* Resources sidebar + content → stacked */
+    #resources {
+        grid-template-columns: 1fr !important;
+    }
+
+        #resources > div:first-child {
+            padding: 60px 6% !important;
+        }
+
+        #resources > div:last-child {
+            padding: 60px 6% !important;
+        }
+
+    /* Ashram two-column → single column */
+    #the-ashram .s-inner > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    /* Founder two-column → single column */
+    #founder .s-inner > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    /* Contact two-column → single column */
+    #contact > section > div,
+    #contact > div {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Get-Involved cards grid → single column */
+    .cardsGrid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ── 768 px tablet portrait ── */
+@media (max-width: 768px) {
+    .section {
+        padding: 64px 5%;
+    }
+
+    /* Activities → single column */
+    #activities .s-inner > div:last-child {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Believes beliefs grid → single column */
+    #believes .s-inner > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    /* Gallery grid → 2 columns */
+    /* (handled in Gallery.module.css already) */
+
+    /* Contact form email+phone row → single column */
+    .contact-form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Hero actions wrap naturally — just reduce gap */
+    .hero-actions {
+        gap: 10px;
+    }
+
+    /* Footer flex → column */
+    footer {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 16px !important;
+    }
+
+        footer > div:last-child {
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+}
+
+/* ── 480 px mobile ── */
+@media (max-width: 480px) {
+    .section {
+        padding: 52px 4%;
+    }
+
+    .s-title {
+        font-size: clamp(24px, 7vw, 36px);
+    }
+
+    /* Hero title size */
+    /* Already uses clamp() in Hero.module.css */
+
+    /* Buttons — allow full width stacking */
+    .hero-actions {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+        .hero-actions .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+    /* Resources list — hide link text on very small screens */
+    /* keep type badge + title, shorten link */
+
+    /* Form two-col grids → single col */
+    .f-row-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Gallery → 1 column (handled in Gallery.module.css) */
+
+    /* GetInvolved stats row → wrap */
+    .statsRow {
+        gap: 16px !important;
+    }
+
+    /* Modal full-width */
+    .modal {
+        padding: 24px 16px !important;
+    }
+}
+
+/* ── Very small screens (< 360px) ── */
+@media (max-width: 360px) {
+    .section {
+        padding: 44px 4%;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 18px;
+    }
 }
