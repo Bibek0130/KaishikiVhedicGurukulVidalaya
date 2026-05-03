@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { INVOLVEMENT_SCHEMES } from "../../data/constants";
+import { INVOLVEMENT_SCHEMES, whatsappNumber } from "../../data/constants";
 import { useReveal } from "../../hooks/UseReveal";
 import "./GetInvolved.css";
 /* ── Scheme Option ───────────────────────── */
@@ -12,6 +12,13 @@ function SchemeOption({ option, selected, onSelect }) {
             <span className="optionLabel">{option.label}</span>
             <span className="optionAmount">{option.amount}</span>
             <span className="optionDetail">{option.detail}</span>
+            <ul className="optionFeature">
+                {option.feature && <span className="optionLabel">Feature</span> }
+               
+                    {option.feature && option.feature.map((f, index) => (
+                        <li key={index}>{f}</li>
+                    ))}
+                </ul>
             {selected && <span className="optionCheck">✓</span>}
         </button>
     );
@@ -20,16 +27,25 @@ function SchemeOption({ option, selected, onSelect }) {
 /* ── Booking Modal ───────────────────────── */
 function BookingModal({ scheme, selectedOption, onClose }) {
     const [submitted, setSubmitted] = useState(false);
-    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", amount:"" });
 
     const update = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
 
     const handleSubmit = () => {
-        if (!form.name || !form.email) {
+        if (!selectedOption) {
+            alert("Please select an option.");
+            return;
+        }
+        else if (!form.name || !form.email) {
             alert("Please fill in your name and email.");
             return;
         }
+        else if(!form.phone){
+            alert("Please provide your phone or WhatsApp number for the ashram to contact you.");
+            return;
+        }
         setSubmitted(true);
+        window.open(`https://wa.me/${whatsappNumber}?text=Hi+,+I+am+${form.name}+I+would+like+to+inquire+about+${scheme.title}+.+Message:+${form.message}`);
     };
 
     return (
@@ -59,7 +75,7 @@ function BookingModal({ scheme, selectedOption, onClose }) {
                             <input type="email" className="f-input" placeholder="your@email.com" value={form.email} onChange={update("email")} />
                         </div>
                         <div className="f-group">
-                            <label className="f-label">Phone / WhatsApp (optional)</label>
+                            <label className="f-label">Phone / WhatsApp</label>
                             <input className="f-input" placeholder="+977 ..." value={form.phone} onChange={update("phone")} />
                         </div>
                         <div className="f-group">
@@ -101,6 +117,14 @@ function SchemeCard({ scheme }) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
 
+    function schemeHandle() {
+        if (!selectedOption) {
+            alert("Please select an option before proceeding.");
+            setModalOpen(false); 
+        }
+        else  setModalOpen(true);
+       
+    }
     return (
         <div className={`card card_${scheme.badgeColor}`}>
             {/* Badge */}
@@ -123,7 +147,7 @@ function SchemeCard({ scheme }) {
             <p className="cardDesc">{scheme.desc}</p>
 
             {/* Options */}
-            <div className="optionsLabel">Choose an amount:</div>
+            <div className="optionsLabel">The amount is:</div>
             <div className="options">
                 {scheme.options.map((opt) => (
                     <SchemeOption
@@ -139,7 +163,8 @@ function SchemeCard({ scheme }) {
             <button
                 className={`btn ${scheme.badgeColor === "earth" ? "btn-earth" : "btn-primary"}`}
                 style={{ width: "100%", justifyContent: "center", borderRadius: 5, marginTop: 8 }}
-                onClick={() => setModalOpen(true)}
+                disabled={!selectedOption}
+                onClick={() => { schemeHandle(); }}
             >
                 {scheme.icon} Participate in {scheme.title.split(" ")[0]} Scheme
             </button>

@@ -1,3 +1,5 @@
+export const whatsappNumber = 9840425631;
+
 // ═══════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════
@@ -234,9 +236,7 @@ export const INVOLVEMENT_SCHEMES = [
         tagline: "Celebrate your day by lighting a lamp of learning",
         desc: "Mark your birthday or that of a loved one by sponsoring a day's meals, books, or ritual materials for the ashram students. The ashram will perform a special puja on that day and send you a personalised blessing letter.",
         options: [
-            { label: "Day's Meals", amount: "NPR 3,000", detail: "Feeds all students for one full day" },
-            { label: "Books & Supplies", amount: "NPR 1,500", detail: "Study materials for one student for a month" },
-            { label: "Ritual Materials", amount: "NPR 2,500", detail: "Ghee, herbs & flowers for one week of Agnihotra" },
+            { label: "Astachiranjibi puja", amount: "NPR 5100", detail: "Perform puja ", feature: [ "astachiranjibi puja from students", "Vhedic pathh from students" ,"feeding all students for a full day" ] },
         ],
         badge: "Most Beloved",
         badgeColor: "saff",

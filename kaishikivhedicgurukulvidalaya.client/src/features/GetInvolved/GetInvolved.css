@@ -197,6 +197,11 @@
     background: var(--saff-pale) !important;
 }
 
+.optionFeature {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 2%
+}
 .optionLabel {
     font-size: 14px;
     font-weight: 500;
