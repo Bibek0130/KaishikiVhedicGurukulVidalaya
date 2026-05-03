@@ -60,7 +60,17 @@ function PhotoCard({ item, onClick }) {
         </div>
     );
 }
+/* ── Facebook page plugin ─────────────────────── */
+ function FacebookPage() {
+     return (
+         <>
+          <div>
+                 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fram.chandra.timalsina.630659%2Fposts%2Fpfbid0PS1x2QZYLQ9zPfXbZF5TdH4552toPapaTtti8WNjb9mXvdcajTFsbTBDybtD9vCTl&show_text=false&width=500" width="300" height="300" style={{border:"none", overflow:"hidden", paddingTop: "1%"}} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>        
 
+         </div>
+         </>
+    )
+}
 /* ── Gallery Section ─────────────────────── */
 export default function Gallery() {
     const [activeTab, setActiveTab] = useState("All");
@@ -84,6 +94,7 @@ export default function Gallery() {
 
     return (
         <>
+          
             <section
                 id="gallery"
                 className="section"
@@ -101,7 +112,7 @@ export default function Gallery() {
                         </p>
                     </div>
 
-                    {/* Updated Tabs className logic */}
+                 {/*   //* Updated Tabs className logic */}
                     <div className="tabs">
                         {GALLERY_TABS.map((tab) => (
                             <button
@@ -150,6 +161,7 @@ export default function Gallery() {
                 onPrev={() => navigate(-1)}
                 onNext={() => navigate(1)}
             />
+            <FacebookPage />
         </>
     );
 }
