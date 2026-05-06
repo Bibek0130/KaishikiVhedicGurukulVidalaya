@@ -25,5 +25,8 @@
     "globals": "^17.4.0",
     "react-bootstrap": "^2.10.10",
     "vite": "^8.0.4"
+  },
+  "optionalDependencies": {
+    "@vis.gl/react-google-maps": "^1.8.3"
   }
 }
