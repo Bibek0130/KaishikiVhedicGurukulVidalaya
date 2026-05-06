@@ -5,11 +5,15 @@
 
 import { useState } from "react";
 import { useReveal } from "../hooks/useReveal";
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import {
     ACTIVITIES, BELIEFS, RESOURCES,
-    ASHRAM_FEATURES, ASHRAM_TAGS, CONTACT_DETAILS,
+    ASHRAM_FEATURES, ASHRAM_TAGS, CONTACT_DETAILS, whatsappNumber
 } from "../data/constants";
+import GoogleMap from "../components/Map";
 import "./home.css"
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
 /*
 *//* ══════════════════════════════════════════
    ABOUT
@@ -812,6 +816,8 @@ export function Contact() {
     const submit = () => {
         if (!form.name || !form.email) { alert("Please fill in your name and email."); return; }
         setSubmitted(true);
+        window.open(`https://wa.me/${whatsappNumber}?text=Hi+,+I+am+${form.name}+I+would+like+to+inquire+about+${form.purpose}+.+Message:+${form.message}+\n+Email:+${form.email}`);
+
     };
 
     return (
@@ -832,12 +838,8 @@ export function Contact() {
                             </div>
                         </div>
                     ))}
-                    <div className="map-placeholder">
-                        {/* Replace with: <iframe src="https://maps.google.com/..." width="100%" height="180" style={{border:0}} /> */}
-                        <span style={{ fontSize: 28, opacity: .3 }}>🗺️</span>
-                        <div>Google Maps — Embed your iframe here</div>
-                        <div style={{ fontSize: 12, opacity: .6 }}>Replace this placeholder with a Google Maps &lt;iframe&gt;</div>
-                    </div>
+                    {/*  Google maps section*/}
+                   <GoogleMap />
                 </div>
 
                 <div className={`contact-form-side ${v("reveal-delay-1")}`}>
