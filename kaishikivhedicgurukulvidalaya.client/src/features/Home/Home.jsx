@@ -8,7 +8,7 @@ export default function Hero() {
     return (
         <section id="hero" className= "hero">
             {/* Background with slow zoom */}
-            <div className="herobg"/>
+            <div className="heroBg"/>
             <div className= "heroGrain" />
 
             {/* Large watermark OM */}
@@ -30,7 +30,7 @@ export default function Hero() {
                 </p>
 
                 <p className={ "heroTagline"}>
-                    Nestled on a hillside beside an ancient temple, we preserve the living
+                    Nestled on a hillside beside an Shiva temple, we preserve the living
                     tradition of Sanskrit learning — freely, simply, and in harmony with
                     all of nature.
                 </p>
