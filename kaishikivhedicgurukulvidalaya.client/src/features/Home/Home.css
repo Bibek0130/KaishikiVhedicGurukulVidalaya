@@ -1,6 +1,6 @@
 .hero {
     position: relative;
-    min-height: 94vh;
+    min-height: 91vh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -9,8 +9,12 @@
 .heroBg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(170deg, rgba(248,243,232,.22) 0%, rgba(248,243,232,.58) 50%, rgba(248,243,232,.97) 100%), url('https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=1600&q=75') center/cover no-repeat;
+    background: linear-gradient( 170deg, rgba(248,243,232,.22) 0%, rgba(248,243,232,.58) 50%, rgba(248,243,232,.97) 100% ), url('/home-background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     animation: zoomSlow 14s ease-out forwards;
+    
 }
 
 .heroGrain {
