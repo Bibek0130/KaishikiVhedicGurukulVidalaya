@@ -10,10 +10,8 @@ function GoogleMap() {
           <div>
               <APIProvider apiKey={API_KEY}>
                   <Map
-                      style={{ width: '90vw', height: '70vh' }}
-                      //defaultCenter={{ lat: 22.54992, lng: 0 }}
+                      style={{ width: '50vw', height: '50vh' }}
                       defaultZoom={20}
-                      //{/* 27.739669234558548, 85.43463513063703 for Kaishiki Vhedic Gurukul Vidalaya*/}
                      //27.73961824954405, 85.43460074952776
                       defaultCenter={{ lat: 27.73961824954405, lng: 85.43463513063703 }}
                       gestureHandling='greedy'
