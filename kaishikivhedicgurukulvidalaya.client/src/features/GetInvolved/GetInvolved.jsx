@@ -115,9 +115,6 @@ function BookingModal({ scheme, selectedOption, onClose }) {
 /* ── Scheme Card ─────────────────────────── */
 function SchemeCard({ scheme, openModal }) {
     const [selectedOption, setSelectedOption] = useState(null);
-    //const [modalOpen, setModalOpen] = useState(false);
-    // const [activeScheme, setActiveScheme] = useState(null);
-    // const [activeOption, setActiveOption] = useState(null);
 
     function schemeHandle() {
           if (!selectedOption) {
@@ -172,8 +169,6 @@ function SchemeCard({ scheme, openModal }) {
             >
                 {scheme.icon} Participate in {scheme.title.split(" ")[0]} Scheme
             </button>
-
-            {/* Modal */}
             
         </div>
     );
