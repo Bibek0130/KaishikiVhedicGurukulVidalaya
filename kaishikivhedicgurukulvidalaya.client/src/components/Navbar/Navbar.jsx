@@ -36,15 +36,17 @@ export default function NavbarSection() {
                     <div className="topbar-left">
                         <a href="mailto:kaushiki@vaidik.org">✉ kaushiki@vaidik.org</a>
                         <span className="topbar-sep">|</span>
-                        <a href="tel:+97798000000">☏ +977 980 000 0000</a>
+                        <a href="tel:+9779851234199">☏ +977 9851234199</a>
                         <span className="topbar-sep">|</span>
-                        <span>Sankhu, Nepal</span>
+                        <span>Subedi Gau, Nepal</span>
                     </div>
                     <div className="topbar-right">
-                    <a href="#" aria-label="Facebook">Facebook</a>
-                    <a href="https://wa.me/9840425631" aria-label="Whatsapp">Whatsapp</a>
+                    <a href="https://www.facebook.com/ram.chandra.timalsina.630659" aria-label="Facebook">Facebook</a>
+                    <a href="https://wa.me/9851234199" aria-label="Whatsapp">Whatsapp</a>
+                        {/*
                         <a href="#" aria-label="YouTube">YouTube</a>
-                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Instagram">Instagram</a>    
+                        */ }
                     </div>
                 </div>
 
