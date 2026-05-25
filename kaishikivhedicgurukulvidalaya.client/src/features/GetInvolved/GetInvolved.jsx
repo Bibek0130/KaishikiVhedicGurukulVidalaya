@@ -113,16 +113,20 @@ function BookingModal({ scheme, selectedOption, onClose }) {
 }
 
 /* ── Scheme Card ─────────────────────────── */
-function SchemeCard({ scheme }) {
+function SchemeCard({ scheme, openModal }) {
     const [selectedOption, setSelectedOption] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
+    //const [modalOpen, setModalOpen] = useState(false);
+    // const [activeScheme, setActiveScheme] = useState(null);
+    // const [activeOption, setActiveOption] = useState(null);
 
     function schemeHandle() {
-        if (!selectedOption) {
-            alert("Please select an option before proceeding.");
-            setModalOpen(false); 
-        }
-        else  setModalOpen(true);
+          if (!selectedOption) {
+        alert("Please select an option before proceeding.");
+        return;
+    }
+        console.log("Submitted");
+        console.log(scheme, selectedOption);
+        openModal(scheme, selectedOption, () => { setSelectedOption(null); });
        
     }
     return (
@@ -170,13 +174,7 @@ function SchemeCard({ scheme }) {
             </button>
 
             {/* Modal */}
-            {modalOpen && (
-                <BookingModal
-                    scheme={scheme}
-                    selectedOption={selectedOption}
-                    onClose={() => setModalOpen(false)}
-                />
-            )}
+            
         </div>
     );
 }
@@ -184,6 +182,9 @@ function SchemeCard({ scheme }) {
 /* ── GetInvolved Section ─────────────────── */
 export default function GetInvolved() {
     const { ref, isVisible } = useReveal();
+    const [activeOption, setActiveOption] = useState(null);
+    const [activeScheme, setActiveScheme] = useState(null);
+    const [resetSelection, setResetSelection] = useState(null);
 
     return (
         <section
@@ -232,10 +233,29 @@ export default function GetInvolved() {
                                 transition: `opacity .8s ${i * 0.1}s ease, transform .8s ${i * 0.1}s ease`,
                             }}
                         >
-                            <SchemeCard scheme={scheme} />
+                            <SchemeCard scheme={scheme} openModal={(scheme, option, resetFn) => {
+                                setActiveScheme(scheme);
+                                setActiveOption(option);
+                                setResetSelection(() => resetFn);
+                            }} />
                         </div>
                     ))}
                 </div>
+
+                {activeScheme && (
+                    <BookingModal
+                        scheme={activeScheme}
+                        selectedOption={activeOption}
+                        onClose={() => {
+                            setActiveScheme(null);
+                            setActiveOption(null);
+
+                            if (resetSelection) {
+                                resetSelection();
+                            }
+                        }}
+                    />
+                )}
 
                 {/* Bottom note */}
                 <div className="bottomNote">
