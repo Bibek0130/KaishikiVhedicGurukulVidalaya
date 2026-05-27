@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Home from '../features/Home/Home'
 import Gallery from '../features/Gallary/Gallary'
 import GetInvolved from '../features/GetInvolved/GetInvolved';
+import CloudImages from '../features/test image cloud/cloudImage';
 export default function App() {
     return(
         <>
@@ -27,6 +28,7 @@ export default function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/getInvolved" element={<GetInvolved />} />
+                    <Route path="/cloudImages" element={<CloudImages />} />
 
                 </Route>
               

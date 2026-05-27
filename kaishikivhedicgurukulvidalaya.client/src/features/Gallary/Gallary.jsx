@@ -221,6 +221,9 @@ const ALL_IMAGES = [
     { id: 10, category: "Events", description: "Navratri celebrations with the community", original: "https://picsum.photos/seed/ash10/1200/800", thumbnail: "https://picsum.photos/seed/ash10/300/200" },
     { id: 11, category: "Nature", description: "The Himalayan foothills at dusk", original: "https://picsum.photos/seed/ash11/1200/800", thumbnail: "https://picsum.photos/seed/ash11/300/200" },
     { id: 12, category: "Community", description: "Volunteers planting saplings on Earth Day", original: "https://picsum.photos/seed/ash12/1200/800", thumbnail: "https://picsum.photos/seed/ash12/300/200" },
+    
+    { id: 12, category: "Shoes", description: "test", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779906521/gurukul_rbqt7g.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779906521/gurukul_rbqt7g.jpg" },
+
 ];
 
 const CATEGORIES = ["All", "Events", "Meditation", "Community", "Nature"];
