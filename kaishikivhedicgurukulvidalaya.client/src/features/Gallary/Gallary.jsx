@@ -287,7 +287,8 @@ export default function GalleryPage() {
 
         html { scroll-behavior: smooth; }
 
-        body {
+        
+         #galleryPage {
           background: ${T.cream};
           color: ${T.text};
           font-family: 'EB Garamond', Georgia, serif;
@@ -456,6 +457,7 @@ export default function GalleryPage() {
 
             {/* ── PAGE ── */}
             <div
+                id="galleryPage"
                 className={`gp-page${visible ? " visible" : ""}`}
                 style={{ minHeight: "100vh", background: T.cream, paddingBottom: "5rem" }}
             >
@@ -463,12 +465,12 @@ export default function GalleryPage() {
                 {/* ══════════ HEADER ══════════ */}
                 <header style={{
                     textAlign: "center",
-                    padding: isMobile ? "3rem 1.25rem 2rem" : "4.5rem 1.5rem 2.8rem",
+                    padding: isMobile ? "3rem 1.25rem 2rem" : "3rem 1.5rem 1rem",
                     background: `linear-gradient(180deg, ${T.creamDark} 0%, ${T.cream} 100%)`,
                     borderBottom: `1px solid ${T.border}`,
                     marginBottom: isMobile ? "1.8rem" : "2.8rem",
                 }}>
-                    <p style={{
+                    {/* <p style={{
                         fontSize: isMobile ? "0.95rem" : "1.05rem",
                         letterSpacing: "0.18em",
                         color: T.gold,
@@ -476,7 +478,7 @@ export default function GalleryPage() {
                         fontStyle: "italic",
                     }}>
                         ॐ शान्तिः शान्तिः शान्तिः
-                    </p>
+                    </p>*/}
 
                     <h1 style={{
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -496,7 +498,7 @@ export default function GalleryPage() {
                         <div className="gp-divider__line" />
                     </div>
 
-                    <p style={{
+                  {/*  <p style={{
                         fontSize: isMobile ? "0.98rem" : "1.1rem",
                         fontStyle: "italic",
                         color: T.textMuted,
@@ -507,7 +509,7 @@ export default function GalleryPage() {
                     }}>
                         "Through sacred gatherings, quiet mornings, and the grace of nature,
                         every moment here is a gentle step toward the Self."
-                    </p>
+                    </p>*/}
                 </header>
 
                 {/* ══════════ MAIN ══════════ */}

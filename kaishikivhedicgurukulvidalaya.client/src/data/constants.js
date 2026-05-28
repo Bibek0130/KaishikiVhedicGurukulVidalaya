@@ -104,14 +104,8 @@ export const BELIEFS = [
 // RESOURCES
 // ═══════════════════════════════════════════
 export const RESOURCES = [
-    { type: "PDF", typeColor: "saff", title: "Laghu Siddhanta Kaumudi — Sanskrit Grammar Primer", link: "Download →" },
-    { type: "Audio", typeColor: "earth", title: "Rigveda Samhita — Complete Recitation (Mp3)", link: "Listen →" },
-    { type: "Video", typeColor: "bark", title: "Introduction to Vedic Mathematics — Video Series", link: "Watch →" },
-    { type: "PDF", typeColor: "saff", title: "Ashtadhyayi — Panini's Grammar with Commentary", link: "Download →" },
-    { type: "Course", typeColor: "earth", title: "Beginner Sanskrit — 40 Lessons Correspondence Course", link: "Enroll →" },
-    { type: "Text", typeColor: "bark", title: "Upanishad Sangrah — Principal Upanishads with Translation", link: "Read →" },
-    { type: "Audio", typeColor: "earth", title: "Vishnu Sahasranama — Sanskrit Chanting with Meaning", link: "Listen →" },
-    { type: "PDF", typeColor: "saff", title: "Daily Puja Vidhi — Step-by-step Guide in Sanskrit & Hindi", link: "Download →" },
+    { type: "PDF", typeColor: "saff", title: "Laghu Siddhanta Kaumudi — Sanskrit Grammar Primer", link: "Download →", href:"https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779954697/week_test_1_i6qgau.pdf" },
+    { type: "PDF", typeColor: "saff", title: "Daily Puja Vidhi — Step-by-step Guide in Sanskrit & Hindi", link: "Download →", href:"https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779954697/week_test_1_i6qgau.pdf" },
 ];
 
 // ═══════════════════════════════════════════
