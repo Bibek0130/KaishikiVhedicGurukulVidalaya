@@ -41,8 +41,8 @@ export default function NavbarSection() {
                         <span>Subedi Gau, Nepal</span>
                     </div>
                     <div className="topbar-right">
-                    <a href="https://www.facebook.com/ram.chandra.timalsina.630659" aria-label="Facebook">Facebook</a>
-                    <a href="https://wa.me/9851234199" aria-label="Whatsapp">Whatsapp</a>
+                    <a href="https://www.facebook.com/ram.chandra.timalsina.630659" target="_blank" rel="noopener noreferrer"  aria-label="Facebook">Facebook</a>
+                    <a href="https://wa.me/9851234199" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp">Whatsapp</a>
                         {/*
                         <a href="#" aria-label="YouTube">YouTube</a>
                         <a href="#" aria-label="Instagram">Instagram</a>    
@@ -52,34 +52,36 @@ export default function NavbarSection() {
 
                 <div id="brandbar">
                     <div className="brand-wrap">
-                        <div className="brand-om" aria-hidden="true"><a className="brand-om" href="home">ॐ</a></div>
+                        <div className="brand-om" aria-hidden="true"><NavLink className="brand-om" to="/home">ॐ</NavLink></div>
                         <div className="brand-text">
                             <div className="deva-name">कौशिकी वैदिक गुरुकुल विद्यालय</div>
                             <div className="en-name">Kaushiki Vaidik Gurukul Vidyalaya</div>
                             <div className="tagline">Sanskrit · Seva · Sadhana · Since 2001</div>
                         </div>
                     </div>
-                    <a href="getInvolved" className="donate-btn">🪔 Get Involved</a>
+                    <NavLink to="/getInvolved" className="donate-btn">🪔 Get Involved</NavLink>
                 </div>
 
                 <Navbar
                     id="navbar"
-                    expand="lg"
+                    expand={false }
                     className="sticky-bar"
                     expanded={expanded}
                     onToggle={setExpanded}
                     style={{ /* topbar + brandbar */ }}
                 >
                     <Container fluid>
-                        <Navbar.Toggle aria-controls="nav-ul" />
+                    <Navbar.Toggle aria-controls="nav-ul" className="custom-toggler" > 
+                        <span className="hamburger-icon">|||</span>
+                    </Navbar.Toggle>
                         <Navbar.Collapse id="nav-ul">
-                            <Nav className=" nav-ul">
+                            <Nav className="ms-auto nav-ul">
                                 {NAV_ITEMS.map(({ href, label }) => (
                                     <Nav.Link
                                         key={href}
                                         as={NavLink}
-                                        //className={activeLink === href ? "active" : ""}
-                                        onClick={() => {  setExpanded(false); }}
+                                        className={activeLink === href ? "active" : ""}
+                                        onClick={() => {  setExpanded(false); setActiveLink(href) }}
                                         to={href}
                                     >
                                         {label}
