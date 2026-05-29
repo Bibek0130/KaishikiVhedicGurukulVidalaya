@@ -5,6 +5,7 @@
 
 import { useState } from "react";
 import { useReveal } from "../hooks/useReveal";
+import { Link } from "react-router-dom";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import {
     ACTIVITIES, BELIEFS, RESOURCES,
@@ -709,7 +710,7 @@ export function Resources() {
                         onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}>
                         <span className="res-type-badge" style={{ background: TYPE_BG[r.typeColor] ?? "var(--earth)" }}>{r.type}</span>
                         <span className="res-name">{r.title}</span>
-                        <a href="#" className="res-link">{r.link}</a>
+                        <a href={ r.href} className="res-link" target="_blank" rel="noopener noreferrer">{r.link}</a>
                     </div>
                 ))}
             </div>
@@ -906,8 +907,8 @@ export function Footer() {
             <div className="footer-om">ॐ शान्तिः शान्तिः शान्तिः</div>
             <div>© 2026 Kaushike Vaidik Gurukul Vidyalaya · Sankhu, Nepal</div>
             <div className="footer-links">
-                {[["#contact", "Contact"], ["#get-involved", "Get Involved"], ["#gallery", "Gallery"], ["#resources", "Resources"]].map(([href, label]) => (
-                    <a key={href} href={href} className="footer-link">{label}</a>
+                {[["/contact", "Contact"], ["/getInvolved", "Get Involved"], ["/gallery", "Gallery"], ["/resources", "Resources"]].map(([href, label]) => (
+                    <Link key={ href} to={href} className="footer-link">{label}</Link>
                 ))}
             </div>
         </footer>
