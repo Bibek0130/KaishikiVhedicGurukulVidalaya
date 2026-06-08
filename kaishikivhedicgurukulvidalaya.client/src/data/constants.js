@@ -8,6 +8,7 @@ export const NAV_ITEMS = [
     { label: "About", href: "about" },
     { label: "Activities", href: "activities" },
     { label: "Believes", href: "believes" },
+    { label: "Admission", href: "admission"},
     { label: "Resources", href: "resources" },
     { label: "The Ashram", href: "ashram" },
     { label: "Founder", href: "founder" },
@@ -308,4 +309,92 @@ export const CONTACT_DETAILS = [
         value: "puja@bedhgurukul.org",
         sub: "Book at least 7 days in advance",
     },
+];
+
+//Ornament Divider
+//Ornament Designs
+export const T = {
+    cream: "#F8F3E8",
+    creamDark: "#EDE4CC",
+    creamDeep: "#E2D5B8",
+    saff: "#C47B2B",
+    saffLt: "#F0DFC0",
+    saffPale: "#FBF6ED",
+    saffWarm: "#D4935A",
+    earth: "#5A7845",
+    earthLt: "#D4E6C8",
+    earthPale: "#EEF5E7",
+    bark: "#7A5435",
+    barkLt: "#C4A882",
+    ink: "#2A1C0C",
+    inkMid: "#5A4228",
+    inkSoft: "#8A7258",
+    border: "rgba(122,84,53,.13)",
+    borderSoft: "rgba(122,84,53,.07)",
+    white: "#FFFFFF",
+    // shadows derived from ink
+    shadow: "rgba(42,28,12,.10)",
+    shadowMd: "rgba(42,28,12,.16)",
+};
+export const STATS = [
+    { value: 340, label: "Students Enrolled", suffix: "+", icon: "🎓", desc: "Young scholars in residence" },
+    { value: 220, label: "Residential Students", suffix: "+", icon: "🏡", desc: "Living & breathing Gurukul life" },
+    { value: 48, label: "Cows & Animals", suffix: "", icon: "🐄", desc: "Sacred Goshala & farm family" },
+];
+
+export const DAILY_SCHEDULE = [
+    { time: "04:30", label: "Brahma Muhurta", icon: "🌙", desc: "Rise before dawn for sacred silence and self-reflection", color: T.bark },
+    { time: "05:00", label: "Yoga & Pranayama", icon: "🧘", desc: "Asanas, breathing exercises, and body-mind awakening", color: T.earth },
+    { time: "06:00", label: "Vedic Studies", icon: "📿", desc: "Mantras, Sanskrit recitation, and scriptural study", color: T.saff },
+    { time: "07:30", label: "Breakfast & Seva", icon: "🍲", desc: "Nutritious sattvic meal followed by collective service", color: T.bark },
+    { time: "08:30", label: "School Classes", icon: "📚", desc: "CBSE curriculum — Maths, Science, English, Social Studies", color: T.inkMid },
+    { time: "13:00", label: "Lunch & Rest", icon: "🌿", desc: "Wholesome ashram meal and midday restoration", color: T.earth },
+    { time: "14:30", label: "Arts & Electives", icon: "🎨", desc: "Music, painting, craft, and vocational skills", color: T.saffWarm },
+    { time: "16:00", label: "Sports & Nature", icon: "⚽", desc: "Outdoor games, farming, and nature walks", color: T.earth },
+    { time: "17:30", label: "Evening Prayer", icon: "🪔", desc: "Sandhya Vandanam, aarti, and devotional singing", color: T.saff },
+    { time: "19:00", label: "Self Study", icon: "📖", desc: "Guided revision, homework, and personal reflection", color: T.barkLt },
+    { time: "21:00", label: "Rest", icon: "🌟", desc: "Early sleep for a rested body and a clear mind", color: T.bark },
+];
+
+export const ACADEMICS = [
+    {
+        level: "Primary (I–V)",
+        tag: "Ages 6–11",
+        subjects: ["Sanskrit & Vedic Chanting", "Mathematics", "English Language", "Hindi", "Environmental Science", "Arts & Crafts", "Yoga & Physical Education"],
+        bg: T.earthPale,
+        accent: T.earth,
+        borderC: `rgba(90,120,69,.22)`,
+    },
+    {
+        level: "Middle (VI–VIII)",
+        tag: "Ages 11–14",
+        subjects: ["Sanskrit Grammar & Literature", "Mathematics & Science", "Social Studies", "English & Hindi", "Computer Basics", "Music & Fine Arts", "Ayurveda Basics"],
+        bg: T.saffPale,
+        accent: T.saff,
+        borderC: `rgba(196,123,43,.22)`,
+    },
+    {
+        level: "Secondary (IX–X)",
+        tag: "Ages 14–16",
+        subjects: ["Vedic Philosophy & Ethics", "Mathematics & Science", "Social Science", "English Literature", "Sanskrit Advanced", "Agriculture & Ecology", "Life Skills"],
+        bg: "#F5EDE0",
+        accent: T.bark,
+        borderC: `rgba(122,84,53,.22)`,
+    },
+];
+
+export const ADMISSION_STEPS = [
+    { step: "01", title: "Inquiry", icon: "📬", desc: "Fill the online inquiry form or call the ashram. Our team responds within 48 hours." },
+    { step: "02", title: "Visit", icon: "🏛️", desc: "Schedule a campus visit to experience Gurukul life firsthand. Open visits every Saturday." },
+    { step: "03", title: "Application", icon: "📝", desc: "Submit the formal application along with the student's previous academic records." },
+    { step: "04", title: "Interview", icon: "🤝", desc: "A warm conversation with the student and family to understand values and expectations." },
+    { step: "05", title: "Enrollment", icon: "✅", desc: "Confirm admission, complete documentation, and begin your child's Gurukul journey." },
+];
+
+export const FAQS = [
+    { q: "Is the Gurukul affiliated to any board?", a: "Yes. Kaushiki Baidik Gurukul is CBSE-affiliated and follows the national curriculum while integrating deep Vedic studies alongside." },
+    { q: "What is the language of instruction?", a: "Sanskrit and Hindi are primary; English is taught rigorously. Bilingual teaching ensures both traditional and modern fluency." },
+    { q: "Are girls admitted to the Gurukul?", a: "Yes. We welcome both boys and girls. Separate residential facilities with trained houseparents ensure a safe and nurturing environment." },
+    { q: "Can parents visit during the academic term?", a: "Parents are warmly invited on designated visit days (second Saturday of each month) and during all festival celebrations." },
+    { q: "Is prior knowledge of Sanskrit required?", a: "No. Students begin Sanskrit from foundational levels. The immersive environment ensures rapid and joyful mastery of the language." },
 ];
