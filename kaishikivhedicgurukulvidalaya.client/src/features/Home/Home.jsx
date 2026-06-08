@@ -1,5 +1,6 @@
 import './Home.css';
 import { About, Activities, Contact, Footer } from '../home';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
     const scrollTo = (id) => {
@@ -38,25 +39,28 @@ export default function Hero() {
                     </p>
 
                     <div className={"heroActions"}>
+                        <Link to="/getInvolved">
                         <button
                             className="btn btn-primary"
-                            onClick={() => scrollTo("get-involved")}
                         >
                             🌱 Get Involved
                         </button>
+                        </Link>
                         <button
                             className="btn btn-outline"
                             onClick={() => scrollTo("about")}
                         >
                             Know the Ashram
                         </button>
-                        <button
-                            className="btn btn-outline"
-                            onClick={() => scrollTo("gallery")}
-                            style={{ borderColor: "var(--earth)", color: "var(--earth)" }}
-                        >
-                            📷 Gallery
-                        </button>
+                        <Link to="/gallery">
+                            <button
+                                className="btn btn-outline"
+                                style={{ borderColor: "var(--earth)", color: "var(--earth)" }}
+                            >
+                                📷 Gallery
+                            </button>
+                        </Link>
+                        
                     </div>
                 </div>
 
