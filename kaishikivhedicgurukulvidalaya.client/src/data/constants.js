@@ -255,35 +255,66 @@ export const INVOLVEMENT_SCHEMES = [
         badgeColor: "earth",
     },
     {
-        id: "library",
-        icon: "📚",
-        deva: "पुस्तकालय",
-        title: "Library Patron",
-        tagline: "Preserve ancient texts for future generations",
-        desc: "Help us digitise, restore, and acquire Sanskrit manuscripts and Vedic texts. Patrons are recognised with a dedicated nameplate in the ashram library and receive a printed copy of one digitised manuscript.",
+        id: "vastra",
+        icon: "👕",
+        deva: "वस्त्रदान",
+        title: "Provide Student Clothing",
+        tagline: "Support uniforms and seasonal clothing",
+        desc: "Help provide clean uniforms, traditional attire, winter clothing, and essential garments for Batuks. Proper clothing allows students to study comfortably and maintain the dignity of the Gurukul tradition.",
         options: [
-            { label: "Single Text", amount: "NPR 2,000", detail: "Digitisation of one manuscript" },
-            { label: "Shelf Sponsor", amount: "NPR 10,000", detail: "Fund an entire shelf of 20 texts" },
-            { label: "Named Patron", amount: "NPR 25,000", detail: "Nameplate + 5 manuscript acquisitions" },
+            { label: "One Set", amount: "NPR 1,500", detail: "Uniform for one student" },
+            { label: "Winter Support", amount: "NPR 5,000", detail: "Warm clothing package" },
+            { label: "Annual Clothing", amount: "NPR 12,000", detail: "Year-round clothing support" },
         ],
-        badge: "Timeless Gift",
-        badgeColor: "bark",
+        badge: "Essential Need",
+        badgeColor: "earth"
     },
     {
-        id: "temple",
-        icon: "🪔",
-        deva: "मन्दिर",
-        title: "Temple Seva Scheme",
-        tagline: "Keep the sacred flame burning",
-        desc: "Support the daily puja, maintenance of the hilltop Shiva temple, and the supply of ritual materials. Donors receive a monthly puja performed in their name and the ashram's blessing.",
+        id: "goseva",
+        icon: "🐄",
+        deva: "गोसेवा",
+        title: "Support the Ashram Cows",
+        tagline: "Preserve and care for the sacred cows",
+        desc: "The cows of the ashram provide nourishment and play an important role in daily spiritual life. Your support helps with fodder, shelter, veterinary care, and overall wellbeing of the goshala.",
         options: [
-            { label: "Daily Puja", amount: "NPR 500 / day", detail: "One day's temple ritual materials" },
-            { label: "Weekly Seva", amount: "NPR 3,000", detail: "Full week of temple operations" },
-            { label: "Monthly Seva", amount: "NPR 11,000", detail: "Complete monthly temple support" },
+            { label: "Monthly Feed", amount: "NPR 2,500", detail: "Feed support for one month" },
+            { label: "Cow Care", amount: "NPR 7,500", detail: "Nutrition and healthcare" },
+            { label: "Goshala Patron", amount: "NPR 25,000", detail: "Comprehensive support" },
         ],
-        badge: "Sacred Service",
-        badgeColor: "saff",
+        badge: "Traditional Service",
+        badgeColor: "earth"
     },
+    {
+        id: "festival",
+        icon: "🪔",
+        deva: "विशेष उत्सव सेवा",
+        title: "Festival & Ritual Sponsorship",
+        tagline: "Support sacred festivals, pujas, and homa ceremonies",
+        desc: "Sponsor special religious observances conducted throughout the year, including Vedic rituals, homa (fire offerings), pujas, yajnas, and festival celebrations. Your contribution helps preserve ancient traditions while enabling devotees and students to participate in sacred ceremonies that promote spiritual growth and community wellbeing.",
+        options: [
+            { label: "Puja Seva", amount: "NPR 2,500", detail: "Support a special puja ceremony" },
+            { label: "Homa Sponsorship", amount: "NPR 7,500", detail: "Sponsor a Vedic fire ritual" },
+            { label: "Festival Patron", amount: "NPR 25,000", detail: "Support a major annual celebration" },
+        ],
+        badge: "Spiritual Merit",
+        badgeColor: "saff"
+    },
+    {
+        id: "brahman_bhojan",
+        icon: "🍽️",
+        deva: "ब्राह्मण भोजन",
+        title: "Sacred Brahman Bhojan",
+        tagline: "Sponsor traditional Vedic meals for Brahman and scholars",
+        desc: "Support the offering of sacred meals to Brahman scholars, priests, and resident Vedic practitioners. Brahman Bhojan is an important tradition that honors knowledge, austerity, and spiritual practice while sustaining those who preserve Vedic learning and rituals.",
+        options: [
+            { label: "One Meal", amount: "NPR 2,000", detail: "Sponsor a single Brahman Bhojan" },
+            { label: "Special Occasion", amount: "NPR 5,000", detail: "Festive or ritual meal sponsorship" },
+            { label: "Monthly Seva", amount: "NPR 18,000", detail: "Regular meal support for scholars" },
+        ],
+        badge: "Traditional Seva",
+        badgeColor: "earth"
+    }
+   
 ];
 
 // ═══════════════════════════════════════════
