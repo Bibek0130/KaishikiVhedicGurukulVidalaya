@@ -1,6 +1,8 @@
 import './Home.css';
 import { About, Activities, Contact, Footer } from '../home';
+import StatCard from '../../components/Stat/StatCard'
 import { Link } from 'react-router-dom';
+import {STATS } from '../../data/constants'
 
 export default function Hero() {
     const scrollTo = (id) => {
@@ -71,6 +73,9 @@ export default function Hero() {
                 </div>
             </section>
             <section>
+                <div className="stats-grid">
+                    {STATS.map((s, i) => <StatCard key={i} stat={s} index={i} />)}
+                </div>
                 <About />
                 <Activities />
                 <Footer />
