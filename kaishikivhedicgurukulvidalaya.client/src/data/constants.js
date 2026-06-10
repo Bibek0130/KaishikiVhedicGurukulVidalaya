@@ -1,4 +1,7 @@
 export const whatsappNumber = 9840425631;
+export const contactNumber = 9851234199
+export const email = "kaushikibaidikgurukul@gmial.com";
+export const address = "Subedi Gau, Bhramakhel, Sankhu";
 
 // ═══════════════════════════════════════════
 // NAVIGATION
@@ -300,13 +303,13 @@ export const CONTACT_DETAILS = [
     {
         icon: "☏",
         label: "Phone / WhatsApp",
-        value: "+977 980 000 0000",
+        value: whatsappNumber,
         sub: "Available 7–9 am and 5–7 pm only",
     },
     {
         icon: "🛕",
         label: "For Pujas & Rituals",
-        value: "puja@bedhgurukul.org",
+        value: email,
         sub: "Book at least 7 days in advance",
     },
 ];
@@ -337,9 +340,9 @@ export const T = {
     shadowMd: "rgba(42,28,12,.16)",
 };
 export const STATS = [
-    { value: 340, label: "Students Enrolled", suffix: "+", icon: "🎓", desc: "Young scholars in residence" },
-    { value: 220, label: "Residential Students", suffix: "+", icon: "🏡", desc: "Living & breathing Gurukul life" },
-    { value: 48, label: "Cows & Animals", suffix: "", icon: "🐄", desc: "Sacred Goshala & farm family" },
+    { value: 50, label: "Students Enrolled", suffix: "+", icon: "🎓", desc: "Young scholars in residence" },
+    { value: 12, label: "Residential Students", suffix: "+", icon: "🏡", desc: "Living & breathing Gurukul life" },
+    { value: 5, label: "Cows & Animals", suffix: "", icon: "🐄", desc: "Sacred Goshala & farm family" },
 ];
 
 export const DAILY_SCHEDULE = [
@@ -347,7 +350,7 @@ export const DAILY_SCHEDULE = [
     { time: "05:00", label: "Yoga & Pranayama", icon: "🧘", desc: "Asanas, breathing exercises, and body-mind awakening", color: T.earth },
     { time: "06:00", label: "Vedic Studies", icon: "📿", desc: "Mantras, Sanskrit recitation, and scriptural study", color: T.saff },
     { time: "07:30", label: "Breakfast & Seva", icon: "🍲", desc: "Nutritious sattvic meal followed by collective service", color: T.bark },
-    { time: "08:30", label: "School Classes", icon: "📚", desc: "CBSE curriculum — Maths, Science, English, Social Studies", color: T.inkMid },
+    { time: "08:30", label: "School Classes", icon: "📚", desc: "NEB curriculum — Maths, Science, English, Social Studies", color: T.inkMid },
     { time: "13:00", label: "Lunch & Rest", icon: "🌿", desc: "Wholesome ashram meal and midday restoration", color: T.earth },
     { time: "14:30", label: "Arts & Electives", icon: "🎨", desc: "Music, painting, craft, and vocational skills", color: T.saffWarm },
     { time: "16:00", label: "Sports & Nature", icon: "⚽", desc: "Outdoor games, farming, and nature walks", color: T.earth },
@@ -360,7 +363,7 @@ export const ACADEMICS = [
     {
         level: "Primary (I–V)",
         tag: "Ages 6–11",
-        subjects: ["Sanskrit & Vedic Chanting", "Mathematics", "English Language", "Hindi", "Environmental Science", "Arts & Crafts", "Yoga & Physical Education"],
+        subjects: ["Sanskrit & Vedic Chanting", "Mathematics", "English Language", "Nepali", "Environmental Science", "Social Studies", "Yoga & Physical Education"],
         bg: T.earthPale,
         accent: T.earth,
         borderC: `rgba(90,120,69,.22)`,
@@ -368,7 +371,7 @@ export const ACADEMICS = [
     {
         level: "Middle (VI–VIII)",
         tag: "Ages 11–14",
-        subjects: ["Sanskrit Grammar & Literature", "Mathematics & Science", "Social Studies", "English & Hindi", "Computer Basics", "Music & Fine Arts", "Ayurveda Basics"],
+        subjects: ["Sanskrit Grammar & Literature", "Mathematics", "Social Studies", "English","Nepali","Science", "Computer Basics", "Ayurveda Basics"],
         bg: T.saffPale,
         accent: T.saff,
         borderC: `rgba(196,123,43,.22)`,
@@ -376,7 +379,7 @@ export const ACADEMICS = [
     {
         level: "Secondary (IX–X)",
         tag: "Ages 14–16",
-        subjects: ["Vedic Philosophy & Ethics", "Mathematics & Science", "Social Science", "English Literature", "Sanskrit Advanced", "Agriculture & Ecology", "Life Skills"],
+        subjects: ["Vedic","Science", "Mathematics", "Social ", "English ","Nepali", "Sanskrit Advanced", "Computer Science", "Optional Mathematics"],
         bg: "#F5EDE0",
         accent: T.bark,
         borderC: `rgba(122,84,53,.22)`,
@@ -392,9 +395,9 @@ export const ADMISSION_STEPS = [
 ];
 
 export const FAQS = [
-    { q: "Is the Gurukul affiliated to any board?", a: "Yes. Kaushiki Baidik Gurukul is CBSE-affiliated and follows the national curriculum while integrating deep Vedic studies alongside." },
+    { q: "Is the Gurukul affiliated to any board?", a: "Yes. Kaushiki Baidik Gurukul is NEB-affiliated and follows the national curriculum while integrating deep Vedic studies alongside." },
     { q: "What is the language of instruction?", a: "Sanskrit and Hindi are primary; English is taught rigorously. Bilingual teaching ensures both traditional and modern fluency." },
-    { q: "Are girls admitted to the Gurukul?", a: "Yes. We welcome both boys and girls. Separate residential facilities with trained houseparents ensure a safe and nurturing environment." },
+    { q: "Are girls admitted to the Gurukul?", a: "Yes. We welcome both boys and girls. Separate residential facilities with traiNEB houseparents ensure a safe and nurturing environment." },
     { q: "Can parents visit during the academic term?", a: "Parents are warmly invited on designated visit days (second Saturday of each month) and during all festival celebrations." },
     { q: "Is prior knowledge of Sanskrit required?", a: "No. Students begin Sanskrit from foundational levels. The immersive environment ensures rapid and joyful mastery of the language." },
 ];
