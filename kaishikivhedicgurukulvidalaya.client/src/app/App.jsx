@@ -12,6 +12,7 @@ import GetInvolved from '../features/GetInvolved/GetInvolved';
 import CloudImage from '../features/test image cloud/cloudImage';
 import Journey from '../features/Journey/Journey';
 import AdmissionsPage from '../features/Admission/Admission'
+import StudentForm from '../components/Forms/StudentForm';
 export default function App() {
     return(
         <>
@@ -34,7 +35,7 @@ export default function App() {
 
                     {/* test */}
                     <Route path="/cloudImage" element={<CloudImage />} />
-
+                    <Route path="/studentform" element={<StudentForm /> } />
                     <Route path="/journey" element={<Journey />} />
 
 
