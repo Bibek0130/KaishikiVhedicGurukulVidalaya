@@ -209,21 +209,41 @@ const T = {
    IMAGE DATA  (replace URLs with your own)
 ───────────────────────────────────────────── */
 const ALL_IMAGES = [
-    { id: 1, category: "Meditation", description: "Morning meditation by the sacred river", original: "https://picsum.photos/seed/ash1/1200/800", thumbnail: "https://picsum.photos/seed/ash1/300/200" },
-    { id: 2, category: "Events", description: "Annual Diwali celebration at the ashram", original: "https://picsum.photos/seed/ash2/1200/800", thumbnail: "https://picsum.photos/seed/ash2/300/200" },
-    { id: 3, category: "Nature", description: "Gardens of serenity in the early dawn", original: "https://picsum.photos/seed/ash3/1200/800", thumbnail: "https://picsum.photos/seed/ash3/300/200" },
-    { id: 4, category: "Community", description: "Community langar — serving with love", original: "https://picsum.photos/seed/ash4/1200/800", thumbnail: "https://picsum.photos/seed/ash4/300/200" },
-    { id: 5, category: "Meditation", description: "Guided yoga at sunrise on the terrace", original: "https://picsum.photos/seed/ash5/1200/800", thumbnail: "https://picsum.photos/seed/ash5/300/200" },
-    { id: 6, category: "Events", description: "Vedic fire ceremony — Agni Hotra", original: "https://picsum.photos/seed/ash6/1200/800", thumbnail: "https://picsum.photos/seed/ash6/300/200" },
-    { id: 7, category: "Nature", description: "Sacred lotus pond in full bloom", original: "https://picsum.photos/seed/ash7/1200/800", thumbnail: "https://picsum.photos/seed/ash7/300/200" },
-    { id: 8, category: "Community", description: "Children's art class — creativity as devotion", original: "https://picsum.photos/seed/ash8/1200/800", thumbnail: "https://picsum.photos/seed/ash8/300/200" },
-    { id: 9, category: "Meditation", description: "Silent retreat — the art of inner stillness", original: "https://picsum.photos/seed/ash9/1200/800", thumbnail: "https://picsum.photos/seed/ash9/300/200" },
-    { id: 10, category: "Events", description: "Navratri celebrations with the community", original: "https://picsum.photos/seed/ash10/1200/800", thumbnail: "https://picsum.photos/seed/ash10/300/200" },
-    { id: 11, category: "Nature", description: "The Himalayan foothills at dusk", original: "https://picsum.photos/seed/ash11/1200/800", thumbnail: "https://picsum.photos/seed/ash11/300/200" },
-    { id: 12, category: "Community", description: "Volunteers planting saplings on Earth Day", original: "https://picsum.photos/seed/ash12/1200/800", thumbnail: "https://picsum.photos/seed/ash12/300/200" },
-    
-    { id: 12, category: "Shoes", description: "test", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779906521/gurukul_rbqt7g.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1779906521/gurukul_rbqt7g.jpg" },
+    { id: 1, category: "Meditation", description: "Morning meditation by the sacred river", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110962/WhatsApp_Image_2026-06-10_at_10.33.42_PM_1_bduzhm.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110962/WhatsApp_Image_2026-06-10_at_10.33.42_PM_1_bduzhm.jpg" },
 
+    { id: 2, category: "Events", description: "Annual Diwali celebration at the ashram", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.34_PM_twmvpl.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.34_PM_twmvpl.jpg" },
+
+    { id: 3, category: "Nature", description: "Gardens of serenity in the early dawn", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110968/WhatsApp_Image_2026-06-10_at_10.33.33_PM_udzjqd.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110968/WhatsApp_Image_2026-06-10_at_10.33.33_PM_udzjqd.jpg" },
+
+    { id: 4, category: "Community", description: "Community langar — serving with love", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_1_s8rmlm.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_1_s8rmlm.jpg" },
+
+    { id: 5, category: "Meditation", description: "Guided yoga at sunrise on the terrace", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.35_PM_c876ni.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.35_PM_c876ni.jpg" },
+
+    { id: 6, category: "Events", description: "Vedic fire ceremony — Agni Hotra", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_2_p8iuvi.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_2_p8iuvi.jpg" },
+
+    { id: 7, category: "Nature", description: "Sacred lotus pond in full bloom", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.42_PM_fzekvp.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.42_PM_fzekvp.jpg" },
+
+    { id: 8, category: "Community", description: "Children's art class — creativity as devotion", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.39_PM_arbjra.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.39_PM_arbjra.jpg" },
+
+    { id: 9, category: "Meditation", description: "Silent retreat — the art of inner stillness", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_1_jb8iji.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_1_jb8iji.jpg" },
+
+    { id: 10, category: "Events", description: "Navratri celebrations with the community", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110966/WhatsApp_Image_2026-06-10_at_10.33.36_PM_gc2lfm.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110966/WhatsApp_Image_2026-06-10_at_10.33.36_PM_gc2lfm.jpg" },
+
+    { id: 11, category: "Nature", description: "The Himalayan foothills at dusk", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110966/WhatsApp_Image_2026-06-10_at_10.33.35_PM_1_tgvvdi.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110966/WhatsApp_Image_2026-06-10_at_10.33.35_PM_1_tgvvdi.jpg" },
+
+    { id: 12, category: "Community", description: "Volunteers planting saplings on Earth Day", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_2_i6farf.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_2_i6farf.jpg" },
+
+    { id: 13, category: "Ashram", description: "Temple courtyard atmosphere", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_exrm0a.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_exrm0a.jpg" },
+
+    { id: 14, category: "Nature", description: "Evening forest path near the ashram", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_1_xesbln.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_1_xesbln.jpg" },
+
+    { id: 15, category: "Community", description: "Evening discipline training session", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_2_r3mewj.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_2_r3mewj.jpg" },
+
+    { id: 16, category: "Meditation", description: "Guru guiding spiritual practice", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.41_PM_1_ybtuvv.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.41_PM_1_ybtuvv.jpg" },
+
+    { id: 17, category: "Meditation", description: "Evening meditation under temple lamps", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.38_PM_hz1nlk.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.38_PM_hz1nlk.jpg" },
+
+    { id: 18, category: "Community", description: "Seva activities by students", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.38_PM_1_q8lkg6.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.38_PM_1_q8lkg6.jpg" },
 ];
 
 const CATEGORIES = ["All", "Events", "Meditation", "Community", "Nature"];
