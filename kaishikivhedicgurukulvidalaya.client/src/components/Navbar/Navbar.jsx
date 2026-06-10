@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { NAV_ITEMS, SECTION_IDS } from "../../data/constants";
-import { useScrollSpy } from "../../hooks/UseReveal";
+import { NAV_ITEMS, SECTION_IDS, contactNumber, whatsappNumber, email } from "../../data/constants";
 import { NavLink, Outlet } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -8,8 +7,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import './Navbar.css';
 
 export default function NavbarSection() {
-    const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState("/home");
     const [expanded, setExpanded] = useState(false);
 
@@ -34,9 +31,9 @@ export default function NavbarSection() {
         <>
                 <div id="topbar">
                     <div className="topbar-left">
-                        <a href="mailto:kaushiki@vaidik.org">✉ kaushiki@vaidik.org</a>
+                    <a href="mailto:kaushiki@vaidik.org">✉ {email}</a>
                         <span className="topbar-sep">|</span>
-                        <a href="tel:+9779851234199">☏ +977 9851234199</a>
+                    <a href="tel:+9779851234199">☏ {contactNumber}</a>
                         <span className="topbar-sep">|</span>
                         <span>Subedi Gau, Nepal</span>
                     </div>
@@ -55,11 +52,15 @@ export default function NavbarSection() {
                         <div className="brand-om" aria-hidden="true"><NavLink className="brand-om" to="/home">ॐ</NavLink></div>
                         <div className="brand-text">
                             <div className="deva-name">कौशिकी वैदिक गुरुकुल विद्यालय</div>
-                            <div className="en-name">Kaushiki Vaidik Gurukul Vidyalaya</div>
-                            <div className="tagline">Sanskrit · Seva · Sadhana · Since 2001</div>
+                            <div className="en-name">Kaushiki Vaidik Gurukul School</div>
+                            <div className="tagline">Sanskrit · Seva · Sadhana · Since 2013</div>
                         </div>
-                    </div>
+                </div>
+                <div className="">
                     <NavLink to="/getInvolved" className="donate-btn">🪔 Get Involved</NavLink>
+                    <NavLink to="/admission" className="donate-btn">Apply for Admission</NavLink>
+                </div>
+                   
                 </div>
 
                 <Navbar
