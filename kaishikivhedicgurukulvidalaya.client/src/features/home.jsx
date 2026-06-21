@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import {
     ACTIVITIES, BELIEFS, RESOURCES,
-    ASHRAM_FEATURES, ASHRAM_TAGS, CONTACT_DETAILS, whatsappNumber
+    ASHRAM_FEATURES, ASHRAM_TAGS, CONTACT_DETAILS, whatsappNumber,
+    mapUrl
 } from "../data/constants";
 import GoogleMap from "../components/Map";
 import "./home.css"
@@ -773,7 +774,7 @@ export function Founder() {
                 <div ref={ref} className="founder-grid">
                     <div className={`${v()} founder-portrait`}>
                         <div className="founder-img">
-                            <span>गु</span>
+                            <img src="https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781426103/ram_chandra_timalsin_manxy9.jpg" maxWidth="150px" width="260px"></img>
                             <div className="founder-img-bar" />
                         </div>
                         <div className="founder-name">Ram Chandra Timalsina</div>
@@ -790,7 +791,7 @@ export function Founder() {
                         <div className="rule" />
                         <p className="founder-pull">"I did not build this ashram — the ashram built itself through the grace of the Vedas and the sincerity of each student who came."</p>
                         {[
-                            "Acharya Ram Chandra Timalsina has devoted over three decades to the study, practice, and teaching of Vedic sciences. Born into a traditional brahmin family in Nepal, he received his training in the ancient gurukul tradition before pursuing formal studies in Sanskrit.",
+                            "Ram Chandra Timalsina has devoted over three decades to the study, practice, and teaching of Vedic sciences. Born into a traditional brahmin family in Nepal, he received his training in the ancient gurukul tradition before pursuing formal studies in Sanskrit.",
                             "Inspired by the vision of making Vedic education freely accessible to every child, he returned to Kaishake and established this ashram on a hilltop near the ancient Shiva temple, with nothing but faith, dedication, and a handful of devoted students.",
                             "Today, the Acharya continues to teach, perform Vedic rituals for the community, and guide the ashram's work — rising before dawn each day, leading morning prayers at the temple, and teaching through the morning.",
                         ].map((p, i) => <p key={i} className="founder-bio">{p}</p>)}
@@ -840,7 +841,16 @@ export function Contact() {
                         </div>
                     ))}
                     {/*  Google maps section*/}
-                   <GoogleMap />
+                    <GoogleMap />
+                    <a
+                        href={mapUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-gold"
+                        style={{ display: "block", textAlign: "center", marginTop: "16px", textDecoration: "none" }}
+                    >
+                        Open in Google Maps
+                    </a>
                 </div>
 
                 <div className={`contact-form-side ${v("reveal-delay-1")}`}>

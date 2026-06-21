@@ -589,6 +589,25 @@ so media queries can override them cleanly.
     width: 100%;
 }
 
+.btn-gold {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid #c9a84c;
+    color: #c9a84c;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.35s;
+}
+
+    .btn-gold:hover {
+        background:#C47B2B;
+        color: #0c0a08;
+    }
+
 .contact-form-title {
     font-family: 'EB Garamond', serif;
     font-size: clamp(22px, 3vw, 30px);

@@ -3,8 +3,10 @@ export const contactNumber = 9851234199
 export const email = "kaushikibaidikgurukul@gmial.com";
 export const address = "Subedi Gau, Bhramakhel, Sankhu";
 
+export const mapUrl ="https://maps.app.goo.gl/bpsf1V8ynxhpMTSE9"
+
 // ═══════════════════════════════════════════
-// NAVIGATION
+// NAVIGATION       
 // ═══════════════════════════════════════════
 export const NAV_ITEMS = [
     { label: "Home", href: "home" },
