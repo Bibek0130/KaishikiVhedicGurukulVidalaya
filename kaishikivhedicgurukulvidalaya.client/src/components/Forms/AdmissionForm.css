@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Hind:wght@400;600&display=swap');
+
+/*
+ * This form replicates a real Nepali paper admission form (letterhead,
+ * dotted-line fields, signature boxes, lineage fields like gotra/pravar/gan)
+ * — that structure and its Devanagari field labels stay exactly as the real
+ * document, per the site's content-integrity rules. What follows brings the
+ * VISUAL language (colour, type, focus states, section treatment) onto the
+ * same design system as the rest of the site instead of a generic
+ * bureaucratic blue-on-white look: saffron/earth/ink tokens from index.css,
+ * EB Garamond for headings, the shared .s-eyebrow/.s-title/.rule pattern
+ * used on every other page. Fixed pixel sizes for the letterhead and the
+ * photo/signature boxes are kept literal — they describe a physical
+ * document's proportions, not the fluid web type scale.
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Page wrapper — themed like every other page on the site ── */
+.admission-form-page-wrap {
+    background: var(--cream-dark);
+}
+
+.admission-form-header {
+    max-width: 1024px;
+    margin: 0 auto var(--space-6);
+    padding: var(--space-7) var(--space-6) 0;
+}
+
+.admission-form-intro {
+    font-family: 'Hind', sans-serif;
+    font-size: var(--fs-body);
+    color: var(--ink-soft);
+    line-height: 1.85;
+    max-width: 62ch;
+}
+
+.admission-form-actions-top {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    flex-wrap: wrap;
+}
+
+/* ── The "paper" itself ── */
+.form-page {
+    background: var(--white, #fff);
+    max-width: 1024px;
+    margin: 0 auto var(--space-5);
+    padding: var(--space-5) var(--space-6) var(--space-7);
+    font-family: 'Hind', 'Mangal', 'Noto Sans Devanagari', sans-serif;
+    font-size: var(--fs-body-sm);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 2px 18px var(--shadow, rgba(42,28,12,.10));
+}
+
+/* ── Header ── */
+.header {
+    text-align: center;
+    margin-bottom: var(--space-3);
+    position: relative;
+}
+
+.header-top {
+    font-size: 12px;
+    color: var(--saff);
+    letter-spacing: .04em;
+    margin-bottom: 2px;
+}
+
+.phone-no {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 11px;
+    color: var(--ink-soft);
+}
+
+.school-name-nep {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 28px;
+    color: var(--saff);
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.school-name-eng {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-1);
+}
+
+.address {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid var(--saff);
+    opacity: .55;
+    margin: var(--space-2) 0 var(--space-3);
+}
+
+.divider-thin {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: var(--space-1) 0 var(--space-3);
+}
+
+.form-title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-5);
+    position: relative;
+    gap: var(--space-2);
+}
+
+.form-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.3px;
+}
+
+.form-title-rule {
+    width: 34px;
+    height: 1.5px;
+    background: var(--saff);
+    opacity: .6;
+    border-radius: 1px;
+}
+
+.date-field {
+    align-self: flex-end;
+    font-size: var(--fs-body-sm);
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+    .date-field input {
+        border: none;
+        border-bottom: 1px solid var(--border);
+        outline: none;
+        width: 120px;
+        font-size: var(--fs-body-sm);
+        font-family: inherit;
+        color: var(--ink);
+    }
+
+    .date-field input:focus-visible,
+    .dotted-input:focus-visible {
+        outline: 2px solid var(--saff);
+        outline-offset: 1px;
+    }
+
+/* ── Photo box ── */
+.top-section {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.top-fields {
+    flex: 1;
+}
+
+.photo-box {
+    width: 90px;
+    height: 110px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    background: var(--cream);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--ink-soft);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+    .photo-box input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+    }
+
+    .photo-box input[type="file"]:focus-visible {
+        opacity: 1;
+        outline: 2px solid var(--saff);
+    }
+
+    .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* ── Field rows ── */
+.field-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: var(--space-2);
+    gap: var(--space-2);
+}
+
+    .field-row.col2 {
+        gap: var(--space-4);
+    }
+
+.field-label {
+    white-space: nowrap;
+    font-size: var(--fs-body-sm);
+    color: var(--ink-mid);
+}
+
+.dotted-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dotted var(--ink-soft);
+    outline: none;
+    font-family: inherit;
+    font-size: var(--fs-body-sm);
+    color: var(--ink);
+    background: transparent;
+    padding-bottom: 1px;
+    min-width: 40px;
+}
+
+    .dotted-input:focus {
+        border-bottom-color: var(--saff);
+        border-bottom-style: solid;
+    }
+
+.inline-group {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+/* single-line rows */
+.field-block {
+    margin-bottom: var(--space-2);
+}
+
+/* section divider label — styled like the site's small eyebrow labels */
+.section-label {
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--saff);
+    margin: var(--space-5) 0 var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-soft);
+    font-size: var(--fs-body-sm);
+}
+
+/* guardian section */
+.guardian-section {
+    margin-top: var(--space-1);
+}
+
+/* declaration text */
+.declaration {
+    font-size: var(--fs-body-sm);
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin: var(--space-3) 0 var(--space-2);
+}
+
+/* signature rows */
+.sig-row {
+    display: flex;
+    gap: var(--space-6);
+    margin: var(--space-1) 0 var(--space-1) 60px;
+    align-items: flex-start;
+}
+
+.sig-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.sig-label {
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.sig-box {
+    width: 110px;
+    height: 60px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+}
+
+.sig-name-line {
+    border-bottom: 1px dotted var(--ink-soft);
+    width: 200px;
+    margin-top: var(--space-2);
+    height: 18px;
+}
+
+/* verification section */
+.verify-section {
+    margin-top: var(--space-4);
+}
+
+.verify-field {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.verify-sig {
+    margin: var(--space-1) 0 var(--space-2);
+}
+
+.verify-sig-line {
+    border-bottom: 1px dotted var(--ink-soft);
+    width: 220px;
+    height: 28px;
+    margin-top: var(--space-2);
+}
+
+.note-section {
+    margin-top: var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    background: var(--saff-pale);
+    border-left: 3px solid var(--saff);
+    border-radius: 0 4px 4px 0;
+    font-size: var(--fs-body-sm);
+    color: var(--ink-mid);
+    line-height: 1.6;
+}
+
+    .note-section strong {
+        font-weight: 600;
+        color: var(--ink);
+    }
+
+@media print {
+    .admission-form-page-wrap {
+        background: none;
+    }
+    .admission-form-header,
+    .admission-form-actions-top,
+    .admission-form-btn {
+        display: none;
+    }
+    .form-page {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+}
+
+.admission-form-btn {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── Downloaded confirmation (small inline note, form stays visible so the
+   applicant can still edit and re-download if something needs fixing) ── */
+.admission-form-downloaded-note {
+    margin-top: var(--space-3);
+    font-family: 'Hind', sans-serif;
+    font-size: var(--fs-body-sm);
+    color: var(--earth);
+    font-weight: 500;
+}

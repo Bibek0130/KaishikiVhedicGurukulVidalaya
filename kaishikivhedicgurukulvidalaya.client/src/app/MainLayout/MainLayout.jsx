@@ -8,7 +8,7 @@ const MainLayout = () => {
         <>
             <NavbarSection />
 
-            <Container fluid style={scrollable}>
+            <Container fluid>
                 <Outlet />
             </Container>
         </>
@@ -16,6 +16,3 @@ const MainLayout = () => {
 }
 
 export default MainLayout;
-
-const scrollable = {}
-  

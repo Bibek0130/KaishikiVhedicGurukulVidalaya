@@ -1,109 +1,106 @@
 import { useState } from "react";
-import { INVOLVEMENT_SCHEMES, whatsappNumber } from "../../data/constants";
-import { useReveal } from "../../hooks/UseReveal";
+import { INVOLVEMENT_SCHEMES, email } from "../../data/constants";
+import useInView from "../../hooks/useInView";
+import { sendWhatsAppMessage } from "../../api/whatsapp";
+import { useTranslation } from "../../hooks/useTranslation";
+import { translations } from "../../i18n/translations";
 import "./GetInvolved.css";
-/* ── Scheme Option ───────────────────────── */
-function SchemeOption({ option, selected, onSelect }) {
-    return (
-        <button
-            className={`option ${selected ? "optionSelected" : ""}`}
-            onClick={() => onSelect(option)}
-        >
-            <span className="optionLabel">{option.label}</span>
-            <span className="optionAmount">{option.amount}</span>
-            <span className="optionDetail">{option.detail}</span>
-            <ul className="optionFeature">
-                {option.feature && <span className="optionLabel">Feature</span> }
-               
-                    {option.feature && option.feature.map((f, index) => (
-                        <li key={index}>{f}</li>
-                    ))}
-                </ul>
-            {selected && <span className="optionCheck">✓</span>}
-        </button>
-    );
-}
+
+/* Maps constants.js scheme.id (snake_case) -> translations.js getInvolvedPage.schemes key (camelCase) */
+const SCHEME_KEY = {
+    birthday: "birthday",
+    guardian: "guardian",
+    vastra: "vastra",
+    goseva: "goseva",
+    festival: "festival",
+    brahman_bhojan: "brahmanBhojan",
+};
 
 /* ── Booking Modal ───────────────────────── */
-function BookingModal({ scheme, selectedOption, onClose }) {
+function BookingModal({ scheme, onClose }) {
+    const { t, language } = useTranslation();
+    const tr = translations[language] || translations.en;
+    const copy = tr.getInvolvedPage.schemes[SCHEME_KEY[scheme.id]];
+
     const [submitted, setSubmitted] = useState(false);
-    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", amount:"" });
+    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
     const update = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
 
-    const handleSubmit = () => {
-        if (!selectedOption) {
-            alert("Please select an option.");
+    const handleSubmit = async () => {
+        if (!form.name || !form.email) {
+            alert(t("getInvolvedPage.modal.validationNameEmail"));
             return;
         }
-        else if (!form.name || !form.email) {
-            alert("Please fill in your name and email.");
+        else if (!form.phone) {
+            alert(t("getInvolvedPage.modal.validationPhone"));
             return;
         }
-        else if(!form.phone){
-            alert("Please provide your phone or WhatsApp number for the ashram to contact you.");
-            return;
+        try {
+            await sendWhatsAppMessage(
+                `Hi, I am ${form.name}. I would like to inquire about ${scheme.title}.` +
+                `\nEmail: ${form.email}\nPhone / WhatsApp: ${form.phone}\nMessage: ${form.message}`
+            );
+            setSubmitted(true);
+        } catch (error) {
+            alert(error.message);
         }
-        setSubmitted(true);
-        window.open(`https://wa.me/${whatsappNumber}?text=Hi+,+I+am+${form.name}+I+would+like+to+inquire+about+${scheme.title}+.+Message:+${form.message}`);
     };
+
+    const successTitle = t("getInvolvedPage.modal.successTitle").replace("{name}", form.name);
+    const [successBodyBefore, successBodyAfter] = t("getInvolvedPage.modal.successBody").split("{email}");
 
     return (
         <div className="modalOverlay" onClick={onClose}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <button className="modalClose" onClick={onClose}>✕</button>
+            <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={`${copy.title} — seva enrolment`}>
+                <button className="modalClose" onClick={onClose} aria-label={t("getInvolvedPage.modal.close")}>✕</button>
 
                 {!submitted ? (
                     <>
                         <div className="modalIcon">{scheme.icon}</div>
-                        <div className="modalTitle">{scheme.title}</div>
-                        {selectedOption && (
-                            <div className="modalOption">
-                                {selectedOption.label} — <strong>{selectedOption.amount}</strong>
-                            </div>
-                        )}
+                        <div className="modalTitle">{copy.title}</div>
                         <p className="modalSub">
-                            Fill in your details and the ashram will contact you to complete the arrangement.
+                            {t("getInvolvedPage.modal.subtitle")}
                         </p>
 
                         <div className="f-group">
-                            <label className="f-label">Your Full Name</label>
-                            <input className="f-input" placeholder="e.g. Sita Devi Sharma" value={form.name} onChange={update("name")} />
+                            <label className="f-label" htmlFor="gi-name">{t("getInvolvedPage.modal.labelName")}</label>
+                            <input id="gi-name" className="f-input" placeholder={t("getInvolvedPage.modal.placeholderName")} value={form.name} onChange={update("name")} />
                         </div>
                         <div className="f-group">
-                            <label className="f-label">Email Address</label>
-                            <input type="email" className="f-input" placeholder="your@email.com" value={form.email} onChange={update("email")} />
+                            <label className="f-label" htmlFor="gi-email">{t("getInvolvedPage.modal.labelEmail")}</label>
+                            <input id="gi-email" type="email" className="f-input" placeholder={t("getInvolvedPage.modal.placeholderEmail")} value={form.email} onChange={update("email")} />
                         </div>
                         <div className="f-group">
-                            <label className="f-label">Phone / WhatsApp</label>
-                            <input className="f-input" placeholder="+977 ..." value={form.phone} onChange={update("phone")} />
+                            <label className="f-label" htmlFor="gi-phone">{t("getInvolvedPage.modal.labelPhone")}</label>
+                            <input id="gi-phone" className="f-input" placeholder={t("getInvolvedPage.modal.placeholderPhone")} value={form.phone} onChange={update("phone")} />
                         </div>
                         <div className="f-group">
-                            <label className="f-label">Special Wishes or Notes</label>
+                            <label className="f-label" htmlFor="gi-message">{t("getInvolvedPage.modal.labelMessage")}</label>
                             <textarea
+                                id="gi-message"
                                 className="f-input"
-                                placeholder="Birthday name, dedication message, special intentions…"
+                                placeholder={t("getInvolvedPage.modal.placeholderMessage")}
                                 value={form.message}
                                 onChange={update("message")}
                             />
                         </div>
 
                         <button
-                            className="btn btn-primary"
-                            style={{ width: "100%", justifyContent: "center", borderRadius: 5, padding: "14px" }}
+                            className="btn btn-primary giSubmit"
                             onClick={handleSubmit}
                         >
-                            🙏 Submit &amp; Confirm
+                            {t("getInvolvedPage.modal.submit")}
                         </button>
                         <p className="danaNote">
-                            The ashram accepts dana (sacred offering) — never a commercial fee.
+                            {t("getInvolvedPage.modal.danaNote")}
                         </p>
                     </>
                 ) : (
                     <div className="modalSuccess">
-                        <div style={{ fontSize: 48, marginBottom: 16 }}>🙏</div>
-                        <h3 className="successTitle">Pranam, {form.name}!</h3>
-                        <p>Your expression of seva has been received. The ashram will contact you at <strong>{form.email}</strong> within 2 working days to complete the arrangement.</p>
+                        <div className="modalSuccessMark">🙏</div>
+                        <h3 className="successTitle">{successTitle}</h3>
+                        <p>{successBodyBefore}<strong>{form.email}</strong>{successBodyAfter}</p>
                         <div className="successDeva">शुभमस्तु · सर्वे भवन्तु सुखिनः</div>
                     </div>
                 )}
@@ -114,103 +111,76 @@ function BookingModal({ scheme, selectedOption, onClose }) {
 
 /* ── Scheme Card ─────────────────────────── */
 function SchemeCard({ scheme, openModal }) {
-    const [selectedOption, setSelectedOption] = useState(null);
+    const { t, language } = useTranslation();
+    const tr = translations[language] || translations.en;
+    const copy = tr.getInvolvedPage.schemes[SCHEME_KEY[scheme.id]];
 
-    function schemeHandle() {
-          if (!selectedOption) {
-        alert("Please select an option before proceeding.");
-        return;
-    }
-        console.log("Submitted");
-        console.log(scheme, selectedOption);
-        openModal(scheme, selectedOption, () => { setSelectedOption(null); });
-       
-    }
     return (
         <div className={`card card_${scheme.badgeColor}`}>
             {/* Badge */}
             <div className={`badge badge_${scheme.badgeColor}`}>
-                {scheme.badge}
+                {copy.badge}
             </div>
 
             {/* Head */}
             <div className="cardHead">
                 <div className="cardIcon">{scheme.icon}</div>
                 <div className="cardDeva">{scheme.deva}</div>
-                <h3 className="cardTitle">{scheme.title}</h3>
-                <p className="cardTagline">{scheme.tagline}</p>
+                <h3 className="cardTitle">{copy.title}</h3>
+                <p className="cardTagline">{copy.tagline}</p>
             </div>
 
             {/* Divider */}
             <div className="cardRule" />
 
             {/* Description */}
-            <p className="cardDesc">{scheme.desc}</p>
+            <p className="cardDesc">{copy.desc}</p>
 
-            {/* Options */}
-            <div className="optionsLabel">The amount is:</div>
-            <div className="options">
-                {scheme.options.map((opt) => (
-                    <SchemeOption
-                        key={opt.label}
-                        option={opt}
-                        selected={selectedOption?.label === opt.label}
-                        onSelect={setSelectedOption}
-                    />
-                ))}
-            </div>
-
-            {/* CTA */}
+            {/* CTA — always active; the ashram discusses the amount when contacted */}
             <button
-                className={`btn ${scheme.badgeColor === "earth" ? "btn-earth" : "btn-primary"}`}
-                style={{ width: "100%", justifyContent: "center", borderRadius: 5, marginTop: 8 }}
-                disabled={!selectedOption}
-                onClick={() => { schemeHandle(); }}
+                className={`btn giCta ${scheme.badgeColor === "earth" ? "btn-earth" : "btn-primary"}`}
+                onClick={() => openModal(scheme)}
             >
-                {scheme.icon} Participate in {scheme.title.split(" ")[0]} Scheme
+                {scheme.icon} {t("getInvolvedPage.participateIn").replace("{name}", copy.title.split(" ")[0])}
             </button>
-            
         </div>
     );
 }
 
 /* ── GetInvolved Section ─────────────────── */
 export default function GetInvolved() {
-    const { ref, isVisible } = useReveal();
-    const [activeOption, setActiveOption] = useState(null);
+    const [ref, inView] = useInView();
     const [activeScheme, setActiveScheme] = useState(null);
-    const [resetSelection, setResetSelection] = useState(null);
+    const { t } = useTranslation();
 
     return (
         <section
             id="get-involved"
-            className="section"
-            style={{ background: "var(--earth-pale)", borderTop: "1px solid rgba(90,120,69,.12)" }}
+            className="section giSection"
         >
             <div className="s-inner">
                 {/* Header */}
                 <div
                     ref={ref}
-                    className={`${isVisible ? "reveal visible" : "reveal"}`}
-                    style={{ maxWidth: 680, marginBottom: 56 }}
+                    className={`involvedHeader reveal ${inView ? "visible" : ""}`}
                 >
-                    <div className="s-eyebrow">Support the Ashram</div>
+                    <div className="s-eyebrow">{t("getInvolvedPage.eyebrow")}</div>
                     <h2 className="s-title">
-                        Get <em>Involved</em>
+                        {t("getInvolvedPage.title")}<em>{t("getInvolvedPage.titleEm")}</em>
                     </h2>
                     <div className="rule" />
-                    <p style={{ fontSize: "15.5px", color: "var(--ink-mid)", lineHeight: 1.95 }}>
-                        Every act of giving sustains the sacred flame of free Vedic education. Whether you celebrate a birthday, become a student's guardian, or simply light a lamp — your seva becomes part of this unbroken tradition.
+                    <p className="involvedIntro measure-body">
+                        {t("getInvolvedPage.intro")}
                     </p>
                     <div className="statsRow">
                         {[
-                            { num: "200+", label: "Students supported" },
-                            { num: "20+", label: "Years of seva" },
-                            { num: "₹0", label: "Charged for education" },
-                        ].map(({ num, label }) => (
-                            <div key={label} className="stat">
+                            { num: "200+", key: "students" },
+                            { num: "20+", key: "years" },
+                            { num: "₹0", key: "free" },
+                        ].map(({ num, key }) => (
+                            <div key={key} className="stat">
                                 <span className="statNum">{num}</span>
-                                <span className="statLabel">{label}</span>
+                                <span className="statLabel">{t(`getInvolvedPage.stats.${key}`)}</span>
                             </div>
                         ))}
                     </div>
@@ -218,55 +188,40 @@ export default function GetInvolved() {
 
                 {/* Cards grid */}
                 <div className="cardsGrid">
-                    {INVOLVEMENT_SCHEMES.map((scheme, i) => (
-                        <div
-                            key={scheme.id}
-                            className={`reveal ${i % 2 === 1 ? "reveal-delay-1" : ""}`}
-                            style={{
-                                opacity: isVisible ? 1 : 0,
-                                transform: isVisible ? "none" : "translateY(22px)",
-                                transition: `opacity .8s ${i * 0.1}s ease, transform .8s ${i * 0.1}s ease`,
-                            }}
-                        >
-                            <SchemeCard scheme={scheme} openModal={(scheme, option, resetFn) => {
-                                setActiveScheme(scheme);
-                                setActiveOption(option);
-                                setResetSelection(() => resetFn);
-                            }} />
-                        </div>
-                    ))}
+                    {INVOLVEMENT_SCHEMES.map((scheme, i) => {
+                        const row = Math.floor(i / 2);
+                        const delayClass = row === 0 ? "" : `reveal-delay-${Math.min(row, 3)}`;
+                        return (
+                            <div
+                                key={scheme.id}
+                                className={["reveal", delayClass, inView ? "visible" : ""].filter(Boolean).join(" ")}
+                            >
+                                <SchemeCard scheme={scheme} openModal={setActiveScheme} />
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {activeScheme && (
                     <BookingModal
                         scheme={activeScheme}
-                        selectedOption={activeOption}
-                        onClose={() => {
-                            setActiveScheme(null);
-                            setActiveOption(null);
-
-                            if (resetSelection) {
-                                resetSelection();
-                            }
-                        }}
+                        onClose={() => setActiveScheme(null)}
                     />
                 )}
 
                 {/* Bottom note */}
                 <div className="bottomNote">
-                    <span style={{ fontFamily: "'Tiro Devanagari Sanskrit',serif", fontSize: 18, color: "var(--saff)", opacity: 0.65 }}>
+                    <span className="bottomNoteDeva">
                         सर्वे भवन्तु सुखिनः
                     </span>
                     <p>
-                        All contributions go directly towards student education, temple upkeep, and ashram operations.
-                        No administrative overhead. 100% of your dana reaches the purpose it is given for.
+                        {t("getInvolvedPage.bottomNote")}
                     </p>
                     <a
-                        href="mailto:kausikhe@bedhgurukul.org"
-                        className="btn btn-outline"
-                        style={{ marginTop: 16, fontSize: 13 }}
+                        href={`mailto:${email}`}
+                        className="btn btn-outline giOtherWays"
                     >
-                        ✉️ Other Ways to Support
+                        {t("getInvolvedPage.otherWaysToSupport")}
                     </a>
                 </div>
             </div>

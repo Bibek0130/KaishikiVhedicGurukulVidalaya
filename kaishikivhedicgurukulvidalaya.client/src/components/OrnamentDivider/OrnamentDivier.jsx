@@ -25,7 +25,7 @@ export default function OrnamentDivier({
 
 export function OrnDivider() {
     return (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", padding: "20px 0" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "var(--space-3)", padding: "var(--space-5) 0" }}>
             <div style={{ height: "1px", width: "80px", background: `linear-gradient(90deg, transparent, ${T.creamDeep})` }} />
             <span style={{ fontFamily: "'Tiro Devanagari Sanskrit', serif", fontSize: "13px", color: T.saff, opacity: .5, letterSpacing: ".22em" }}>
                 ✦ ॐ ✦
@@ -38,9 +38,9 @@ export function OrnDivider() {
 export function Eyebrow({ children }) {
     return (
         <div style={{
-            display: "flex", alignItems: "center", gap: "10px",
-            fontSize: "11px", fontWeight: 500, letterSpacing: ".2em",
-            textTransform: "uppercase", color: T.saff, marginBottom: "14px",
+            display: "flex", alignItems: "center", gap: "var(--space-3)",
+            fontSize: "var(--fs-eyebrow)", fontWeight: 500, letterSpacing: ".2em",
+            textTransform: "uppercase", color: T.saff, marginBottom: "var(--space-4)",
         }}>
             <span style={{ display: "block", width: "20px", height: "1px", background: T.saff, opacity: .6, flexShrink: 0 }} />
             {children}
@@ -53,8 +53,8 @@ export  function STitle({ children }) {
     return (
         <h2 style={{
             fontFamily: "'EB Garamond', serif",
-            fontSize: "clamp(30px,4vw,52px)",
-            fontWeight: 400, lineHeight: 1.1, color: T.ink, marginBottom: "14px",
+            fontSize: "var(--fs-h2)",
+            fontWeight: 400, lineHeight: 1.15, color: T.ink, marginBottom: "var(--space-4)",
         }}>
             {children}
         </h2>
@@ -63,5 +63,5 @@ export  function STitle({ children }) {
 
 /* Rule bar  (matches .rule) */
 export  function Rule() {
-    return <div style={{ width: "34px", height: "1.5px", background: T.saff, opacity: .5, borderRadius: "1px", marginBottom: "22px" }} />;
+    return <div style={{ width: "34px", height: "1.5px", background: T.saff, opacity: .5, borderRadius: "1px", marginBottom: "var(--space-5)" }} />;
 }

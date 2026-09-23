@@ -1,20 +1,34 @@
-* ═══════════════════════════════════════════
-sections.css
-Component-level layout classes.
-All grids use CSS classes (not inline styles)
-so media queries can override them cleanly.
+/* ═══════════════════════════════════════════
+   home.css
+   Component-level layout classes for home.jsx.
+   All grids use CSS classes (not inline styles)
+   so media queries can override them cleanly.
 ═══════════════════════════════════════════ */
+
+/* ────────────────────────────────────────
+   TEXT-MEASURE UTILITIES
+   (kept local so this file is self-contained;
+   harmless if index.css also defines them)
+──────────────────────────────────────── */
+.measure-body {
+    max-width: 62ch;
+}
+
+.measure-quote {
+    max-width: 34ch;
+}
+
 /* ────────────────────────────────────────
    SHARED HELPERS
 ──────────────────────────────────────── */
 .body-p {
-    font-size: 15.5px;
+    font-size: var(--fs-body, 15.5px);
     color: var(--ink-mid);
     line-height: 1.9;
 }
 
 .mt14 {
-    margin-top: 14px;
+    margin-top: var(--space-4, 16px);
 }
 
 /* ────────────────────────────────────────
@@ -23,7 +37,7 @@ so media queries can override them cleanly.
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: var(--space-8, 64px);
     align-items: center;
     width: 100%;
 }
@@ -46,23 +60,30 @@ so media queries can override them cleanly.
     aspect-ratio: 5 / 4;
     border-radius: 4px;
     border: 1px solid var(--border);
-   /* overflow: hidden;*/
-    background: linear-gradient(145deg, var(--saff-lt), var(--earth-lt), var(--cream-dark));
+    overflow: hidden;
+    background: var(--cream-dark);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.about-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .about-values {
-    margin-top: 32px;
+    margin-top: var(--space-6, 32px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-5, 24px);
 }
 
 .val-row {
     display: flex;
-    gap: 14px;
+    gap: var(--space-4, 16px);
     align-items: flex-start;
 }
 
@@ -83,20 +104,23 @@ so media queries can override them cleanly.
 
 .val-title {
     font-family: 'EB Garamond', serif;
-    font-size: 19px;
+    font-size: var(--fs-h4, 19px);
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 2px;
+    margin-bottom: var(--space-1, 4px);
 }
 
 .val-desc {
-    font-size: 14px;
+    font-size: var(--fs-body-sm, 13.5px);
     color: var(--ink-soft);
     line-height: 1.75;
 }
 
 /* ────────────────────────────────────────
    ACTIVITIES
+   A running index of practices — horizontal
+   rows with a large Devanagari mark on the
+   left, no cards, no shadows.
 ──────────────────────────────────────── */
 .act-section {
     background: var(--saff-pale);
@@ -104,109 +128,112 @@ so media queries can override them cleanly.
     border-bottom: 1px solid var(--border-soft);
 }
 
-.act-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+.act-list {
     width: 100%;
 }
 
-.act-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 28px 24px;
-    position: relative;
-   /* overflow: hidden;*/
-    transition: transform .25s, box-shadow .25s;
+.act-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6, 32px);
+    padding: var(--space-5, 24px) 0;
+    border-bottom: 1px solid var(--border);
 }
 
-    .act-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(42,28,12,.08);
+    .act-row:first-child {
+        border-top: 1px solid var(--border);
     }
 
-.act-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    opacity: 0.55;
+.act-deva-lg {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 92px;
+    opacity: .78;
 }
 
-.act-deva {
-    font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 27px;
-    color: var(--saff);
-    opacity: .65;
-    margin-bottom: 10px;
-    display: block;
+.act-copy {
+    flex: 1;
+    min-width: 0;
 }
 
 .act-title {
     font-family: 'EB Garamond', serif;
-    font-size: 21px;
+    font-size: var(--fs-h4, 19px);
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2, 8px);
 }
 
 .act-desc {
-    font-size: 14px;
+    font-size: var(--fs-body-sm, 13.5px);
     color: var(--ink-soft);
     line-height: 1.8;
 }
 
 /* ────────────────────────────────────────
    BELIEVES
+   Single-column, manuscript-style list with
+   one continuous rule down the left edge.
 ──────────────────────────────────────── */
 .believes-head {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-bottom: 64px;
+    gap: var(--space-8, 64px);
+    margin-bottom: var(--space-8, 64px);
     align-items: end;
     width: 100%;
 }
 
 .believes-intro {
-    font-size: 15.5px;
+    font-size: var(--fs-body, 15.5px);
     color: rgba(255,255,255,.5);
     line-height: 1.95;
     max-width: 460px;
 }
 
-.beliefs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+.believes-list {
+    max-width: 720px;
+    border-left: 1px solid rgba(255,255,255,.16);
     width: 100%;
 }
 
-.belief-item {
-    border-left: 2px solid var(--saff-warm);
-    padding-left: 26px;
+.belief-row {
+    display: flex;
+    gap: var(--space-5, 24px);
+    padding: var(--space-6, 32px) 0 var(--space-6, 32px) var(--space-6, 32px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
+
+    .belief-row:last-child {
+        border-bottom: none;
+    }
 
 .belief-num {
     font-family: 'EB Garamond', serif;
-    font-size: 13px;
-    color: rgba(255,255,255,.25);
+    font-size: var(--fs-body-sm, 13.5px);
+    color: rgba(255,255,255,.3);
     letter-spacing: .12em;
-    margin-bottom: 8px;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.belief-copy {
+    flex: 1;
+    min-width: 0;
 }
 
 .belief-title {
     font-family: 'EB Garamond', serif;
-    font-size: 22px;
+    font-size: var(--fs-h4, 19px);
     font-weight: 500;
     color: var(--cream);
-    margin-bottom: 10px;
+    margin-bottom: var(--space-2, 8px);
 }
 
 .belief-text {
-    font-size: 14.5px;
+    font-size: var(--fs-body-sm, 13.5px);
     color: rgba(255,255,255,.5);
     line-height: 1.85;
 }
@@ -222,18 +249,25 @@ so media queries can override them cleanly.
 
 .res-sidebar {
     background: var(--earth);
-    padding: 96px 44px 96px 7%;
+    padding: var(--space-9, 96px) var(--space-7, 48px) var(--space-9, 96px) 7%;
+}
+
+.res-sidebar-p {
+    font-size: var(--fs-body-sm, 13.5px);
+    color: rgba(255,255,255,.6);
+    line-height: 1.85;
+    margin-top: var(--space-4, 16px);
 }
 
 .res-content {
-    padding: 96px 7% 96px 56px;
+    padding: var(--space-9, 96px) 7% var(--space-9, 96px) var(--space-8, 64px);
 }
 
 .res-row {
     display: flex;
     align-items: center;
-    gap: 22px;
-    padding: 20px 14px;
+    gap: var(--space-5, 24px);
+    padding: var(--space-5, 24px) var(--space-4, 16px);
     border-bottom: 1px solid var(--border-soft);
     transition: background .2s;
     border-radius: 4px;
@@ -258,7 +292,7 @@ so media queries can override them cleanly.
 
 .res-name {
     font-family: 'EB Garamond', serif;
-    font-size: 19px;
+    font-size: var(--fs-h4, 19px);
     font-weight: 500;
     color: var(--ink);
     flex: 1;
@@ -286,38 +320,45 @@ so media queries can override them cleanly.
 .ashram-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    gap: var(--space-8, 64px);
     align-items: start;
     width: 100%;
 }
 
 .ashram-photo {
     aspect-ratio: 3 / 2;
-    background: linear-gradient(145deg, var(--earth-lt), var(--cream-dark));
+    background: var(--cream-dark);
     border-radius: 6px;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    /*overflow: hidden;*/
+    overflow: hidden;
+}
+
+.ashram-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .ashram-quote {
-    margin-top: 24px;
+    margin-top: var(--space-5, 24px);
     background: var(--cream);
     border: 1px solid var(--border);
     border-left: 3px solid var(--saff);
     border-radius: 0 6px 6px 0;
-    padding: 22px 20px;
+    padding: var(--space-5, 24px) var(--space-5, 24px);
 }
 
     .ashram-quote blockquote {
         font-family: 'EB Garamond', serif;
-        font-size: 19px;
+        font-size: var(--fs-h4, 19px);
         font-style: italic;
         color: var(--bark);
         line-height: 1.65;
-        margin-bottom: 8px;
+        margin-bottom: var(--space-2, 8px);
     }
 
     .ashram-quote cite {
@@ -334,11 +375,11 @@ so media queries can override them cleanly.
 
     .ashram-list li {
         display: flex;
-        gap: 12px;
+        gap: var(--space-3, 12px);
         align-items: flex-start;
-        padding: 13px 0;
+        padding: var(--space-3, 12px) 0;
         border-bottom: 1px solid var(--border-soft);
-        font-size: 15px;
+        font-size: var(--fs-body, 15.5px);
         color: var(--ink-mid);
         line-height: 1.65;
     }
@@ -358,10 +399,10 @@ so media queries can override them cleanly.
 }
 
 .ashram-tags {
-    margin-top: 22px;
+    margin-top: var(--space-5, 24px);
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--space-2, 8px);
 }
 
 .ashram-tag {
@@ -379,7 +420,7 @@ so media queries can override them cleanly.
 .founder-grid {
     display: grid;
     grid-template-columns: 300px 1fr;
-    gap: 72px;
+    gap: var(--space-8, 64px);
     align-items: start;
     width: 100%;
 }
@@ -391,19 +432,19 @@ so media queries can override them cleanly.
 .founder-img {
     width: 200px;
     height: 260px;
-    margin: 0 auto 20px;
-    background: linear-gradient(155deg, var(--saff-lt), var(--cream-dark));
+    margin: 0 auto var(--space-5, 20px);
+    background: var(--cream-dark);
     border: 2px solid var(--saff-lt);
     border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 52px;
-    color: var(--saff);
-    opacity: .8;
     position: relative;
-    /*overflow: hidden;*/
+    overflow: hidden;
+}
+
+.founder-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .founder-img-bar {
@@ -417,14 +458,14 @@ so media queries can override them cleanly.
 
 .founder-name {
     font-family: 'EB Garamond', serif;
-    font-size: 22px;
+    font-size: var(--fs-h4, 20px);
     font-weight: 600;
     color: var(--ink);
-    margin-bottom: 4px;
+    margin-bottom: var(--space-1, 4px);
 }
 
 .founder-role {
-    font-size: 12px;
+    font-size: var(--fs-eyebrow, 11px);
     letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--saff);
@@ -434,7 +475,7 @@ so media queries can override them cleanly.
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 12px;
+    margin-top: var(--space-3, 12px);
     background: var(--earth-pale);
     border: 1px solid var(--earth-lt);
     border-radius: 16px;
@@ -444,47 +485,47 @@ so media queries can override them cleanly.
 }
 
 .founder-lineage {
-    margin-top: 16px;
+    margin-top: var(--space-4, 16px);
     background: white;
     border: 1px solid var(--border);
     border-radius: 5px;
-    padding: 16px;
-    font-size: 13.5px;
+    padding: var(--space-4, 16px);
+    font-size: var(--fs-body-sm, 13.5px);
     color: var(--ink-mid);
     line-height: 1.85;
     text-align: left;
 }
 
 .founder-lineage-label {
-    font-size: 11px;
+    font-size: var(--fs-eyebrow, 11px);
     font-weight: 500;
     letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2, 8px);
 }
 
 .founder-pull {
     font-family: 'EB Garamond', serif;
-    font-size: 22px;
+    font-size: var(--fs-h3, 22px);
     font-style: italic;
     color: var(--bark);
     line-height: 1.65;
     border-left: 3px solid var(--saff-lt);
-    padding-left: 22px;
-    margin-bottom: 24px;
+    padding-left: var(--space-5, 22px);
+    margin-bottom: var(--space-6, 24px);
 }
 
 .founder-bio {
-    font-size: 15.5px;
+    font-size: var(--fs-body, 15.5px);
     color: var(--ink-mid);
     line-height: 1.95;
-    margin-bottom: 14px;
+    margin-bottom: var(--space-4, 14px);
 }
 
 .founder-verse {
-    margin-top: 24px;
-    padding: 20px 22px;
+    margin-top: var(--space-6, 24px);
+    padding: var(--space-5, 20px) var(--space-5, 22px);
     background: white;
     border: 1px solid var(--border);
     border-left: 3px solid var(--earth);
@@ -496,11 +537,11 @@ so media queries can override them cleanly.
     font-size: 16px;
     color: var(--earth);
     line-height: 1.8;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2, 8px);
 }
 
 .founder-verse-en {
-    font-size: 13.5px;
+    font-size: var(--fs-body-sm, 13.5px);
     color: var(--ink-soft);
     font-style: italic;
 }
@@ -516,26 +557,33 @@ so media queries can override them cleanly.
 
 .contact-info-side {
     background: var(--ink);
-    padding: 96px 7%;
+    padding: var(--space-9, 96px) 7%;
     color: white;
 }
 
 .contact-form-side {
     background: var(--saff-pale);
-    padding: 96px 7%;
+    padding: var(--space-9, 96px) 7%;
 }
 
 .contact-intro {
-    font-size: 15px;
+    font-size: var(--fs-body, 15.5px);
     color: rgba(255,255,255,.52);
     line-height: 1.9;
-    margin-bottom: 36px;
+    margin-bottom: var(--space-6, 36px);
+}
+
+.contact-form-intro {
+    font-size: var(--fs-body-sm, 14.5px);
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: var(--space-6, 28px);
 }
 
 .c-detail {
     display: flex;
-    gap: 14px;
-    margin-bottom: 24px;
+    gap: var(--space-4, 14px);
+    margin-bottom: var(--space-5, 24px);
     align-items: flex-start;
 }
 
@@ -553,7 +601,7 @@ so media queries can override them cleanly.
 }
 
 .c-label {
-    font-size: 11px;
+    font-size: var(--fs-eyebrow, 11px);
     font-weight: 500;
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -562,18 +610,18 @@ so media queries can override them cleanly.
 }
 
 .c-val {
-    font-size: 15px;
+    font-size: var(--fs-body, 15px);
     color: rgba(255,255,255,.82);
 }
 
 .c-sub {
-    font-size: 13px;
+    font-size: var(--fs-body-sm, 13px);
     color: rgba(255,255,255,.35);
     margin-top: 2px;
 }
 
 .map-placeholder {
-    margin-top: 28px;
+    margin-top: var(--space-6, 28px);
     background: rgba(255,255,255,.05);
     border: 1px solid rgba(255,255,255,.1);
     border-radius: 6px;
@@ -581,7 +629,7 @@ so media queries can override them cleanly.
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2, 8px);
     font-size: 13px;
     color: rgba(255,255,255,.3);
     text-align: center;
@@ -591,11 +639,11 @@ so media queries can override them cleanly.
 
 .btn-gold {
     display: inline-block;
-    padding: 14px 40px;
-    border: 1px solid #c9a84c;
-    color: #c9a84c;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
+    padding: var(--space-4, 14px) var(--space-7, 40px);
+    border: 1px solid var(--saff-warm);
+    color: var(--saff-warm);
+    font-family: 'Hind', sans-serif;
+    font-size: var(--fs-body-sm, 13.5px);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     cursor: pointer;
@@ -604,33 +652,33 @@ so media queries can override them cleanly.
 }
 
     .btn-gold:hover {
-        background:#C47B2B;
-        color: #0c0a08;
+        background: var(--saff-warm);
+        color: var(--ink);
     }
 
 .contact-form-title {
     font-family: 'EB Garamond', serif;
-    font-size: clamp(22px, 3vw, 30px);
+    font-size: var(--fs-h3, 26px);
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2, 8px);
     font-weight: 400;
 }
 /* Two-column form row */
 .f-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 18px;
+    gap: var(--space-4, 14px);
+    margin-bottom: var(--space-4, 18px);
 }
 
 .contact-success {
     text-align: center;
-    padding: 36px 24px;
+    padding: var(--space-6, 36px) var(--space-5, 24px);
     background: var(--earth-pale);
     border: 1px solid var(--earth-lt);
     border-radius: 6px;
     font-family: 'EB Garamond', serif;
-    font-size: 19px;
+    font-size: var(--fs-h4, 19px);
     color: var(--earth);
     line-height: 1.6;
 }
@@ -642,13 +690,13 @@ so media queries can override them cleanly.
     width: 100%;
     background: var(--ink);
     color: rgba(255,255,255,.32);
-    padding: 28px 7%;
+    padding: var(--space-5, 28px) 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 12px;
-    font-size: 13px;
+    gap: var(--space-3, 12px);
+    font-size: var(--fs-body-sm, 13px);
     letter-spacing: .03em;
 }
 
@@ -661,7 +709,7 @@ so media queries can override them cleanly.
 
 .footer-links {
     display: flex;
-    gap: 14px;
+    gap: var(--space-4, 14px);
     flex-wrap: wrap;
 }
 
@@ -683,26 +731,19 @@ so media queries can override them cleanly.
     /* About: side-by-side → stacked */
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
-    /* Activities: 3-col → 2-col */
-    .act-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-7, 48px);
     }
 
     /* Believes header: 2-col → 1-col */
     .believes-head {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 40px;
+        gap: var(--space-5, 20px);
+        margin-bottom: var(--space-7, 40px);
     }
 
     .believes-intro {
         max-width: 100%;
     }
-
-    /* Beliefs: stays 2-col (fine at 1024) */
 
     /* Resources: sidebar + content → stacked */
     .resources-layout {
@@ -710,23 +751,23 @@ so media queries can override them cleanly.
     }
 
     .res-sidebar {
-        padding: 60px 7%;
+        padding: var(--space-8, 60px) 7%;
     }
 
     .res-content {
-        padding: 60px 7% 60px 7%;
+        padding: var(--space-8, 60px) 7% var(--space-8, 60px) 7%;
     }
 
     /* Ashram: 2-col → 1-col */
     .ashram-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: var(--space-7, 40px);
     }
 
     /* Founder: portrait + bio → stacked */
     .founder-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: var(--space-7, 40px);
     }
 
     .founder-portrait {
@@ -742,32 +783,30 @@ so media queries can override them cleanly.
 
     .contact-info-side,
     .contact-form-side {
-        padding: 72px 7%;
+        padding: var(--space-8, 72px) 7%;
     }
 }
 
 /* ── 768 px — tablet portrait ── */
 @media (max-width: 768px) {
-    /* Activities: 2-col → 1-col */
-    .act-grid {
-        grid-template-columns: 1fr;
+    /* Activities rows: tighten gap */
+    .act-row {
+        gap: var(--space-4, 20px);
     }
 
-    /* Believes beliefs: 2-col → 1-col */
-    .beliefs-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+    /* Believes list: reduce left indent */
+    .belief-row {
+        padding: var(--space-5, 24px) 0 var(--space-5, 24px) var(--space-4, 18px);
     }
 
     /* Founder: slim portrait strip */
     .founder-img {
         width: 160px;
         height: 210px;
-        font-size: 42px;
     }
 
     .founder-pull {
-        font-size: 19px;
+        font-size: var(--fs-h4, 19px);
     }
 
     /* Footer: flex → column centred */
@@ -784,7 +823,7 @@ so media queries can override them cleanly.
     /* Contact info + form: reduce padding */
     .contact-info-side,
     .contact-form-side {
-        padding: 56px 5%;
+        padding: var(--space-7, 56px) 5%;
     }
 }
 
@@ -793,6 +832,17 @@ so media queries can override them cleanly.
     /* About: remove offset frame (it clips on mobile) */
     .about-img-frame {
         display: none;
+    }
+
+    /* Activities rows: stack glyph above copy */
+    .act-row {
+        flex-direction: column;
+        gap: var(--space-3, 10px);
+    }
+
+    .act-deva-lg {
+        width: auto;
+        font-size: 1.8rem;
     }
 
     /* Resources rows: hide link on tiny screens to save space */
@@ -817,12 +867,7 @@ so media queries can override them cleanly.
 
     /* Believes items smaller */
     .belief-title {
-        font-size: 19px;
-    }
-
-    /* Activities card padding */
-    .act-card {
-        padding: 22px 18px;
+        font-size: 17px;
     }
 }
 

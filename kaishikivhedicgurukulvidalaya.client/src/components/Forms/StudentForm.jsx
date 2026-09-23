@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import "./StudentForm.css";
-import toast, {Toaster} from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
+import { sendWhatsAppMessage } from '../../api/whatsapp';
+import { useTranslation } from '../../hooks/useTranslation';
 
 
 const StudentForm = () => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({
         studentName: "",
         applyClass: "",
@@ -23,11 +26,21 @@ const StudentForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
-        alert("Application submitted successfully!");
-        navigate('/admission');
+        try {
+            await sendWhatsAppMessage(
+                `Application From\nStudent Name: ${formData.studentName}\n` +
+                `Apply Class: ${formData.applyClass}\nDOB: ${formData.dob}\n` +
+                `Address: ${formData.address}\nGuardian Name: ${formData.guardianName}\n` +
+                `Phone: ${formData.phone}\nEmail: ${formData.email}`
+            );
+            alert(t('forms.studentForm.successAlert'));
+            navigate('/admission');
+        } catch (error) {
+            alert(error.message);
+        }
     };
     const isFormInvalid = () => {
         return (
@@ -45,12 +58,13 @@ const StudentForm = () => {
     return (
         <div className="form-container">
             <form className="admission-form" onSubmit={handleSubmit}>
-                <h2>Admission Form</h2>
+                <h2>{t('forms.studentForm.title')}</h2>
 
                 <input
                     type="text"
                     name="studentName"
-                    placeholder="Student's Name"
+                    placeholder={t('forms.studentForm.studentName')}
+                    aria-label={t('forms.studentForm.studentName')}
                     value={formData.studentName}
                     onChange={handleChange}
                     required
@@ -59,14 +73,16 @@ const StudentForm = () => {
                 <input
                     type="text"
                     name="applyClass"
-                    placeholder="Class You Want to Apply For"
+                    placeholder={t('forms.studentForm.applyClass')}
+                    aria-label={t('forms.studentForm.applyClass')}
                     value={formData.applyClass}
                     onChange={handleChange}
                     required
                 />
 
-                <label>Date of Birth</label>
+                <label htmlFor="dob">{t('forms.studentForm.dob')}</label>
                 <input
+                    id="dob"
                     type="date"
                     name="dob"
                     value={formData.dob}
@@ -77,7 +93,8 @@ const StudentForm = () => {
                 <input
                     type="text"
                     name="guardianName"
-                    placeholder="Parent/Guardian Full Name"
+                    placeholder={t('forms.studentForm.guardianName')}
+                    aria-label={t('forms.studentForm.guardianName')}
                     value={formData.guardianName}
                     onChange={handleChange}
                     required
@@ -85,7 +102,8 @@ const StudentForm = () => {
 
                 <textarea
                     name="address"
-                    placeholder="Current Address"
+                    placeholder={t('forms.studentForm.address')}
+                    aria-label={t('forms.studentForm.address')}
                     value={formData.address}
                     onChange={handleChange}
                     rows="3"
@@ -95,7 +113,8 @@ const StudentForm = () => {
                 <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder={t('forms.studentForm.phone')}
+                    aria-label={t('forms.studentForm.phone')}
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -104,7 +123,8 @@ const StudentForm = () => {
                 <input
                     type="email"
                     name="email"
-                    placeholder="Email Address"
+                    placeholder={t('forms.studentForm.email')}
+                    aria-label={t('forms.studentForm.email')}
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -114,7 +134,7 @@ const StudentForm = () => {
                     disabled={disabledState}
                     style={{ cursor: disabledState ? "not-allowed" : "pointer" }}
                 >
-                    Submit Application
+                    {t('forms.studentForm.submit')}
                 </button>
 
             </form>

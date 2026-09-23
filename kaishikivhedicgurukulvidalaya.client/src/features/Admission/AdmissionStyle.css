@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind:wght@300;400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+
+:root {
+    --cream: #F8F3E8;
+    --creamDark: #EDE4CC;
+    --creamDeep: #E2D5B8;
+    --saff: #C47B2B;
+    --saffLt: #F0DFC0;
+    --saffPale: #FBF6ED;
+    --saffWarm: #D4935A;
+    --earth: #5A7845;
+    --earthLt: #D4E6C8;
+    --earthPale: #EEF5E7;
+    --bark: #7A5435;
+    --barkLt: #C4A882;
+    --ink: #2A1C0C;
+    --inkMid: #5A4228;
+    --inkSoft: #8A7258;
+    --border: rgba(122, 84, 53, 0.13);
+    --borderSoft: rgba(122, 84, 53, 0.07);
+    --white: #FFFFFF;
+    --shadow: rgba(42, 28, 12, 0.10);
+    --shadowMd: rgba(42, 28, 12, 0.16);
+}
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Hind', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.72;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--creamDark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--saffLt);
+    border-radius: 3px;
+}
+
+/* Keyframes */
+@keyframes floatY {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hind', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: 28px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .25s;
+}
+
+.btn-primary {
+    background: var(--saff);
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: var(--bark);
+        transform: translateY(-1px);
+    }
+
+.btn-outline {
+    background: transparent;
+    color: var(--saff);
+    border: 1.5px solid var(--saff);
+}
+
+    .btn-outline:hover {
+        background: var(--saffPale);
+        transform: translateY(-1px);
+    }
+
+.btn-earth {
+    background: var(--earth);
+    color: #fff;
+}
+
+    .btn-earth:hover {
+        background: #3c5430;
+        transform: translateY(-1px);
+    }
+
+.btn-ghost-light {
+    background: transparent;
+    color: var(--saffLt);
+    border: 1.5px solid rgba(240, 223, 192, 0.38);
+    border-radius: 28px;
+    padding: 10px 22px;
+    font-family: 'Hind', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .25s;
+}
+
+    .btn-ghost-light:hover {
+        background: rgba(240, 223, 192, 0.1);
+        color: #fff;
+    }
+
+/* Keyboard focus — buttons on both light and dark sections of this page */
+.btn:focus-visible,
+.btn-outline:focus-visible,
+.btn-earth:focus-visible,
+.btn-ghost-light:focus-visible {
+    outline: 2px solid var(--saffWarm);
+    outline-offset: 2px;
+}
+
+/* Grids */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+}
+
+@media (max-width: 860px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+}
+
+/* Steps grid */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+}
+
+@media (max-width: 860px) {
+    .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Daily timeline — a horizontally scrollable day-strip.
+   All 17 real schedule entries fit in one card's worth of height
+   instead of a vertical list that ran several screens long; the
+   rest of the day is a swipe/scroll away. ── */
+.tl-strip-wrap {
+    position: relative;
+    margin: 0 calc(-1 * var(--space-5));
+    -webkit-mask-image: linear-gradient(to right, transparent, black var(--space-5), black calc(100% - var(--space-5)), transparent);
+            mask-image: linear-gradient(to right, transparent, black var(--space-5), black calc(100% - var(--space-5)), transparent);
+}
+
+.tl-strip {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: var(--space-2) var(--space-5) var(--space-5);
+    -webkit-overflow-scrolling: touch;
+}
+
+.tl-card {
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-top: 3px solid var(--saff);
+    border-radius: 6px;
+    padding: var(--space-4);
+    box-shadow: 0 2px 12px var(--shadow, rgba(42,28,12,.08));
+}
+
+.tl-card-time {
+    font-family: 'Hind', sans-serif;
+    font-size: var(--fs-eyebrow);
+    font-weight: 500;
+    letter-spacing: .05em;
+    margin-bottom: var(--space-2);
+}
+
+.tl-card-icon {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-1);
+}
+
+.tl-card-label {
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: var(--fs-h4);
+    color: var(--ink);
+    margin-bottom: var(--space-1);
+    line-height: 1.25;
+}
+
+.tl-card-desc {
+    font-family: 'Hind', sans-serif;
+    font-size: var(--fs-body-sm);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Scroll-cue arrow — the one ambient motion kept on this page; it signals
+   "more below", it isn't pure decoration. */
+.float {
+    animation: floatY 4s ease-in-out infinite;
+}
+
+/* Mobile CTA */
+@media (max-width: 560px) {
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,116 +1,3 @@
-/*:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-*/
-
 /* ═══════════════════════════════════════════
    GOOGLE FONTS
 ═══════════════════════════════════════════ */
@@ -138,6 +25,35 @@ code {
     --border: rgba(122,84,53,.13);
     --border-soft: rgba(122,84,53,.07);
     --white: #FFFFFF;
+
+    /* ── type scale ──
+       Display/heading family stays 'EB Garamond' (set on the individual
+       heading helpers below); this block only fixes the SIZES so every
+       component reads from the same scale instead of picking its own
+       pixel value. --fs-display is reserved for the single home hero;
+       --fs-h1 is for one page-level title at most; --fs-h2 is the
+       workhorse section-title size used repeatedly across pages. */
+    --fs-eyebrow: 11px;
+    --fs-body-sm: 13.5px;
+    --fs-body: 15.5px;
+    --fs-body-lg: 17px;
+    --fs-h4: clamp(1.1rem, 1.5vw, 1.3rem);
+    --fs-h3: clamp(1.35rem, 2.2vw, 1.7rem);
+    --fs-h2: clamp(1.7rem, 3.2vw, 2.4rem);
+    --fs-h1: clamp(2.4rem, 5.5vw, 4rem);
+    --fs-display: clamp(3rem, 7vw, 5.5rem);
+
+    /* ── 8px spacing scale — use these instead of ad-hoc magic-number
+       pixel values for margin/padding/gap ── */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
 }
 
 /* ═══════════════════════════════════════════
@@ -187,6 +103,14 @@ body {
 ::-webkit-scrollbar-thumb {
     background: var(--saff-lt);
     border-radius: 3px;
+}
+
+/* Visible keyboard-focus ring on any interactive element without its own
+   explicit focus style (links, ornament controls, buttons) — saffron
+   accent, never suppressed. */
+:focus-visible {
+    outline: 2px solid var(--saff);
+    outline-offset: 2px;
 }
 
 /* ═══════════════════════════════════════════
@@ -304,18 +228,76 @@ body {
 }
 
 /* ═══════════════════════════════════════════
+   DARK SECTION — the one deliberate --ink
+   section per page, reserved for the most
+   important emotional beat. Apply alongside
+   .section on the <section> tag; text colors
+   invert, accents stay saffron/cream.
+═══════════════════════════════════════════ */
+.section-dark {
+    background: var(--ink);
+    color: var(--cream-dark);
+}
+
+    .section-dark .s-eyebrow {
+        color: var(--saff-warm);
+    }
+
+        .section-dark .s-eyebrow::before {
+            background: var(--saff-warm);
+        }
+
+    .section-dark .s-title {
+        color: var(--cream);
+    }
+
+        .section-dark .s-title em {
+            color: var(--saff-warm);
+        }
+
+    .section-dark .rule {
+        background: var(--saff-warm);
+        opacity: .6;
+    }
+
+    .section-dark p {
+        color: var(--cream-dark);
+    }
+
+    .section-dark .btn-outline {
+        color: var(--cream);
+        border-color: var(--cream-dark);
+    }
+
+        .section-dark .btn-outline:hover {
+            background: rgba(248,243,232,.08);
+        }
+
+/* ═══════════════════════════════════════════
+   TEXT MEASURE — cap paragraph and pull-quote
+   line length for readability
+═══════════════════════════════════════════ */
+.measure-body {
+    max-width: 62ch;
+}
+
+.measure-quote {
+    max-width: 34ch;
+}
+
+/* ═══════════════════════════════════════════
    TYPOGRAPHY HELPERS
 ═══════════════════════════════════════════ */
 .s-eyebrow {
-    font-size: 11px;
+    font-size: var(--fs-eyebrow);
     font-weight: 500;
     letter-spacing: .2em;
     text-transform: uppercase;
     color: var(--saff);
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
 }
 
     .s-eyebrow::before {
@@ -329,11 +311,11 @@ body {
 
 .s-title {
     font-family: 'EB Garamond', serif;
-    font-size: clamp(26px, 4vw, 52px); /* fluid — shrinks smoothly */
+    font-size: var(--fs-h2); /* workhorse section-title size, fluid */
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--ink);
-    margin-bottom: 14px;
+    margin-bottom: var(--space-4);
 }
 
     .s-title em {
@@ -342,12 +324,12 @@ body {
     }
 
 .rule {
-    width: 34px;
+    width: var(--space-6);
     height: 1.5px;
     background: var(--saff);
     opacity: .5;
     border-radius: 1px;
-    margin-bottom: 22px;
+    margin-bottom: var(--space-5);
 }
 
 /* ═══════════════════════════════════════════
@@ -388,13 +370,13 @@ body {
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
     font-family: 'Hind', sans-serif;
-    font-size: 13px;
+    font-size: var(--fs-body-sm);
     font-weight: 500;
     letter-spacing: .08em;
     text-transform: uppercase;
-    padding: 11px 24px;
+    padding: var(--space-3) var(--space-5);
     border-radius: 28px;
     border: none;
     cursor: pointer;
@@ -412,6 +394,12 @@ body {
         background: var(--bark);
         transform: translateY(-1px);
     }
+
+.btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
 
 .btn-outline {
     background: transparent;
@@ -453,12 +441,12 @@ body {
 
 .f-input {
     width: 100%;
-    padding: 12px 15px;
+    padding: var(--space-3) var(--space-4);
     border: 1px solid var(--cream-deep);
-    border-radius: 4px;
+    border-radius: var(--space-1);
     background: var(--cream);
     font-family: 'Hind', sans-serif;
-    font-size: 15px;
+    font-size: var(--fs-body);
     color: var(--ink);
     outline: none;
     transition: border-color .2s;
@@ -467,7 +455,8 @@ body {
 }
 
     .f-input:focus {
-        border-color: rgba(196,123,43,.4);
+        border-color: var(--saff);
+        box-shadow: 0 0 0 3px rgba(196,123,43,.18);
     }
 
 textarea.f-input {
@@ -494,11 +483,6 @@ textarea.f-input {
     #about .s-inner {
         grid-template-columns: 1fr !important;
         gap: 48px !important;
-    }
-
-    /* Activities three-column → two-column */
-    #activities .s-inner > div:last-child {
-        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     /* Believes header two-column → single column */
@@ -551,17 +535,6 @@ textarea.f-input {
 @media (max-width: 768px) {
     .section {
         padding: 64px 5%;
-    }
-
-    /* Activities → single column */
-    #activities .s-inner > div:last-child {
-        grid-template-columns: 1fr !important;
-    }
-
-    /* Believes beliefs grid → single column */
-    #believes .s-inner > div:last-child {
-        grid-template-columns: 1fr !important;
-        gap: 28px !important;
     }
 
     /* Gallery grid → 2 columns */

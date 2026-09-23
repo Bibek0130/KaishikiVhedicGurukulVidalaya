@@ -1,7 +1,15 @@
 export const whatsappNumber = 9840425631;
 export const contactNumber = 9851234199
-export const email = "kaushikibaidikgurukul@gmial.com";
-export const address = "Subedi Gau, Bhramakhel, Sankhu";
+// NOTE: reconciled from three inconsistent variants in circulation across the
+// site (a misspelled "gmial.com" address here, and a separate
+// "kausikhe@bedhgurukul.org" below). The real domain cannot be verified from
+// available context, so this assumes the intended domain was gmail.com.
+export const email = "kaushikibaidikgurukul@gmail.com";
+// Corrected against the institution's own official profile document
+// (Sept 2026): the ashram operates at the Bhimeshwar Temple premises,
+// Kageshwori Manohara-1, Kathmandu — not "Sankhu/Bhramakhel" as the
+// placeholder site previously said.
+export const address = "Bhimeshwar Mandir, Subedi Gau, Kageshwori Manohara-1, Kathmandu";
 
 export const mapUrl ="https://maps.app.goo.gl/bpsf1V8ynxhpMTSE9"
 
@@ -71,38 +79,49 @@ export const ACTIVITIES = [
 ];
 
 // ═══════════════════════════════════════════
-// BELIEFS
+// BELIEFS — the Vedic Research Committee's own stated Main Objectives
+// for the Gurukul, from its official institutional profile document.
 // ═══════════════════════════════════════════
 export const BELIEFS = [
     {
         num: "01",
-        title: "Education as Enlightenment",
-        text: "True education transforms not just the mind but the soul. Every child carries infinite potential that Vedic knowledge is uniquely equipped to awaken.",
+        title: "Preserving Vedic & Ritual Tradition",
+        text: "To preserve, promote, and practice Vedic and ritual traditions.",
     },
     {
         num: "02",
-        title: "Sanskrit as Living Heritage",
-        text: "Sanskrit is not a dead language — it is the mother of all knowledge systems. Preserving and propagating it is a sacred duty to humanity.",
+        title: "Character & Ethical Values",
+        text: "To develop morality, discipline, service, responsibility, and ethical values in children.",
     },
     {
         num: "03",
-        title: "Ritual as Inner Discipline",
-        text: "Puja, havan, and daily sadhana are not superstition — they are a precise science of attention, intention, and the training of the heart toward the divine.",
+        title: "Sanskrit & Vedic Study",
+        text: "To teach Sanskrit language, the Vedas, rituals, and Eastern philosophy.",
     },
     {
         num: "04",
-        title: "Nature as the First Teacher",
-        text: "The hill, the river, the morning sky — nature is the oldest classroom. Living close to it teaches patience, humility, and the rhythms of life.",
+        title: "A Vedic Way of Life",
+        text: "To familiarize children with Vedic values, culture, and way of life.",
     },
     {
         num: "05",
-        title: "Free Knowledge for All",
-        text: "Vidya — knowledge — must never be commodified. Every child, regardless of background, deserves access to the highest wisdom of our tradition.",
+        title: "Carrying Knowledge Forward",
+        text: "To pass ancient Vedic knowledge, culture, and tradition on to the new generation.",
     },
     {
         num: "06",
-        title: "Simplicity as Strength",
-        text: "The fewer the distractions, the deeper the learning. Simple food, simple clothing, and simple living are not limitations — they are liberation.",
+        title: "Spiritual & Self-Discipline",
+        text: "To develop spiritual consciousness, self-discipline, cooperation, and a spirit of service in children.",
+    },
+    {
+        num: "07",
+        title: "Service-Oriented Citizens",
+        text: "To create disciplined, responsible, service-oriented manpower for society and the nation.",
+    },
+    {
+        num: "08",
+        title: "Rescuing Disappearing Knowledge",
+        text: "To preserve and promote Vedic knowledge, values, and cultural practices that are gradually disappearing.",
     },
 ];
 
@@ -115,25 +134,26 @@ export const RESOURCES = [
 ];
 
 // ═══════════════════════════════════════════
-// ASHRAM FEATURES
+// ASHRAM FEATURES — kept honest against the institution's own official
+// profile: the campus is genuinely simple today, and a library, ritual
+// hall, and permanent buildings are stated as future goals, not current
+// features. Overselling that as already-built was inaccurate.
 // ═══════════════════════════════════════════
 export const ASHRAM_FEATURES = [
-    "Residential gurukul with accommodation for students from all backgrounds",
-    "Traditional yajnashala for Vedic fire rituals and daily Agnihotra",
-    "Library of over 3,000 Sanskrit manuscripts and printed texts",
-    "Organic herb garden — students learn Ayurvedic plants and seasonal cultivation",
-    "Open-air meditation and yoga pavilion surrounded by forest and birdsong",
-    "Ancient Shiva temple on the hill — the spiritual heart of the campus",
-    "Community hall for festivals, satsangs, and public discourses",
-    "Small goshala — students learn cow care as part of traditional ashram life",
+    "Residential gurukul for grades 4–8, ages 8–15",
+    "A simple current campus — a tin-roof, cement-board building with one open-air classroom",
+    "A small goshala of 6 cows (3 mothers, 3 calves), cared for daily by students and a dedicated caretaker",
+    "Located within the historic Bhimeshwar Temple premises, Kageshwori Manohara",
+    "Run by the Vedic Research Committee, dedicated to studying and preserving Nepal's Vedic knowledge",
+    "Growing toward real needs — a library, a ritual hall, and permanent classrooms — one contribution at a time",
 ];
 
 export const ASHRAM_TAGS = [
-    { bg: "saff-pale", border: "saff-lt", color: "saff", label: "🌿 Hill Location" },
-    { bg: "earth-pale", border: "earth-lt", color: "earth", label: "🛕 Near Shiva Temple" },
-    { bg: "cream-dark", border: "cream-deep", color: "ink-soft", label: "🌊 Hillside Stream" },
+    { bg: "saff-pale", border: "saff-lt", color: "saff", label: "🛕 Bhimeshwar Temple Premises" },
+    { bg: "earth-pale", border: "earth-lt", color: "earth", label: "🐄 6 Cows, 3 Calves" },
+    { bg: "cream-dark", border: "cream-deep", color: "ink-soft", label: "📚 Grades 4–8" },
     { bg: "saff-pale", border: "saff-lt", color: "saff", label: "🔥 Daily Agnihotra" },
-    { bg: "earth-pale", border: "earth-lt", color: "earth", label: "📚 Manuscript Library" },
+    { bg: "earth-pale", border: "earth-lt", color: "earth", label: "🙏 Teaching Since 2018" },
 ];
 
 // ═══════════════════════════════════════════
@@ -422,12 +442,12 @@ export const CONTACT_DETAILS = [
     {
         icon: "📍",
         label: "Address",
-        value: "Near Bhramakhel, Sankhu\nBagmati Province, Nepal",
+        value: "Bhimeshwar Mandir, Subedi Gau\nKageshwori Manohara-1, Kathmandu",
     },
     {
         icon: "✉️",
         label: "Email",
-        value: "kausikhe@bedhgurukul.org",
+        value: email,
     },
     {
         icon: "☏",
@@ -468,50 +488,293 @@ export const T = {
     shadow: "rgba(42,28,12,.10)",
     shadowMd: "rgba(42,28,12,.16)",
 };
+// Verified against the institution's own official profile document (2026):
+// 15 students (grades 4-8, ages 8-15); 3 teachers + 1 cow caretaker + 2 cooks
+// = 6 staff; 6 cows (3 mothers, 3 calves) in the goshala.
 export const STATS = [
-    { value: 50, label: "Students Enrolled", suffix: "+", icon: "🎓", desc: "Young scholars in residence" },
-    { value: 12, label: "Residential Students", suffix: "+", icon: "🏡", desc: "Living & breathing Gurukul life" },
-    { value: 5, label: "Cows & Animals", suffix: "", icon: "🐄", desc: "Sacred Goshala & farm family" },
+    { value: 15, label: "Students Enrolled", suffix: "", icon: "🎓", desc: "Grades 4–8, ages 8–15" },
+    { value: 6, label: "Teachers & Staff", suffix: "", icon: "🏡", desc: "3 teachers, 1 cow caretaker, 2 cooks" },
+    { value: 6, label: "Cows & Animals", suffix: "", icon: "🐄", desc: "3 mothers and 3 calves" },
 ];
 
 export const DAILY_SCHEDULE = [
-    { time: "04:30", label: "Brahma Muhurta", icon: "🌙", desc: "Rise before dawn for sacred silence and self-reflection", color: T.bark },
-    { time: "05:00", label: "Yoga & Pranayama", icon: "🧘", desc: "Asanas, breathing exercises, and body-mind awakening", color: T.earth },
-    { time: "06:00", label: "Vedic Studies", icon: "📿", desc: "Mantras, Sanskrit recitation, and scriptural study", color: T.saff },
-    { time: "07:30", label: "Breakfast & Seva", icon: "🍲", desc: "Nutritious sattvic meal followed by collective service", color: T.bark },
-    { time: "08:30", label: "School Classes", icon: "📚", desc: "NEB curriculum — Maths, Science, English, Social Studies", color: T.inkMid },
-    { time: "13:00", label: "Lunch & Rest", icon: "🌿", desc: "Wholesome ashram meal and midday restoration", color: T.earth },
-    { time: "14:30", label: "Arts & Electives", icon: "🎨", desc: "Music, painting, craft, and vocational skills", color: T.saffWarm },
-    { time: "16:00", label: "Sports & Nature", icon: "⚽", desc: "Outdoor games, farming, and nature walks", color: T.earth },
-    { time: "17:30", label: "Evening Prayer", icon: "🪔", desc: "Sandhya Vandanam, aarti, and devotional singing", color: T.saff },
-    { time: "19:00", label: "Self Study", icon: "📖", desc: "Guided revision, homework, and personal reflection", color: T.barkLt },
-    { time: "21:00", label: "Rest", icon: "🌟", desc: "Early sleep for a rested body and a clear mind", color: T.bark },
+    { id: "WAKE_UP", start: "04:00", end: "05:00" },
+    { id: "MORNING_PRAYER", start: "05:00", end: "06:20" },
+    { id: "HERBAL_DRINK", start: "06:20", end: "06:30" },
+    { id: "VEDIC_STUDIES", start: "06:30", end: "08:20" },
+    { id: "CLEANING", start: "08:20", end: "09:00" },
+    { id: "BREAKFAST", start: "09:00", end: "10:00" },
+    { id: "ASSEMBLY", start: "10:00", end: "10:15" },
+    { id: "ACADEMICS", start: "10:15", end: "12:00" },
+    { id: "SNACKS_BREAK", start: "12:00", end: "12:15" },
+    { id: "CLASS_START", start: "12:15", end: "14:00" },
+    { id: "LUNCH_BREAK", start: "14:00", end: "14:30" },
+    { id: "STUDY_RESUME", start: "14:15", end: "16:00" },
+    { id: "SPORTS", start: "16:00", end: "17:00" },
+    { id: "EVENING_PRAYER", start: "17:00", end: "18:00" },
+    { id: "DINNER", start: "18:00", end: "19:00" },
+    { id: "STUDY_HOMEWORK", start: "19:00", end: "21:00" },
+    { id: "SLEEP", start: "21:00", end: "22:00" },
 ];
+export const DAILY_SCHEDULE_ACTIVITIES = {
+    WAKE_UP: {
+        icon: "🌅",
+        color: T.bark,
+    },
+    MORNING_PRAYER: {
+        icon: "🙏",
+        color: T.saff,
+    },
+    HERBAL_DRINK: {
+        icon: "🍵",
+        color: T.earth,
+    },
+    VEDIC_STUDIES: {
+        icon: "📿",
+        color: T.saffWarm,
+    },
+    CLEANING: {
+        icon: "🧹",
+        color: T.barkLt,
+    },
+    BREAKFAST: {
+        icon: "🍲",
+        color: T.earth,
+    },
+    ASSEMBLY: {
+        icon: "🎶",
+        color: T.saff,
+    },
+    ACADEMICS: {
+        icon: "📚",
+        color: T.inkMid,
+    },
+    SNACKS_BREAK: {
+        icon: "🎶",
+        color: T.saff,
+    },
+    CLASS_START: {
+        icon: "🎶",
+        color: T.saff,
+    },
+    LUNCH_BREAK: {
+        icon: "🎶",
+        color: T.saff,
+    },
+    STUDY_RESUME: {
+        icon: "🎶",
+        color: T.saff,
+    },
+    SPORTS: {
+        icon: "⚽",
+        color: T.earth,
+    },
+    EVENING_PRAYER: {
+        icon: "🪔",
+        color: T.saff,
+    },
+    DINNER: {
+        icon: "🍛",
+        color: T.bark,
+    },
+    STUDY_HOMEWORK: {
+        icon: "📖",
+        color: T.barkLt,
+    },
+    SLEEP: {
+        icon: "🌙",
+        color: T.bark,
+    },
+};
+export const DAILY_SCHEDULE_ACTIVITY_TEXT = {
+    WAKE_UP: {
+        en: {
+            label: "Wake Up & Personal Hygiene",
+            desc: "Wake up, freshen up, and prepare for the day with bathing and personal hygiene.",
+        },
+        np: {
+            label: "उठ्ने र व्यक्तिगत सरसफाइ",
+            desc: "उठ्ने, शौच, स्नान ।",
+        },
+    },
 
+    MORNING_PRAYER: {
+        en: {
+            label: "Morning Prayer & Devotion",
+            desc: "Sandhyavandan, deity worship, and revision of Vedic lessons.",
+        },
+        np: {
+            label: "प्रातः पूजा र ध्यान",
+            desc: "सन्ध्यावन्दन, देवपूजा र वेद कक्षासम्बन्धी पाठ।",
+        },
+    },
+
+    HERBAL_DRINK: {
+        en: {
+            label: "Herbal Drink",
+            desc: "Drink traditional herbal water (Kadha) to promote health and well-being.",
+        },
+        np: {
+            label: "काण्डापानी ग्रहण ",
+            desc: "स्वास्थ्यका लागि परम्परागत काढा सेवन।",
+        },
+    },
+
+    VEDIC_STUDIES: {
+        en: {
+            label: "Vedic Studies",
+            desc: "Begin Vedic chanting, Sanskrit recitation, and traditional learning.",
+        },
+        np: {
+            label: "वैदिक अध्ययन",
+            desc: "रुद्री एवं वैदिक कक्षा सुरु।",
+        },
+    },
+
+    CLEANING: {
+        en: {
+            label: "Cleaning & Preparation",
+            desc: "Participate in cleaning duties and prepare for the academic day.",
+        },
+        np: {
+            label: "सरसफाइ र तयारी",
+            desc: "विद्यालय सफाइ र दिनको तयारी।",
+        },
+    },
+
+    BREAKFAST: {
+        en: {
+            label: "Breakfast",
+            desc: "Enjoy a nutritious meal following traditional dining etiquette.",
+        },
+        np: {
+            label: "भोजन",
+            desc: "विधिपूर्वक भोजन ग्रहण।",
+        },
+    },
+
+    ASSEMBLY: {
+        en: {
+            label: "Assembly",
+            desc: "Saraswati Vandana, National Anthem, and light physical exercise.",
+        },
+        np: {
+            label: "सभा",
+            desc: "सरस्वती वन्दना, राष्ट्रिय गान र लघु व्यायाम।",
+        },
+    },
+
+    ACADEMICS: {
+        en: {
+            label: "Academic Classes",
+            desc: "Formal classroom learning covering both modern and traditional subjects.",
+        },
+        np: {
+            label: "कक्षा अध्ययन",
+            desc: "कक्षागत अध्ययन-अध्यापन सुरु।",
+        },
+    },
+    SNACKS_BREAK: {
+        en: {
+            label: "Snacks Break",
+            desc: "Short refreshment break before afternoon studies. ",
+        },
+        np: {
+            label: "फल खाजा समय",
+            desc: "फल एवं मोही लागि विश्राम।",
+        },
+    },
+    CLASS_START: {
+        en: {
+            label: "Classes resume ",
+            desc: "classroom learning covering both modern and traditional subjects",
+        },
+        np: {
+            label: "कक्षा सुरु ",
+            desc: "कक्षा पुनः सञ्चालन ।",
+        },
+    },
+    LUNCH_BREAK: {
+        en: {
+            label: "Lunch Break",
+            desc: "Lunch break and rest period",
+        },
+        np: {
+            label: "खाजा विश्राम",
+            desc: "दिउँसोको खाजा र आरामको समय।",
+        },
+    },
+    STUDY_RESUME: {
+        en: {
+            label: "Study resume",
+            desc: "Study resume after lunch break.",
+        },
+        np: {
+            label: "पढाइ सञ्चालन",
+            desc: "खाजा छुट्टीपछि कक्षाहरू पुनः सञ्चालन।",
+        },
+    },
+    SPORTS: {
+        en: {
+            label: "Sports & Games",
+            desc: "Outdoor sports, games, and physical fitness activities.",
+        },
+        np: {
+            label: "खेलकुद",
+            desc: "शारीरिक व्यायाम र बाहिरी खेलकुद गतिविधि।",
+        },
+    },
+
+    EVENING_PRAYER: {
+        en: {
+            label: "Evening Prayer",
+            desc: "Evening Sandhyavandan, Aarti, Purusha Sukta, and Stotra recitation.",
+        },
+        np: {
+            label: "साँझको पूजा",
+            desc: "साँझ सन्ध्यावन्दन, आरती, पुरुषाञ्जली र स्तोत्र पाठ।",
+        },
+    },
+
+    DINNER: {
+        en: {
+            label: "Dinner",
+            desc: "Wholesome vegetarian dinner with the Gurukul community.",
+        },
+        np: {
+            label: "रातको खाना",
+            desc: "गुरुकुल समुदायसँग शुद्ध शाकाहारी भोजन।",
+        },
+    },
+    STUDY_HOMEWORK: {
+        en: {
+            label: "Homework & Self Study",
+            desc: "Complete assignments, revise lessons, and prepare for the next day.",
+        },
+        np: {
+            label: "गृहकार्य र अध्ययन गर्ने",
+            desc: "लेखापढी पूरा गर्नु, पाठ दोहोर्‍याउनु, र भोलिको तयारी गर्नु।",
+        },
+    },
+    SLEEP: {
+        en: {
+            label: "Sleep",
+            desc: "Go to the dormitory/bedroom (Lights out)",
+        },
+        np: {
+            label: "शयनकक्ष प्रवेश",
+            desc: "आरामदायक निद्राका लागि विश्राम।",
+        },
+    },
+};
 export const ACADEMICS = [
     {
-        level: "Primary (I–V)",
-        tag: "Ages 6–11",
-        subjects: ["Sanskrit & Vedic Chanting", "Mathematics", "English Language", "Nepali", "Environmental Science", "Social Studies", "Yoga & Physical Education"],
+        level: "Primary (I–X)",
+        tag: "Ages 6–16",
+        subjects: ["Sanskrit & Vedic Chanting", "Mathematics", "English Language", "Nepali", "Social Studies", "Yoga & Physical Education"],
         bg: T.earthPale,
         accent: T.earth,
         borderC: `rgba(90,120,69,.22)`,
-    },
-    {
-        level: "Middle (VI–VIII)",
-        tag: "Ages 11–14",
-        subjects: ["Sanskrit Grammar & Literature", "Mathematics", "Social Studies", "English","Nepali","Science", "Computer Basics", "Ayurveda Basics"],
-        bg: T.saffPale,
-        accent: T.saff,
-        borderC: `rgba(196,123,43,.22)`,
-    },
-    {
-        level: "Secondary (IX–X)",
-        tag: "Ages 14–16",
-        subjects: ["Vedic","Science", "Mathematics", "Social ", "English ","Nepali", "Sanskrit Advanced", "Computer Science", "Optional Mathematics"],
-        bg: "#F5EDE0",
-        accent: T.bark,
-        borderC: `rgba(122,84,53,.22)`,
     },
 ];
 

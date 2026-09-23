@@ -1,29 +1,47 @@
-/* Stats row */
+/* Section ground */
+.giSection {
+    background: var(--earth-pale);
+    border-top: 1px solid rgba(90, 120, 69, .12);
+}
+
+/* Header block */
+.involvedHeader {
+    max-width: 680px;
+    margin-bottom: var(--space-8);
+}
+
+.involvedIntro {
+    font-size: var(--fs-body);
+    color: var(--ink-mid);
+    line-height: 1.9;
+}
+
+/* Stats row — plain numbers, deliberately not cards */
 .statsRow {
     display: flex;
-    gap: 36px;
-    margin-top: 32px;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
     flex-wrap: wrap;
 }
 
 .stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-1);
 }
 
 .statNum {
     font-family: 'EB Garamond', serif;
-    font-size: 38px;
+    font-size: var(--fs-h2);
     font-weight: 500;
     color: var(--saff);
-    line-height: 1;
+    line-height: 1.15;
 }
 
 .statLabel {
-    font-size: 12px;
+    font-size: var(--fs-eyebrow);
     color: var(--ink-soft);
-    letter-spacing: 0.07em;
+    letter-spacing: .2em;
     text-transform: uppercase;
 }
 
@@ -31,7 +49,7 @@
 .cardsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: var(--space-5);
 }
 
 /* Scheme Card */
@@ -39,7 +57,7 @@
     background: var(--cream);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 28px 26px;
+    padding: var(--space-6) var(--space-5);
     position: relative;
     transition: box-shadow 0.25s, transform 0.25s;
 }
@@ -78,13 +96,13 @@
 /* Badge */
 .badge {
     position: absolute;
-    top: 18px;
-    right: 18px;
-    font-size: 10.5px;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-size: var(--fs-eyebrow);
     font-weight: 600;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    padding: 3px 10px;
+    padding: var(--space-1) var(--space-3);
     border-radius: 12px;
 }
 
@@ -101,42 +119,42 @@
 }
 
 .badge_bark {
-    background: #F5EEE5;
+    background: var(--cream-dark);
     color: var(--bark);
-    border: 1px solid #E0D0B8;
+    border: 1px solid var(--bark-lt);
 }
 
 /* Card head */
 .cardHead {
-    margin-bottom: 16px;
+    margin-bottom: var(--space-4);
 }
 
 .cardIcon {
     font-size: 30px;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2);
     display: block;
 }
 
 .cardDeva {
     font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 15px;
+    font-size: var(--fs-body-lg);
     color: var(--saff);
     opacity: 0.65;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: var(--space-2);
 }
 
 .cardTitle {
     font-family: 'EB Garamond', serif;
-    font-size: 24px;
+    font-size: var(--fs-h3);
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 6px;
-    line-height: 1.2;
+    margin-bottom: var(--space-2);
+    line-height: 1.35;
 }
 
 .cardTagline {
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     color: var(--ink-soft);
     font-style: italic;
 }
@@ -144,102 +162,132 @@
 .cardRule {
     height: 1px;
     background: var(--border);
-    margin: 16px 0;
+    margin: var(--space-4) 0;
 }
 
 .cardDesc {
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     color: var(--ink-mid);
-    line-height: 1.82;
-    margin-bottom: 20px;
+    line-height: 1.8;
+    margin-bottom: var(--space-5);
 }
 
-/* Options */
+/* ── Options: a plain selectable list, not cards-inside-cards ── */
 .optionsLabel {
-    font-size: 11px;
+    font-size: var(--fs-eyebrow);
     font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-3);
+}
+
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-4);
+    border-top: 1px solid var(--border-soft);
+}
+
+/* Scheme accent, scoped to this card's option list */
+.optionsList.options-saff {
+    --accent: var(--saff);
+    --accent-bg: var(--saff-pale);
+}
+
+.optionsList.options-earth {
+    --accent: var(--earth);
+    --accent-bg: var(--earth-pale);
+}
+
+.optionsList.options-bark {
+    --accent: var(--bark);
+    --accent-bg: var(--cream-dark);
+}
+
+.optionRowWrap {
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.optionRow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+    border-left: 3px solid var(--accent);
+}
+
+.optionRowMain {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.optionRowLabel {
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.optionRowDetail {
+    font-size: var(--fs-eyebrow);
+    color: var(--ink-soft);
+}
+
+/* Feature list — only the Birthday scheme's single option uses this */
+.optionFeaturesBlock {
+    padding: 0 var(--space-4) var(--space-3) calc(var(--space-4) + 3px);
+}
+
+.optionFeaturesLabel {
+    display: block;
+    font-size: var(--fs-eyebrow);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    margin-bottom: 10px;
+    opacity: 0.8;
+    margin-bottom: var(--space-1);
 }
 
-.options {
+.optionFeatures {
+    list-style: none;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
+    gap: var(--space-1);
 }
 
-.option {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 2px 12px;
-    align-items: start;
-    padding: 12px 14px;
-    border: 1.5px solid var(--cream-deep);
-    border-radius: 5px;
-    background: var(--cream);
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s;
+.optionFeatures li {
     position: relative;
+    padding-left: var(--space-4);
+    font-size: var(--fs-body-sm);
+    color: var(--ink-mid);
+    line-height: 1.5;
 }
 
-    .option:hover {
-        border-color: var(--saff-lt);
-        background: var(--saff-pale);
+    .optionFeatures li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: var(--fs-eyebrow);
     }
 
-.optionSelected {
-    border-color: var(--saff) !important;
-    background: var(--saff-pale) !important;
-}
-
-.optionFeature {
-    font-size: 12px;
-    color: var(--ink-mid);
-    padding: 2%
-}
-.optionLabel {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.optionAmount {
-    font-family: 'EB Garamond', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--saff);
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-    white-space: nowrap;
-}
-
-.optionDetail {
-    font-size: 12px;
-    color: var(--ink-soft);
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.optionCheck {
-    position: absolute;
-    top: 8px;
-    right: 50px;
-    font-size: 12px;
-    color: var(--saff);
+/* CTA */
+.giCta {
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: var(--space-2);
 }
 
 /* Bottom note */
 .bottomNote {
-    margin-top: 52px;
-    padding: 32px 36px;
+    margin-top: var(--space-9);
+    padding: var(--space-6) var(--space-7);
     background: var(--cream);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -247,15 +295,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-3);
+}
+
+.bottomNoteDeva {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: var(--fs-h4);
+    color: var(--saff);
+    opacity: 0.65;
 }
 
     .bottomNote p {
-        font-size: 14.5px;
+        font-size: var(--fs-body-sm);
         color: var(--ink-soft);
         line-height: 1.85;
         max-width: 560px;
     }
+
+.giOtherWays {
+    margin-top: var(--space-4);
+    font-size: var(--fs-body-sm);
+}
 
 /* Modal */
 .modalOverlay {
@@ -266,7 +326,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: var(--space-5);
     animation: fadeIn 0.2s ease;
 
     overflow-y: auto;
@@ -276,7 +336,7 @@
     background: var(--cream);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 36px 32px;
+    padding: var(--space-8) var(--space-6);
     width: min(480px, 100%);
     max-width: 480px;
     max-height: 92vh;
@@ -288,8 +348,8 @@
 
 .modalClose {
     position: absolute;
-    top: 14px;
-    right: 16px;
+    top: var(--space-3);
+    right: var(--space-4);
     font-size: 20px;
     color: var(--ink-soft);
     background: none;
@@ -302,70 +362,78 @@
         color: var(--saff);
     }
 
+    .modalClose:focus-visible {
+        outline: 2px solid var(--saff);
+        outline-offset: 2px;
+    }
+
 .modalIcon {
     font-size: 36px;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2);
 }
 
 .modalTitle {
     font-family: 'EB Garamond', serif;
-    font-size: 26px;
+    font-size: var(--fs-h3);
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 6px;
-}
-
-.modalOption {
-    font-size: 14px;
-    color: var(--saff);
-    margin-bottom: 10px;
-    background: var(--saff-pale);
-    border: 1px solid var(--saff-lt);
-    border-radius: 4px;
-    padding: 6px 12px;
-    display: inline-block;
+    margin-bottom: var(--space-2);
 }
 
 .modalSub {
-    font-size: 14px;
+    font-size: var(--fs-body-sm);
     color: var(--ink-soft);
     line-height: 1.75;
-    margin-bottom: 22px;
+    margin-bottom: var(--space-6);
+}
+
+.giSubmit {
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    padding: var(--space-4);
 }
 
 .danaNote {
-    font-size: 12.5px;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--ink-soft);
     text-align: center;
-    margin-top: 12px;
+    margin-top: var(--space-3);
     font-style: italic;
 }
 
 .modalSuccess {
     text-align: center;
-    padding: 20px 0;
+    padding: var(--space-5) 0;
+}
+
+.modalSuccessMark {
+    font-size: 48px;
+    margin-bottom: var(--space-4);
 }
 
 .successTitle {
     font-family: 'EB Garamond', serif;
-    font-size: 28px;
+    font-size: var(--fs-h3);
     font-weight: 500;
     color: var(--earth);
-    margin-bottom: 12px;
+    margin-bottom: var(--space-3);
 }
 
 .modalSuccess p {
-    font-size: 15px;
+    font-size: var(--fs-body);
     color: var(--ink-mid);
     line-height: 1.8;
 }
 
 .successDeva {
     font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 17px;
+    font-size: var(--fs-body-lg);
     color: var(--earth);
     opacity: 0.65;
-    margin-top: 18px;
+    margin-top: var(--space-4);
 }
 
 /* Responsive */
@@ -377,10 +445,10 @@
 
 @media (max-width: 500px) {
     .statsRow {
-        gap: 20px;
+        gap: var(--space-4);
     }
 
     .modal {
-        padding: 28px 20px;
+        padding: var(--space-6) var(--space-4);
     }
 }

@@ -2,78 +2,95 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Inter, Arial, sans-serif;
-    background: #f8f8f8;
-}
-
 .form-container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: var(--space-6);
+    background: var(--cream);
 }
 
 .admission-form {
     width: 100%;
     max-width: 500px;
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: var(--white, #fff);
+    padding: var(--space-6);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 18px rgba(42, 28, 12, .1);
 }
 
     .admission-form h2 {
         text-align: center;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
+        margin-bottom: var(--space-5);
+        font-family: 'EB Garamond', serif;
+        font-size: var(--fs-h3);
+        font-weight: 400;
+        color: var(--ink);
     }
 
     .admission-form label {
         display: block;
-        margin-bottom: 0.4rem;
-        font-size: 0.9rem;
-        color: #555;
+        margin-bottom: var(--space-1);
+        font-size: var(--fs-body-sm);
+        color: var(--ink-mid);
     }
 
     .admission-form input,
     .admission-form textarea {
         width: 100%;
-        padding: 0.9rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 0.95rem;
+        padding: var(--space-3);
+        margin-bottom: var(--space-4);
+        border: 1px solid var(--cream-deep);
+        border-radius: 6px;
+        background: var(--cream);
+        font-family: 'Hind', sans-serif;
+        font-size: var(--fs-body);
+        color: var(--ink);
         outline: none;
+        transition: border-color .2s;
     }
 
         .admission-form input:focus,
         .admission-form textarea:focus {
-            border-color: #d32f2f;
+            border-color: var(--saff);
+        }
+
+        .admission-form input:focus-visible,
+        .admission-form textarea:focus-visible {
+            outline: 2px solid var(--saff);
+            outline-offset: 1px;
         }
 
     .admission-form button {
         width: 100%;
-        padding: 0.9rem;
+        padding: var(--space-3);
         border: none;
-        border-radius: 8px;
-        background: #d32f2f;
-        color: white;
-        font-size: 1rem;
-        font-weight: 600;
+        border-radius: 28px;
+        background: var(--saff);
+        color: #fff;
+        font-family: 'Hind', sans-serif;
+        font-size: var(--fs-body);
+        font-weight: 500;
+        letter-spacing: .03em;
         cursor: pointer;
-        transition: 0.3s;
+        transition: background .25s, transform .25s;
     }
 
-        .admission-form button:hover {
-            background: #b71c1c;
+        .admission-form button:hover:not(:disabled) {
+            background: var(--bark);
+            transform: translateY(-1px);
         }
 
-    .admission-from button:disabled {
-        background-color: #cccccc;
-        color: #666666;
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
+        .admission-form button:focus-visible {
+            outline: 2px solid var(--saff);
+            outline-offset: 2px;
+        }
+
+        .admission-form button:disabled {
+            background-color: var(--cream-deep);
+            color: var(--ink-soft);
+            opacity: .8;
+            cursor: not-allowed;
+        }

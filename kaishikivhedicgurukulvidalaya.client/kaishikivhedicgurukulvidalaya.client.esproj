@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\MainLayout\" />
-    <Folder Include="src\components\Map\" />
     <Folder Include="src\components\OrnamentDivider\" />
     <Folder Include="src\features\Home\" />
     <Folder Include="src\features\Gallary\" />

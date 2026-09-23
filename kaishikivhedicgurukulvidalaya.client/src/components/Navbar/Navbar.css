@@ -31,6 +31,12 @@
             #topbar a:hover {
                 color: #fff
             }
+
+            #topbar a:focus-visible {
+                color: #fff;
+                outline: 2px solid #fff;
+                outline-offset: 2px;
+            }
     .topbar-right {
         display: flex;
         gap: 20px;
@@ -46,6 +52,46 @@
     .topbar-sep {
         opacity: .3;
         margin: 0;
+    }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .lang-btn {
+        background: none;
+        border: none;
+        padding: 2px 3px;
+        font-family: 'Hind', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: .04em;
+        color: rgba(255,255,255,.55);
+        cursor: pointer;
+        transition: color .2s;
+    }
+
+        .lang-btn:hover {
+            color: #fff;
+        }
+
+        .lang-btn.active {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--saff-lt, #F0DFC0);
+        }
+
+        .lang-btn:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+    .lang-sep {
+        opacity: .3;
     }
 
 
@@ -67,7 +113,7 @@
     .brand-wrap {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: var(--space-4, 16px);
     }
 
     .brand-om {
@@ -84,7 +130,18 @@
         color: var(--saff);
         box-shadow: 0 0 0 4px var(--cream),0 0 0 5px var(--cream-dark);
         flex-shrink: 0;
+        text-decoration: none;
+        transition: transform .2s;
     }
+
+        .brand-om:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-om:focus-visible {
+            outline: 2px solid var(--saff);
+            outline-offset: 3px;
+        }
 
     .brand-text .deva-name {
         font-family: 'Tiro Devanagari Sanskrit',serif;
@@ -103,17 +160,24 @@
     }
 
     .brand-text .tagline {
-        font-size: 11px;
+        font-size: var(--fs-eyebrow, 11px);
         color: var(--ink-soft);
         letter-spacing: .1em;
         text-transform: uppercase;
         margin-top: 2px;
     }
 
+    .brand-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
     .donate-btn {
         background: var(--saff);
         color: #fff;
-        padding: 11px 24px;
+        padding: 11px var(--space-5, 24px);
         border-radius: 24px;
         font-family: 'Hind',sans-serif;
         font-size: 13px;
@@ -124,6 +188,7 @@
         display: inline-flex;
         align-items: center;
         gap: 7px;
+        height: 44px;
         border: none;
         cursor: pointer;
         transition: background .25s,transform .2s;
@@ -132,6 +197,11 @@
         .donate-btn:hover {
             background: var(--bark);
             transform: translateY(-1px)
+        }
+
+        .donate-btn:focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 2px;
         }
 
     /* ══════════════════════════════════════════
@@ -160,7 +230,7 @@
 
         .nav-ul a {
             display: block;
-            padding: 0 16px;
+            padding: 0 var(--space-4, 16px);
             height: 50px;
             line-height: 50px;
             font-size: 12.5px;
@@ -194,24 +264,11 @@
                     right: 0
                 }
 
-    .nav-puja {
-        margin-left: auto;
-        background: var(--saff);
-        color: #fff;
-        padding: 8px 18px;
-        border-radius: 20px;
-        font-size: 12px;
-        letter-spacing: .07em;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        transition: background .25s;
-        white-space: nowrap;
-    }
-
-        .nav-puja:hover {
-            background: var(--bark)
-        }
+            .nav-ul a:focus-visible {
+                color: #fff;
+                outline: 2px solid var(--saff);
+                outline-offset: -2px;
+            }
 
 /* MOBILE NAV */
 @media (max-width: 999px) {
@@ -228,11 +285,16 @@
         display: block;
         margin-left: auto;
         border: none;
-        padding: 4px 8px;
+        padding: var(--space-1, 4px) var(--space-2, 8px);
     }
 
         .navbar-toggler:focus {
             box-shadow: none;
+        }
+
+        .navbar-toggler:focus-visible {
+            outline: 2px solid var(--saff);
+            outline-offset: 2px;
         }
 
     /* Hidden by default */
@@ -318,8 +380,121 @@
     }
 
     .donate-btn {
-        width: 12rem;
+        flex: 1 1 0;
+        width: auto;
+        max-width: 10rem;
+        min-width: 0;
+        padding: 11px 12px;
         justify-content: center;
+    }
+
+    .brand-actions {
+        width: 100%;
+    }
+}
+
+@media (max-width: 956px) and (min-width: 601px) {
+    #brandbar {
+        flex-direction: row;
+        height: 88px;
+        padding: 0 4%;
+        gap: 10px;
+    }
+
+    .brand-wrap {
+        flex-direction: row;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .brand-om {
+        width: 46px;
+        height: 46px;
+        font-size: 19px;
+    }
+
+    .brand-text {
+        min-width: 0;
+    }
+
+    .brand-text .deva-name {
+        font-size: 11px;
+    }
+
+    .brand-text .en-name {
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+    .brand-text .tagline {
+        font-size: 9px;
+    }
+
+    .brand-actions {
+        width: auto;
+        flex-shrink: 0;
+        gap: 8px;
+    }
+
+    .donate-btn {
+        flex: 0 1 8rem;
+        max-width: 8rem;
+        padding: 11px 8px;
+        font-size: 11px;
+        letter-spacing: .04em;
+    }
+}
+
+@media (max-width: 600px) {
+    #brandbar {
+        height: auto;
+        padding: 12px 5%;
+        gap: 12px;
+    }
+
+    .brand-wrap {
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .brand-om {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .brand-text {
+        min-width: 0;
+        text-align: left;
+    }
+
+    .brand-text .deva-name {
+        font-size: 10px;
+    }
+
+    .brand-text .en-name {
+        font-size: 15px;
+        line-height: 1.1;
+    }
+
+    .brand-text .tagline {
+        font-size: 8px;
+        letter-spacing: .06em;
+    }
+
+    .brand-actions {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .donate-btn {
+        flex: 1 1 0;
+        max-width: none;
+        padding: 11px 8px;
+        font-size: 11px;
+        letter-spacing: .04em;
+        white-space: nowrap;
     }
 }
 /* Hide hamburger on desktop */
@@ -346,5 +521,10 @@
 
     .custom-toggler:focus {
         box-shadow: none;
+    }
+
+    .custom-toggler:focus-visible {
+        outline: 2px solid var(--saff);
+        outline-offset: 2px;
     }
 }
