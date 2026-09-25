@@ -299,9 +299,12 @@ export function Contact() {
     const tr = translations[language] || translations.en;
     const [form, setForm] = useState({ name: "", email: "", phone: "", purpose: "", message: "" });
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
     const upd = k => e => setForm(p => ({ ...p, [k]: e.target.value }));
     const submit = async () => {
+        if (sending) return;
         if (!form.name || !form.email) { alert(t("contact.validationAlert")); return; }
+        setSending(true);
         try {
             await sendWhatsAppMessage(
                 `Hi, I am ${form.name}. I would like to inquire about ${form.purpose}.` +
@@ -310,6 +313,8 @@ export function Contact() {
             setSubmitted(true);
         } catch (error) {
             alert(error.message);
+        } finally {
+            setSending(false);
         }
     };
 
@@ -356,7 +361,12 @@ export function Contact() {
                     <div className="rule" />
                     <p className="contact-form-intro">{t("contact.formIntro")}</p>
 
-                    {!submitted ? (
+                    {sending ? (
+                        <div className="contact-loading" role="status" aria-live="polite">
+                            <div className="contact-spinner" aria-hidden="true" />
+                            <p>{t("contact.sending")}</p>
+                        </div>
+                    ) : !submitted ? (
                         <>
                             <div className="f-group">
                                 <label className="f-label">{t("contact.labelName")}</label>
