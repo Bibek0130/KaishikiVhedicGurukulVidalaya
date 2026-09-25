@@ -23,11 +23,13 @@ function BookingModal({ scheme, onClose }) {
     const copy = tr.getInvolvedPage.schemes[SCHEME_KEY[scheme.id]];
 
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
     const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
     const update = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
 
     const handleSubmit = async () => {
+        if (sending) return;
         if (!form.name || !form.email) {
             alert(t("getInvolvedPage.modal.validationNameEmail"));
             return;
@@ -36,14 +38,28 @@ function BookingModal({ scheme, onClose }) {
             alert(t("getInvolvedPage.modal.validationPhone"));
             return;
         }
+
+        // Notification goes to the ashram staff, so it is always written in English.
+        // A bare 10-digit Nepal number gets the 977 prefix so the wa.me link opens a chat.
+        const digits = form.phone.replace(/\D/g, "");
+        const waNumber = digits.length === 10 ? `977${digits}` : digits;
+        const lines = [
+            `New seva enrolment: ${scheme.title}`,
+            `Name: ${form.name}`,
+            `Phone / WhatsApp: ${form.phone}`,
+            `Chat: https://wa.me/${waNumber}`,
+            `Email: ${form.email}`,
+        ];
+        if (form.message.trim()) lines.push(`Message: ${form.message.trim()}`);
+
+        setSending(true);
         try {
-            await sendWhatsAppMessage(
-                `Hi, I am ${form.name}. I would like to inquire about ${scheme.title}.` +
-                `\nEmail: ${form.email}\nPhone / WhatsApp: ${form.phone}\nMessage: ${form.message}`
-            );
+            await sendWhatsAppMessage(lines.join("\n"));
             setSubmitted(true);
         } catch (error) {
             alert(error.message);
+        } finally {
+            setSending(false);
         }
     };
 
@@ -89,8 +105,9 @@ function BookingModal({ scheme, onClose }) {
                         <button
                             className="btn btn-primary giSubmit"
                             onClick={handleSubmit}
+                            disabled={sending}
                         >
-                            {t("getInvolvedPage.modal.submit")}
+                            {sending ? t("getInvolvedPage.modal.sending") : t("getInvolvedPage.modal.submit")}
                         </button>
                         <p className="danaNote">
                             {t("getInvolvedPage.modal.danaNote")}
