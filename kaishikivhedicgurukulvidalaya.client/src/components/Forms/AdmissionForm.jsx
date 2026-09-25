@@ -3,6 +3,7 @@ import './AdmissionForm.css';
 import { useTranslation } from '../../hooks/useTranslation';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { sendWhatsAppMessage } from '../../api/whatsapp';
 
 const DI = ({ name, value, onChange, style }) => (
     <input
@@ -57,6 +58,29 @@ export default function AdmissionForm() {
         return true;
     }
 
+    // Staff-facing summary of the filled form (labels match the paper form).
+    // Empty fields are skipped; the photo and signatures can't travel over WhatsApp.
+    const buildNotification = () => {
+        const digits = form.samparkNa.replace(/\D/g, "");
+        const waNumber = digits.length === 10 ? `977${digits}` : digits;
+        const rows = [
+            ["नाम", form.naam], ["वर्ष", form.varsha], ["जन्म मिति", form.janmaMiti],
+            ["सम्पर्क नं.", form.samparkNa], ["Chat", waNumber ? `https://wa.me/${waNumber}` : ""],
+            ["गोत्र", form.gotra], ["प्रवर", form.pravar], ["गण", form.gan],
+            ["बाबुको नाम", form.babuNaam], ["बाबुको पेसा", form.babuPesa],
+            ["आमाको नाम", form.aamaNaam], ["आमाको पेसा", form.aamaPesa],
+            ["बाजेको नाम", form.bajeNaam], ["मातृगोत्र", form.matrugotra],
+            ["उत्तीर्ण प्रमाणपत्र", form.uttirnaPramanpatra], ["विद्यालय", form.vidyalaya], ["ठेगाना", form.thegana],
+            ["स्थायी निवास", [form.sthayi_jilla, form.sthayi_pradesh, form.sthayi_gaun].filter(Boolean).join(", ")],
+            ["जन्मस्थान", [form.janmasthan_jilla, form.janmasthan_pradesh, form.janmasthan_gaun].filter(Boolean).join(", ")],
+            ["उपनीत", form.upaniit],
+            ["अभिभावक", form.guardian_naam], ["अभिभावकको ठेगाना", form.guardian_thegana],
+            ["अभिभावकको सम्पर्क", form.guardian_sampark],
+        ];
+        const lines = rows.filter(([, v]) => v && v.trim()).map(([k, v]) => `${k}: ${v.trim()}`);
+        return [`New admission form downloaded (${form.date})`, ...lines].join("\n");
+    };
+
     // Renders the actual on-screen form (formPageRef) into a PDF, so the
     // download is pixel-faithful to the live design -- same fonts, colours,
     // dotted lines, and whatever the applicant has typed into each field --
@@ -108,6 +132,11 @@ export default function AdmissionForm() {
             const safeName = form.naam ? form.naam.trim().replace(/\s+/g, "_") : "Admission-Form";
             pdf.save(`${safeName}.pdf`);
             setDownloaded(true);
+
+            // Tell the ashram. The applicant already has their PDF, so a failed
+            // notification must not interrupt them -- it is only logged.
+            sendWhatsAppMessage(buildNotification()).catch((err) =>
+                console.warn("Admission notification was not sent:", err.message));
         } catch (error) {
             alert("Could not generate the PDF. Please try again.");
         } finally {
