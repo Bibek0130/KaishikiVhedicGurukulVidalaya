@@ -85,9 +85,9 @@ export const translations = {
 
         about: {
             eyebrow: "About the Ashram",
-            title: "Rooted in the",
-            titleEm: "Hillside",
-            titleSuffix: ", Open to All",
+            title: "One student's education, one tradition's preservation,",
+            titleEm: "one generation's future",
+            titleSuffix: ".",
             p1: "Kaushiki Vaidik Gurukul is run by the Vedic Research Committee, established to study, preserve, and transmit Nepal's ancient Vedic knowledge, values, and Eastern philosophy. We follow the unbroken tradition of the gurukul — where teacher and student live, learn, and grow together.",
             p2: "Education here is completely free of charge. Students are received not as pupils but as children of the ashram — nourished, taught, and guided without any fees.",
             values: [
@@ -575,9 +575,9 @@ export const translations = {
 
         about: {
             eyebrow: "आश्रमको बारेमा",
-            title: "यस ",
-            titleEm: "डाँडामा",
-            titleSuffix: " जरा गाडेको, सबैका लागि खुला",
+            title: "एक विद्यार्थीको शिक्षा, एक संस्कारको संरक्षण,",
+            titleEm: "एक पुस्ताको भविष्य",
+            titleSuffix: " ।",
             p1: "कौशिकी वैदिक गुरुकुल वैदिक अनुसन्धान समितिद्वारा सञ्चालित छ, जसले नेपालको प्राचीन वैदिक ज्ञान, संस्कार र पूर्वीय दर्शनको अध्ययन, संरक्षण र पुस्तान्तरणका लागि स्थापना गरिएको हो। हामी गुरुकुलको अखण्ड परम्पराको पालना गर्छौं — जहाँ गुरु र शिष्य सँगै बस्छन्, सिक्छन् र बढ्छन्।",
             p2: "यहाँको शिक्षा पूर्णतया निःशुल्क छ। विद्यार्थीहरूलाई विद्यार्थीको रूपमा मात्र होइन, आश्रमका सन्तानको रूपमा ग्रहण गरिन्छ — कुनै पनि शुल्क बिना पोषण, शिक्षा र मार्गदर्शन दिइन्छ।",
             values: [
