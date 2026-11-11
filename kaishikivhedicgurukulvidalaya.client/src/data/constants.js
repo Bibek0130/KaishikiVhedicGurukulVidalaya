@@ -21,7 +21,8 @@ export const NAV_ITEMS = [
     { label: "About", href: "about" },
     { label: "Activities", href: "activities" },
     { label: "Believes", href: "believes" },
-    { label: "Admission", href: "admission"},
+    // ADMISSIONS DISABLED — uncomment to bring the Admission link back
+    // { label: "Admission", href: "admission"},
     { label: "Resources", href: "resources" },
     { label: "The Ashram", href: "ashram" },
     { label: "Founder", href: "founder" },

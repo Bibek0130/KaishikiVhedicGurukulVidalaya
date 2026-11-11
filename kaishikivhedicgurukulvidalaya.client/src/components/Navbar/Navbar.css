@@ -490,7 +490,7 @@
 
     .donate-btn {
         flex: 1 1 0;
-        max-width: none;
+        max-width: 22rem; /* a single button shouldn't stretch edge to edge on wide phones */
         padding: 11px 8px;
         font-size: 11px;
         letter-spacing: .04em;

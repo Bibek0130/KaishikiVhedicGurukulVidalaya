@@ -53,8 +53,6 @@ const ALL_IMAGES = [
 
     { id: 6, category: "Events", description: "Vedic fire ceremony — Agni Hotra", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_2_p8iuvi.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110967/WhatsApp_Image_2026-06-10_at_10.33.33_PM_2_p8iuvi.jpg" },
 
-    { id: 7, category: "Nature", description: "Sacred lotus pond in full bloom", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.42_PM_fzekvp.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.42_PM_fzekvp.jpg" },
-
     { id: 8, category: "Community", description: "Children's art class — creativity as devotion", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.39_PM_arbjra.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.39_PM_arbjra.jpg" },
 
     { id: 9, category: "Meditation", description: "Silent retreat — the art of inner stillness", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_1_jb8iji.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110965/WhatsApp_Image_2026-06-10_at_10.33.37_PM_1_jb8iji.jpg" },
@@ -67,12 +65,9 @@ const ALL_IMAGES = [
 
     { id: 13, category: "Ashram", description: "Temple courtyard atmosphere", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_exrm0a.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_exrm0a.jpg" },
 
-    { id: 14, category: "Nature", description: "Evening forest path near the ashram", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_1_xesbln.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_1_xesbln.jpg" },
-
     { id: 15, category: "Community", description: "Evening discipline training session", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_2_r3mewj.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.40_PM_2_r3mewj.jpg" },
 
-    { id: 16, category: "Meditation", description: "Guru guiding spiritual practice", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.41_PM_1_ybtuvv.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.41_PM_1_ybtuvv.jpg" },
-
+    
     { id: 17, category: "Meditation", description: "Evening meditation under temple lamps", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.38_PM_hz1nlk.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110964/WhatsApp_Image_2026-06-10_at_10.33.38_PM_hz1nlk.jpg" },
 
     { id: 18, category: "Community", description: "Seva activities by students", original: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.38_PM_1_q8lkg6.jpg", thumbnail: "https://res.cloudinary.com/dcbmawpyb/image/upload/q_auto/f_auto/v1781110963/WhatsApp_Image_2026-06-10_at_10.33.38_PM_1_q8lkg6.jpg" },

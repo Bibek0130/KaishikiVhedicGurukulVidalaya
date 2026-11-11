@@ -9,6 +9,9 @@ import Navbar from '../components/Navbar/Navbar';
 import Home from '../features/Home/Home'
 import Gallery from '../features/Gallary/Gallary'
 import GetInvolved from '../features/GetInvolved/GetInvolved';
+// ADMISSIONS DISABLED — the admission routes below are commented out, but keep these
+// three imports: they pull in global stylesheets (AdmissionStyle.css sets site-wide
+// .btn sizing, body and scrollbar styles), so dropping them would change other pages.
 import AdmissionsPage from '../features/Admission/Admission'
 import StudentForm from '../components/Forms/StudentForm';
 import AdmissionForm from '../components/Forms/AdmissionForm';
@@ -45,12 +48,16 @@ export default function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/getInvolved" element={<GetInvolved />} />
+                    {/* ADMISSIONS DISABLED — uncomment to re-enable
                     <Route path="/admission" element={<AdmissionsPage />} />
+                    */}
 
                     {/* test */}
                     <Route path="/gurukuljourney" element={<GurukulJourney />} />
+                    {/* ADMISSIONS DISABLED — uncomment to re-enable (application forms)
                     <Route path="/studentform" element={<StudentForm />} />
                     <Route path="/admissionForm" element={<AdmissionForm />} />
+                    */}
 
                     <Route path="*" element={<NotFound />} />
                 </Route>

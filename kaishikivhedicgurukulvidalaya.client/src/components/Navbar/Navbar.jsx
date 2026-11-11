@@ -78,7 +78,9 @@ export default function NavbarSection() {
                 </div>
                 <div className="brand-actions">
                     <NavLink to="/getInvolved" className="donate-btn">🪔 {t('common.getInvolved')}</NavLink>
+                    {/* ADMISSIONS DISABLED — uncomment to bring the button back
                     <NavLink to="/admission" className="donate-btn">{t('common.applyAdmission')}</NavLink>
+                    */}
                 </div>
 
                 </div>

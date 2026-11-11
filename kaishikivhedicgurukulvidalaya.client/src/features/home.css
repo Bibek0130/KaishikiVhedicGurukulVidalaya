@@ -74,46 +74,62 @@
     display: block;
 }
 
-.about-values {
-    margin-top: var(--space-6, 32px);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5, 24px);
+/* Main Objectives — full-width block under the About intro grid.
+   Doubled class so its auto side margins beat .s-inner's `margin: 0 auto`. */
+.s-inner.about-objectives {
+    margin: var(--space-8, 64px) auto 0;
+    padding-top: var(--space-7, 48px);
+    border-top: 1px solid var(--border);
 }
 
-.val-row {
+.obj-lead {
+    font-family: 'EB Garamond', serif;
+    font-size: var(--fs-h3, 22px);
+    font-style: italic;
+    color: var(--bark);
+    line-height: 1.6;
+    max-width: 52ch;
+    margin-bottom: var(--space-6, 32px);
+}
+
+.obj-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-8, 64px);
+}
+
+.obj-row {
     display: flex;
     gap: var(--space-4, 16px);
     align-items: flex-start;
+    padding: var(--space-4, 16px) 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
-.val-icon {
+.obj-num {
     width: 36px;
     height: 36px;
     flex-shrink: 0;
-    background: var(--saff-pale);
-    border-radius: 50%;
-    border: 1px solid var(--saff-lt);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Tiro Devanagari Sanskrit', serif;
-    font-size: 14px;
+    background: var(--saff-pale);
+    border: 1px solid var(--saff-lt);
+    border-radius: 50%;
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    letter-spacing: .04em;
     color: var(--saff);
 }
 
-.val-title {
-    font-family: 'EB Garamond', serif;
-    font-size: var(--fs-h4, 19px);
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: var(--space-1, 4px);
-}
-
-.val-desc {
-    font-size: var(--fs-body-sm, 13.5px);
-    color: var(--ink-soft);
-    line-height: 1.75;
+.obj-text {
+    font-size: var(--fs-body, 15.5px);
+    color: var(--ink-mid);
+    line-height: 1.7;
+    padding-top: 6px; /* optically centres the first line on the numeral */
 }
 
 /* ────────────────────────────────────────
@@ -523,6 +539,37 @@
     margin-bottom: var(--space-4, 14px);
 }
 
+/* "Our Objective" block — sits between the first and second bio paragraphs */
+.founder-mission {
+    margin: var(--space-6, 28px) 0 var(--space-5, 20px);
+    padding: var(--space-6, 28px) 0 var(--space-2, 8px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.founder-mission-title {
+    font-family: 'EB Garamond', serif;
+    font-size: var(--fs-h3, 22px);
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: var(--space-4, 16px);
+}
+
+    .founder-mission-title em {
+        font-style: italic;
+        color: var(--saff);
+    }
+
+.founder-mission-sub {
+    font-family: 'EB Garamond', serif;
+    font-size: var(--fs-h4, 19px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--bark);
+    margin: var(--space-5, 24px) 0 var(--space-3, 12px);
+}
+
 .founder-verse {
     margin-top: var(--space-6, 24px);
     padding: var(--space-5, 20px) var(--space-5, 22px);
@@ -822,6 +869,11 @@
     /* Activities rows: tighten gap */
     .act-row {
         gap: var(--space-4, 20px);
+    }
+
+    /* About objectives: two columns → one */
+    .obj-list {
+        grid-template-columns: 1fr;
     }
 
     /* Believes list: reduce left indent */

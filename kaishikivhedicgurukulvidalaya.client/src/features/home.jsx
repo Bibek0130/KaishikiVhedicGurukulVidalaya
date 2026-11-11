@@ -24,10 +24,6 @@ const ASHRAM_IMAGE = GALLERY_ITEMS.find((g) => g.id === 3);  // Agnihotra fire r
 
 const ACT_ACCENT = { saff: "var(--saff)", earth: "var(--earth)", bark: "var(--bark)" };
 
-// Single-glyph Devanagari icons for the About "values" row — authentic
-// Sanskrit, not translated copy, so these stay hardcoded per index.
-const ABOUT_VALUES_DEVA = ["ज्ञ", "तप", "पूज"];
-
 // ACTIVITIES (constants.js) and translations.activities.items are both
 // ordered sanskrit / vedic / puja / yoga / research / seva — map by index.
 const ACTIVITY_KEYS = ["sanskrit", "vedic", "puja", "yoga", "research", "seva"];
@@ -40,6 +36,7 @@ const CONTACT_LABELS = ["address", "email", "phone", "puja"];
 ══════════════════════════════════════════ */
 export function About() {
     const [ref, inView] = useInView();
+    const [objRef, objInView] = useInView();
     const v = (d = "") => `${inView ? "reveal visible" : "reveal"} ${d}`.trim();
     const { t, language } = useTranslation();
     const tr = translations[language] || translations.en;
@@ -67,15 +64,22 @@ export function About() {
                     <div className="rule" />
                     <p className="body-p measure-body">{t("about.p1")}</p>
                     <p className="body-p mt14 measure-body">{t("about.p2")}</p>
-                    <div className="about-values">
-                        {(tr.about.values || []).map(({ title, desc }, i) => (
-                            <div key={title} className="val-row">
-                                <div className="val-icon">{ABOUT_VALUES_DEVA[i]}</div>
-                                <div><div className="val-title">{title}</div><div className="val-desc">{desc}</div></div>
-                            </div>
-                        ))}
-                    </div>
+                    <p className="body-p mt14 measure-body">{t("about.p3")}</p>
                 </div>
+            </div>
+
+            {/* Main Objectives of the Gurukul — same copy as the Believes page */}
+            <div ref={objRef} className={`s-inner about-objectives ${objInView ? "reveal visible" : "reveal"}`}>
+                <div className="s-eyebrow">{t("believes.eyebrow")}</div>
+                <p className="obj-lead">{t("believes.intro")}</p>
+                <ol className="obj-list">
+                    {(tr.believes.items || []).map(({ text }, i) => (
+                        <li key={i} className="obj-row">
+                            <span className="obj-num">{BELIEFS[i]?.num ?? i + 1}</span>
+                            <span className="obj-text">{text}</span>
+                        </li>
+                    ))}
+                </ol>
             </div>
         </section>
     );
@@ -250,6 +254,7 @@ export function Founder() {
     const v = (d = "") => `${inView ? "reveal visible" : "reveal"} ${d}`.trim();
     const { t, language } = useTranslation();
     const tr = translations[language] || translations.en;
+    const bio = tr.founder.bio || [];
     return (
         <section id="founder" className="section" style={{ background: "var(--saff-pale)", borderTop: "1px solid var(--border-soft)" }}>
             <div className="s-inner">
@@ -277,7 +282,17 @@ export function Founder() {
                         <h2 className="s-title">{t("founder.title")}<em>{t("founder.titleEm")}</em></h2>
                         <div className="rule" />
                         <p className="founder-pull measure-quote">{t("founder.pullQuote")}</p>
-                        {(tr.founder.bio || []).map((p, i) => <p key={i} className="founder-bio measure-body">{p}</p>)}
+                        {bio.slice(0, 1).map((p, i) => <p key={i} className="founder-bio measure-body">{p}</p>)}
+
+                        {/* Second paragraph: the Gurukul's stated objective, and why it keeps a goshala */}
+                        <div className="founder-mission">
+                            <h3 className="founder-mission-title">{t("founder.mission.title")}<em>{t("founder.mission.titleEm")}</em></h3>
+                            {t("founder.mission.paragraphs").map((p, i) => <p key={i} className="founder-bio measure-body">{p}</p>)}
+                            <h4 className="founder-mission-sub">{t("founder.mission.goshalaTitle")}</h4>
+                            {t("founder.mission.goshalaParagraphs").map((p, i) => <p key={i} className="founder-bio measure-body">{p}</p>)}
+                        </div>
+
+                        {bio.slice(1).map((p, i) => <p key={i} className="founder-bio measure-body">{p}</p>)}
                         <div className="founder-verse">
                             <p className="founder-verse-deva">गुरुर्ब्रह्मा गुरुर्विष्णुर्गुरुर्देवो महेश्वरः ।<br />गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥</p>
                             <p className="founder-verse-en">{t("founder.verseTranslation")}</p>
