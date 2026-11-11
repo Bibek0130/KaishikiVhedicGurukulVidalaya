@@ -4,6 +4,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { sendWhatsAppMessage } from '../../api/whatsapp';
+import { reportError } from '../../api/errorLogger';
 
 const DI = ({ name, value, onChange, style }) => (
     <input
@@ -138,6 +139,7 @@ export default function AdmissionForm() {
             sendWhatsAppMessage(buildNotification()).catch((err) =>
                 console.warn("Admission notification was not sent:", err.message));
         } catch (error) {
+            reportError(error, { kind: 'error', source: 'AdmissionForm PDF generation' });
             alert("Could not generate the PDF. Please try again.");
         } finally {
             setDownloading(false);
