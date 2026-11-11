@@ -56,8 +56,19 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
-// First in the pipeline so it covers everything below. Unhandled exceptions are written to the log
-// (stdout) with their stack trace, and the caller gets a ProblemDetails reply.
+// One line per failed request: 5xx is an Error, 4xx (bad input, 404, 413, 429) a Warning. Successful
+// requests are Debug, so below the Information minimum and not logged. Only the path is recorded,
+// never the query string or body. Placed before the exception handler so it sees the final status.
+app.UseSerilogRequestLogging(options =>
+{
+    options.GetLevel = (httpContext, _, exception) =>
+        exception is not null || httpContext.Response.StatusCode >= 500 ? LogEventLevel.Error
+        : httpContext.Response.StatusCode >= 400 ? LogEventLevel.Warning
+        : LogEventLevel.Debug;
+});
+
+// Covers everything below. Unhandled exceptions are written to the log (stdout) with their stack
+// trace, and the caller gets a ProblemDetails reply.
 app.UseExceptionHandler();
 
 app.UseDefaultFiles();
