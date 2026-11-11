@@ -35,7 +35,7 @@ export default function Hero() {
                         </div>
 
                         <h1 className="heroTitle">
-                            {t('home.hero.title')}<br />{t('home.hero.titleLine2')}
+                            {t('home.hero.title')}<br />
                             <em className="heroTitleEm">{t('home.hero.titleEm')}</em>
                         </h1>
 

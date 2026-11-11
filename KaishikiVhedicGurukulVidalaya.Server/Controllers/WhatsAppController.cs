@@ -37,10 +37,18 @@ public sealed class WhatsAppController : ControllerBase
         var recipientNumber = _configuration["WhatsApp:RecipientNumber"];
         var apiVersion = _configuration["WhatsApp:ApiVersion"] ?? "v23.0";
 
-        if (string.IsNullOrWhiteSpace(phoneNumberId) ||
-            string.IsNullOrWhiteSpace(accessToken) ||
-            string.IsNullOrWhiteSpace(recipientNumber))
+        var missing = new List<string>();
+        if (string.IsNullOrWhiteSpace(phoneNumberId)) missing.Add("WhatsApp:PhoneNumberId");
+        if (string.IsNullOrWhiteSpace(accessToken)) missing.Add("WhatsApp:AccessToken");
+        if (string.IsNullOrWhiteSpace(recipientNumber)) missing.Add("WhatsApp:RecipientNumber");
+
+        if (missing.Count > 0)
         {
+            // Without this line a missing setting only ever shows up as an error in the visitor's
+            // browser. Names only, never values. As environment variables, ':' is written '__'.
+            _logger.LogError(
+                "WhatsApp is not configured, so a form submission could not be forwarded. Missing setting(s): {Missing}",
+                string.Join(", ", missing));
             return Problem(
                 detail: "WhatsApp API is not configured on the server.",
                 statusCode: StatusCodes.Status503ServiceUnavailable);

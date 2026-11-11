@@ -10,7 +10,7 @@
  *    `titleSuffix` keys so the JSX can keep the <em> as a real element.
  *    `titleSuffix` is omitted where there's no trailing text.
  *  - Arrays without a stable id in constants.js (BELIEFS, ADMISSION_STEPS,
- *    FAQS, ACADEMICS[0].subjects, the About "values" list) are translated
+ *    FAQS, ACADEMICS[0].subjects) are translated
  *    as parallel arrays here, indexed the same way as the source array.
  *  - Arrays that already carry a stable id (INVOLVEMENT_SCHEMES,
  *    GALLERY_ITEMS, DAILY_SCHEDULE) are translated as objects keyed by
@@ -64,12 +64,11 @@ export const translations = {
         home: {
             hero: {
                 eyebrow: "Kaushike Vaidik Gurukul · Nepal",
-                title: "A School Rooted",
-                titleLine2: "in Sacred ",
-                titleEm: "Hills",
+                title: "One student's education, one tradition's preservation,",
+                titleEm: "one generation's future.",
                 devaGloss: "Knowledge bestows humility",
                 tagline:
-                    "Nestled on a hillside beside an Shiva temple, we preserve the living tradition of Sanskrit learning — freely, simply, and in harmony with all of nature.",
+                    "To teach Sanskrit language, the Vedas, rituals, and Eastern philosophy.",
                 ctaGetInvolved: "🌱 Get Involved",
                 ctaKnowAshram: "Know the Ashram",
                 ctaGallery: "📷 Gallery",
@@ -84,17 +83,13 @@ export const translations = {
         },
 
         about: {
-            eyebrow: "About the Ashram",
+            eyebrow: "Introduction of the Institution",
             title: "One student's education, one tradition's preservation,",
             titleEm: "one generation's future",
             titleSuffix: ".",
-            p1: "Kaushiki Vaidik Gurukul is run by the Vedic Research Committee, established to study, preserve, and transmit Nepal's ancient Vedic knowledge, values, and Eastern philosophy. We follow the unbroken tradition of the gurukul — where teacher and student live, learn, and grow together.",
-            p2: "Education here is completely free of charge. Students are received not as pupils but as children of the ashram — nourished, taught, and guided without any fees.",
-            values: [
-                { title: "Free Sanskrit Education", desc: "From beginner Devanagari to advanced Vedic recitation — all without charge." },
-                { title: "Disciplined Ashram Life", desc: "Early rising, nature connection, and structured daily sadhana build character." },
-                { title: "Rituals & Sacred Services", desc: "The ashram performs a full range of Vedic pujas and rituals for families." },
-            ],
+            p1: "The Vedic Research Committee was established with the objective of studying, researching, preserving, and transmitting Nepal's ancient Vedic knowledge, values, culture, ritual traditions, and Eastern philosophy.",
+            p2: "Under the initiative and management of this institution, Kaushiki Vaidik Gurukul has been operating. Through the Gurukul, children are provided with basic knowledge of Vedic values, discipline, rituals, Sanskrit, and Eastern philosophy, with the effort of creating responsible manpower towards their original culture and traditions.",
+            p3: "Education here is completely free of charge. Students are received not as pupils but as children of the ashram — nourished, taught, and guided without any fees.",
         },
 
         activities: {
@@ -113,10 +108,10 @@ export const translations = {
         },
 
         believes: {
-            eyebrow: "Our Objectives",
+            eyebrow: "Main Objectives of the Gurukul",
             title: "What We ",
             titleEm: "Believe",
-            intro: "These are the Vedic Research Committee's own stated objectives for the Gurukul — not abstract philosophy, but the working purpose behind every day here.",
+            intro: "The main objective of Kaushiki Vaidik Gurukul is to preserve, promote, and transmit the Vedic values, culture, and knowledge traditions that are gradually disappearing.",
             items: [
                 { title: "Preserving Vedic & Ritual Tradition", text: "To preserve, promote, and practice Vedic and ritual traditions." },
                 { title: "Character & Ethical Values", text: "To develop morality, discipline, service, responsibility, and ethical values in children." },
@@ -173,6 +168,21 @@ export const translations = {
                 "Inspired by the vision of making Vedic education freely accessible to every child, he registered the Vedic Research Committee in 2014 and began teaching the Gurukul's first students in 2018, with nothing but faith, dedication, and a handful of devoted students.",
                 "Today, the Acharya continues to teach, perform Vedic rituals for the community, and guide the ashram's work — rising before dawn each day, leading morning prayers at the temple, and teaching through the morning.",
             ],
+            // Shown as the second paragraph of the bio (see Founder() in home.jsx):
+            // the Gurukul's stated objective, then why it keeps a goshala.
+            mission: {
+                title: "Our Objective: ",
+                titleEm: "“Sanskar Is Life Itself”",
+                paragraphs: [
+                    "We live in Nepal, the land of austerity of rishis and maharishis — the Himalayan country that is home to the durva grass, the sacred fire, and the gods and goddesses of Vedic Sanatan Dharma — where thousands of diverse sanskars, festivals, and customs have lived on in society since ancient times.",
+                    "The duties of a Brahmin devoted to right conduct are study, teaching, performing and conducting yagya, and giving and receiving dan (charity), and the Vedas direct that life be spent in these duties. In keeping with that direction, our aim is to raise students devoted to right conduct who carry the Vedic tradition forward, who also study the modern subjects the times call for, and who grow into capable people able to develop their own livelihoods and serve the country.",
+                ],
+                goshalaTitle: "Running the Gurukul and the Goshala",
+                goshalaParagraphs: [
+                    "The cow and the Vedas are inseparably bound together in Vedic yagya rituals, so a gurukul cannot be imagined without a goshala. Regarding it as the duty of a householder or a Brahmin, we too have established this Vedic gurukul through our own efforts.",
+                    "The goshala is indispensable for the panchagavya (the five products of the cow) needed for the daily Rudrabhishek yagya, and also for providing wholesome food that builds the health of the gurukul's residents.",
+                ],
+            },
             verseTranslation: "\"The Guru is Brahma, Vishnu, Maheshwara; the Guru is the Supreme Brahman itself. We bow to that sacred Guru.\"",
         },
 
@@ -324,6 +334,28 @@ export const translations = {
                     body: "The Gurukul's first students — Aviral Babu, Bishal Bhattarai, and Manup Parajuli, who received Bratabandha in the Gurukul's earliest days — have now passed grade 10 and grade 12. Aviral achieved an A+ in SEE and good results in +2; Bishal achieved strong academic results as well; both are now studying at bachelor's level, and Manup is currently studying science in grade 12. Their teachers count this — not any building — as the Gurukul's most meaningful result so far.",
                 },
             },
+            // Yagyas already performed, plus the next one. `items` has one entry
+            // per numbered yagya; each entry is a list of paragraphs. Keep the
+            // EN and NP lists the same length.
+            yagyas: {
+                eyebrow: "Yagyas & Rituals",
+                title: "The Yagyas and Rituals We Have ",
+                titleEm: "Performed Previously",
+                items: [
+                    [
+                        "Panchayat Purana at Aapghat (special svahakar, laghurudrayag along with Shrimad Bhagwat Mahapuran text, story discourses, dhanyanchal, and bhajan kirtan yagya).",
+                    ],
+                    [
+                        "Shrimad Bhagwat Shri Radha Krishna Jhula Mahotsav at Budol, Banepa, along with Shatchandi at Chandeshwori, and Maharudrabhishek yagya at Dhneshwar Temple.",
+                    ],
+                    [
+                        "It was decided to perform it at Pashupati Kailash, the pavilion was set up, all arrangements were made, Brahmins (ritviks) were appointed, but according to the rule of keeping them at residence starting 5 days prior, since movement was completely halted due to the Covid-19 lockdown on the very night, the yagya had to be postponed.",
+                        "Later, that same yagya was completed at the ashram site in Aapghat by performing the Maharudra yagya according to Vedic instructions using arka samidha, wild wheat sattu, goat milk, cow ghee, etc., and taking a holy bath (avabhrita snan) in the Sunkoshi river.",
+                    ],
+                ],
+                futureLabel: "Future Plan",
+                future: "Gayatri lakh havan using palash samidha and Shrimad Bhagwat story discourse preparations are ongoing, and this yagya will be completed in the near future.",
+            },
             compare: {
                 eyebrow: "In Photographs",
                 title: "The Campus, Then and ",
@@ -363,24 +395,23 @@ export const translations = {
             filterAriaLabel: "Filter gallery by category",
             footerGloss: "May all beings be happy.",
             images: {
-                1: "Morning meditation by the sacred river",
-                2: "Annual Diwali celebration at the ashram",
-                3: "Gardens of serenity in the early dawn",
-                4: "Community langar — serving with love",
-                5: "Guided yoga at sunrise on the terrace",
-                6: "Vedic fire ceremony — Agni Hotra",
-                7: "Sacred lotus pond in full bloom",
-                8: "Children's art class — creativity as devotion",
-                9: "Silent retreat — the art of inner stillness",
-                10: "Navratri celebrations with the community",
-                11: "The Himalayan foothills at dusk",
-                12: "Volunteers planting saplings on Earth Day",
-                13: "Temple courtyard atmosphere",
+                1: "Ashram with our students.",
+                2: "Ashram at Aapghat, the orginal site before the 2024 landslide.",
+                3: "Ashram at Aapghat",
+                4: "Our cows, all six of them.",
+                5: "Students playing football.",
+                6: "Our family at Aapghat.",
+                8: "Kaushiki Vaidik Gurukul's 12th Anniversary celebration",
+                9: "School's early moments at Aapghat.",
+                10: "Our lovely cows grazing.",
+                11: "Kaushiki Gurukul at Aapghat from top.",
+                12: "Students learning from our founder.",
+                13: "Early glimpses of our dining area.",
                 14: "Evening forest path near the ashram",
-                15: "Evening discipline training session",
-                16: "Guru guiding spiritual practice",
-                17: "Evening meditation under temple lamps",
-                18: "Seva activities by students",
+                15: "Group photo.",
+                16: "Students with our teachers while studying.",
+                17: "Group photo of our younger batukis",
+                18: "Students with our teachers while studying.",
             },
         },
 
@@ -554,12 +585,11 @@ export const translations = {
         home: {
             hero: {
                 eyebrow: "कौशिकी वैदिक गुरुकुल · नेपाल",
-                title: "पवित्र पहाडमा",
-                titleLine2: "जरा गाडेको ",
-                titleEm: "विद्यालय",
+                title: "एक विद्यार्थीको शिक्षा, एक संस्कारको संरक्षण,",
+                titleEm: "एक पुस्ताको भविष्य ।",
                 devaGloss: "विद्याले विनम्रता दिन्छ",
                 tagline:
-                    "शिव मन्दिर छेउको डाँडामा अवस्थित, हामी संस्कृत शिक्षाको जीवित परम्परालाई सुरक्षित राख्छौं — निःशुल्क, सरल रूपमा, र प्रकृतिसँग तादात्म्यमा।",
+                    "संस्कृत भाषा, वेद, कर्मकाण्ड तथा पूर्वीय दर्शनको अध्ययन-अध्यापन गराउने।",
                 ctaGetInvolved: "🌱 सहभागी हुनुहोस्",
                 ctaKnowAshram: "आश्रमलाई चिन्नुहोस्",
                 ctaGallery: "📷 ग्यालरी",
@@ -574,17 +604,13 @@ export const translations = {
         },
 
         about: {
-            eyebrow: "आश्रमको बारेमा",
+            eyebrow: "संस्थाको परिचय",
             title: "एक विद्यार्थीको शिक्षा, एक संस्कारको संरक्षण,",
             titleEm: "एक पुस्ताको भविष्य",
-            titleSuffix: " ।",
-            p1: "कौशिकी वैदिक गुरुकुल वैदिक अनुसन्धान समितिद्वारा सञ्चालित छ, जसले नेपालको प्राचीन वैदिक ज्ञान, संस्कार र पूर्वीय दर्शनको अध्ययन, संरक्षण र पुस्तान्तरणका लागि स्थापना गरिएको हो। हामी गुरुकुलको अखण्ड परम्पराको पालना गर्छौं — जहाँ गुरु र शिष्य सँगै बस्छन्, सिक्छन् र बढ्छन्।",
-            p2: "यहाँको शिक्षा पूर्णतया निःशुल्क छ। विद्यार्थीहरूलाई विद्यार्थीको रूपमा मात्र होइन, आश्रमका सन्तानको रूपमा ग्रहण गरिन्छ — कुनै पनि शुल्क बिना पोषण, शिक्षा र मार्गदर्शन दिइन्छ।",
-            values: [
-                { title: "निःशुल्क संस्कृत शिक्षा", desc: "प्रारम्भिक देवनागरीदेखि उन्नत वैदिक पाठसम्म — सबै निःशुल्क।" },
-                { title: "अनुशासित आश्रम जीवन", desc: "बिहान सबेरै उठ्ने, प्रकृतिसँगको सम्बन्ध, र दैनिक साधनाले चरित्र निर्माण गर्छ।" },
-                { title: "अनुष्ठान र पवित्र सेवाहरू", desc: "आश्रमले परिवारहरूका लागि विभिन्न वैदिक पूजा र अनुष्ठानहरू सम्पन्न गर्छ।" },
-            ],
+            titleSuffix: " ।", // non-breaking space keeps the danda from wrapping onto its own line
+            p1: "वैदिक अनुसन्धान समिति नेपालको प्राचीन वैदिक ज्ञान, संस्कार, संस्कृति, यज्ञीय परम्परा, कर्मकाण्ड तथा पूर्वीय दर्शनको अध्ययन, अनुसन्धान, संरक्षण र पुस्तान्तरण गर्ने उद्देश्यले स्थापना गरिएको संस्था हो।",
+            p2: "यसै संस्थाको पहल तथा व्यवस्थापनमा कौशिकी वैदिक गुरुकुल सञ्चालन हुँदै आएको छ। गुरुकुलमार्फत बालबालिकालाई वैदिक संस्कार, सदाचार, अनुशासन, कर्मकाण्ड, संस्कृत तथा पूर्वीय दर्शनको आधारभूत ज्ञान प्रदान गरी आफ्नो मौलिक संस्कृति र परम्पराप्रति जिम्मेवार जनशक्ति निर्माण गर्ने प्रयास भइरहेको छ।",
+            p3: "यहाँको शिक्षा पूर्णतया निःशुल्क छ। विद्यार्थीहरूलाई विद्यार्थीको रूपमा मात्र होइन, आश्रमका सन्तानको रूपमा ग्रहण गरिन्छ — कुनै पनि शुल्क बिना पोषण, शिक्षा र मार्गदर्शन दिइन्छ।",
         },
 
         activities: {
@@ -603,10 +629,10 @@ export const translations = {
         },
 
         believes: {
-            eyebrow: "हाम्रो उद्देश्य",
+            eyebrow: "गुरुकुलको मूल उद्देश्य",
             title: "हामी के ",
             titleEm: "विश्वास गर्छौं",
-            intro: "यी वैदिक अनुसन्धान समितिले गुरुकुलका लागि तोकेका आफ्नै उद्देश्यहरू हुन् — अमूर्त दर्शन होइन, यहाँको हरेक दिनको काम हो।",
+            intro: "कौशिकी वैदिक गुरुकुलको प्रमुख उद्देश्य लोपोन्मुख हुँदै गइरहेको वैदिक संस्कार, संस्कृति तथा ज्ञान-परम्पराको संरक्षण, संवर्द्धन र पुस्तान्तरण गर्नु हो।",
             items: [
                 { title: "वैदिक परम्पराको संरक्षण", text: "वैदिक तथा यज्ञीय परम्पराको संरक्षण, संवर्धन तथा अभ्यास गर्ने।" },
                 { title: "चरित्र र नैतिक मूल्य", text: "बालबालिकामा सदाचार, अनुशासन, सेवा, कर्तव्यबोध तथा नैतिक मूल्यको विकास गर्ने।" },
@@ -663,6 +689,19 @@ export const translations = {
                 "हरेक बालबालिकालाई वैदिक शिक्षा निःशुल्क उपलब्ध गराउने दृष्टिकोणबाट प्रेरित भई, उहाँले सन् २०१४ मा वैदिक अनुसन्धान समिति दर्ता गर्नुभयो र सन् २०१८ मा गुरुकुलका पहिलो विद्यार्थीहरूलाई पढाउन थाल्नुभयो — केवल विश्वास, समर्पण, र मुट्ठीभर समर्पित विद्यार्थीहरूसहित।",
                 "आज, आचार्यले शिक्षण जारी राख्नुभएको छ, समुदायका लागि वैदिक अनुष्ठान सम्पन्न गर्नुहुन्छ, र आश्रमको कामलाई मार्गदर्शन गर्नुहुन्छ — हरेक दिन उषाकालमै उठेर, मन्दिरमा बिहानको प्रार्थना अगुवाइ गरेर, र बिहानभरि शिक्षण गरेर।",
             ],
+            mission: {
+                title: "हाम्रो उद्देश्य ",
+                titleEm: "“संस्कार नै प्राण हो”",
+                paragraphs: [
+                    "हामी नेपाल ऋषि महर्षिहरूको तपोभूमि वैदिक सनातन धर्मको दुर्वा अग्नि देवी देवताहरूको निवास रहेको हिमालयको देश जहाँ हजारौं विविध संस्कार, चाड पर्व रीतिरिवाजहरू आदिमकाल देखि समाजमा रहि आएका छन्।",
+                    "एक सदाचार निष्ठ ब्राह्मणको कर्म अध्ययन, अध्यापन, यज्ञ गर्न गराउने, दान लिन दिने यी कर्ममा रहेर जीवन व्यथित गर्नु पर्ने वेदको आज्ञाअनुसार सदाचार निष्ठ विद्यार्थी उत्पादन गरी वैदिक परम्पराको निरन्तरता साथै समय सापेक्षित आधुनिक विषयहरूको पनि अध्ययन अध्यापन गराइ आफ्नै वृत्ति विकासमा सक्षम जनशक्ति तयार गरि देशको सेवा गर्ने।",
+                ],
+                goshalaTitle: "गुरुकुल सञ्चालन र गौशाला",
+                goshalaParagraphs: [
+                    "गाई र वेदको जो वैदिक यज्ञानुष्ठानमा अन्योन्याश्रित सम्बन्ध रहेका हुँदा गौशाला बिना गुरुकुलको कल्पना गर्न सकिंदैन, त्यसैले हामीले पनि एक गृहस्थ वा ब्राह्मणको कर्तव्य सम्झी हाम्रो कोशिषले वैदिक गुरुकुलको स्थापना गरेका छौं।",
+                    "दैनिक हुने रुद्राभिषेक यज्ञानुष्ठानको लागि चाहिन्ने पञ्चगव्यको साथ साथै गुरुकुल निवासीहरूको स्वास्थ्य वृद्धिको भोजनको व्यवस्थाका लागि पनि गौशाला अपरिहार्य रहन्छ।",
+                ],
+            },
             verseTranslation: "\"गुरु नै ब्रह्मा, विष्णु, महेश्वर हुन्; गुरु नै साक्षात् परब्रह्म हुन्। त्यस पवित्र गुरुलाई हामी नमन गर्छौं।\"",
         },
 
@@ -812,6 +851,25 @@ export const translations = {
                     body: "गुरुकुलका पहिलो विद्यार्थीहरू — अविरल बाबु, विशाल भट्टराई, र मनुप पराजुली, जसले गुरुकुलको प्रारम्भिक दिनहरूमै ब्रतबन्ध गरेका थिए — अहिले कक्षा १० र कक्षा १२ उत्तीर्ण गरिसकेका छन्। अविरलले SEE मा A+ र +2 मा राम्रो नतिजा ल्याई हाल स्नातक तहमा अध्ययन गरिरहेका छन्; विशालले पनि राम्रो शैक्षिक नतिजा ल्याई स्नातक तहमा अध्ययन गरिरहेका छन्; र मनुप हाल कक्षा १२ मा विज्ञान विषय पढिरहेका छन्। उनीहरूका गुरुहरूले यसैलाई — कुनै भवन होइन — गुरुकुलको अहिलेसम्मको सबैभन्दा अर्थपूर्ण उपलब्धि मान्छन्।",
                 },
             },
+            yagyas: {
+                eyebrow: "यज्ञ तथा अनुष्ठान",
+                title: "हामीले यस अघि गरेका ",
+                titleEm: "यज्ञानुष्ठानहरू",
+                items: [
+                    [
+                        "आँपघाटमा पञ्चायत पुराण (विशेष स्वाहाकार लघुरुद्र्याग साथमा श्रीमद् भागवत महापुराण पाठ कथा प्रवचन, धान्याञ्चल एवं भजन कीर्तन यज्ञ)।",
+                    ],
+                    [
+                        "बनेपाको बुडोलमा श्रीमद् भागवत श्री राधाकृष्ण झूला महाउत्सव साथै चण्डेश्वरीमा शतचण्डी, ध्नश्वर मन्दिरमा महारुद्राभिषेक यज्ञ सम्पन्न गरियो।",
+                    ],
+                    [
+                        "पशुपति कैलाशमा गर्ने निश्चय गरि मण्डप तयार गरि सम्पूर्ण व्यवस्थापन तयार गरि ब्राह्मण (ऋत्विक) हरूको नियुक्ति गराइ निवासमा ५ दिन अघि देखि राख्ने नियमअनुसार राखिएकामा कोरोनाको लकडाउनले आवतजावत नै बन्द गरिए पछि यज्ञ स्थगित हुनु पर्यो।",
+                        "पछि सोही यज्ञ आश्रम स्थल आँपघाटमा अर्क समिधा, जङ्गली गहूँको सातु, बाख्राको दूध, गाईको घ्यू लगायतका वैदिक आदेश अनुसारको महारुद्र याग सम्पन्न गरी सुनकोशीमा अवभृत स्नान गरेर पूर्ण गरिएको थियो।",
+                    ],
+                ],
+                futureLabel: "भावी योजना",
+                future: "पलाशको समिधा पूर्वक गायत्री लक्ष हवन एवं श्रीमद् भागवत कथा प्रवचन तयारी गर्दै रहेको र निकट भविष्यमा यो यज्ञ सम्पन्न गरिने छ।",
+            },
             compare: {
                 eyebrow: "तस्बिरहरूमा",
                 title: "परिसर, तब र ",
@@ -856,14 +914,12 @@ export const translations = {
                 4: "सामुदायिक भोज — प्रेमसाथ सेवा",
                 5: "छतमा सूर्योदयमा निर्देशित योग",
                 6: "वैदिक अग्नि समारोह — अग्निहोत्र",
-                7: "पूर्ण फूलेको पवित्र कमल पोखरी",
                 8: "बालबालिकाको कला कक्षा — भक्तिको रूपमा सिर्जनशीलता",
                 9: "मौन साधना — आन्तरिक स्थिरताको कला",
                 10: "समुदायसँग नवरात्रि उत्सव",
                 11: "साँझमा हिमाली पहाडहरू",
                 12: "पृथ्वी दिवसमा बिरुवा रोप्दै स्वयंसेवकहरू",
                 13: "मन्दिर परिसरको वातावरण",
-                14: "आश्रम नजिकैको साँझको वन मार्ग",
                 15: "साँझको अनुशासन तालिम सत्र",
                 16: "आध्यात्मिक अभ्यासमा गुरुको मार्गदर्शन",
                 17: "मन्दिरका दीपहरूमुनि साँझको ध्यान",

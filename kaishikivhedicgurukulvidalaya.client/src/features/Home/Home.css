@@ -70,7 +70,7 @@
 
 .heroTitle {
     font-family: 'EB Garamond', serif;
-    font-size: var(--fs-display);
+    font-size: var(--fs-h1); /* sized for the full quote; --fs-display wraps it to 5–6 lines */
     font-weight: 400;
     line-height: 1.15;
     color: var(--ink);
@@ -167,6 +167,20 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+}
+
+/* ── narrow two-column range (small laptops, tablet landscape) ──
+   The photo/text split leaves a ~450px text column here. At the full --fs-h1
+   the quote wraps to 6 lines and pushes the buttons well below the fold, so
+   tighten the padding and size the headline to the column. */
+@media (min-width: 901px) and (max-width: 1279px) {
+    .heroText {
+        padding: var(--space-8) var(--space-6);
+    }
+
+    .heroTitle {
+        font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+    }
 }
 
 /* ── responsive: stack photo above text on mobile ── */

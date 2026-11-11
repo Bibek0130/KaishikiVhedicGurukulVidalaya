@@ -142,6 +142,19 @@ const GLOBAL_CSS = `
   }
   .jny-glance-time { font-weight: 600; color: var(--bark); }
 
+  /* ── Yagyas & rituals ── */
+  .jny-yagya-list { list-style: none; margin: 0; padding: 0; }
+  .jny-prose p + p { margin-top: var(--space-3); }
+  .jny-future {
+    max-width: 62ch; margin: var(--space-2) 0 0 calc(64px + var(--space-5));
+    padding: var(--space-5) var(--space-6); background: var(--cream);
+    border: 1px solid var(--border); border-left: 3px solid var(--saff); border-radius: 4px;
+  }
+  .jny-future .jny-eyebrow { margin-bottom: var(--space-2); }
+  @media (max-width: 860px) {
+    .jny-future { margin-left: 0; padding: var(--space-4) var(--space-5); }
+  }
+
   /* ── Then & Now ── */
   .jny-compare-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--space-7); align-items: center; }
   .jny-compare-track {
@@ -278,10 +291,13 @@ function Hero() {
 // STORY — a small, honest set of milestones (not a fabricated six-chapter
 // saga). Each item is built only from constants.js and the Founder bio.
 // ─────────────────────────────────────────────────────────────────────────
-function StoryItem({ numeral, when, heading, children, photo, index, isFirst }) {
+// `when` and `heading` are optional (the yagya list has neither), and `as`
+// lets a list render its items as <li>.
+function StoryItem({ as = "div", numeral, when, heading, children, photo, index, isFirst }) {
+    const Tag = as;
     const [ref, inView] = useInView(0.1);
     return (
-        <div
+        <Tag
             ref={ref}
             className="jny-story-item jny-reveal"
             style={{
@@ -294,8 +310,8 @@ function StoryItem({ numeral, when, heading, children, photo, index, isFirst }) 
             <span className="jny-story-num" aria-hidden="true">{numeral}</span>
             <div className={`jny-story-body-wrap${photo ? "" : " jny-story-body-wrap--text-only"}`}>
                 <div>
-                    <p className="jny-story-when">{when}</p>
-                    <h3 className="jny-story-heading">{heading}</h3>
+                    {when && <p className="jny-story-when">{when}</p>}
+                    {heading && <h3 className="jny-story-heading">{heading}</h3>}
                     <div className="jny-prose">{children}</div>
                 </div>
                 {photo && (
@@ -304,7 +320,7 @@ function StoryItem({ numeral, when, heading, children, photo, index, isFirst }) 
                     </div>
                 )}
             </div>
-        </div>
+        </Tag>
     );
 }
 
@@ -385,6 +401,66 @@ function StorySection() {
             >
                 <p>{t("ashramJourney.story.item4.body")}</p>
             </StoryItem>
+        </RevealSection>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// YAGYAS & RITUALS — the yagyas the Committee has already carried out, and
+// the one it is preparing next. All copy is in translations.js
+// (ashramJourney.yagyas): `items` is one entry per numbered yagya, each a
+// list of paragraphs, so adding a yagya never needs a change here.
+// ─────────────────────────────────────────────────────────────────────────
+// Item numerals follow the language: 1 2 3 in English, १ २ ३ in Nepali.
+const DEVANAGARI_DIGITS = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+const localizeNumber = (n, language) =>
+    language === "np" ? String(n).replace(/\d/g, (d) => DEVANAGARI_DIGITS[d]) : String(n);
+
+function FuturePlan() {
+    const { t } = useTranslation();
+    const [ref, inView] = useInView(0.1);
+    return (
+        <div
+            ref={ref}
+            className="jny-future jny-reveal"
+            style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(22px)",
+            }}
+        >
+            <p className="jny-eyebrow">{t("ashramJourney.yagyas.futureLabel")}</p>
+            <p className="jny-prose">{t("ashramJourney.yagyas.future")}</p>
+        </div>
+    );
+}
+
+function YagyaSection() {
+    const { t, language } = useTranslation();
+    const items = t("ashramJourney.yagyas.items");
+
+    return (
+        <RevealSection id="yagyas" tone="cream-deep" ariaLabelledBy="yagyas-heading">
+            <p className="jny-eyebrow">{t("ashramJourney.yagyas.eyebrow")}</p>
+            <h2 id="yagyas-heading" className="jny-h2">
+                {t("ashramJourney.yagyas.title")}<em>{t("ashramJourney.yagyas.titleEm")}</em>
+            </h2>
+            <div className="jny-rule" />
+
+            <ol className="jny-yagya-list">
+                {items.map((paragraphs, i) => (
+                    <StoryItem
+                        as="li"
+                        key={i}
+                        numeral={localizeNumber(i + 1, language)}
+                        index={i}
+                        isFirst={i === 0}
+                    >
+                        {paragraphs.map((text, j) => <p key={j}>{text}</p>)}
+                    </StoryItem>
+                ))}
+            </ol>
+
+            <FuturePlan />
         </RevealSection>
     );
 }
@@ -550,7 +626,9 @@ function Closing() {
                     {t("ashramJourney.closing.line")}
                 </p>
                 <div className="jny-closing-actions">
+                    {/* ADMISSIONS DISABLED — uncomment to bring the button back
                     <Link to="/admission" className="jny-btn jny-btn-primary">{t("ashramJourney.closing.ctaAdmission")}</Link>
+                    */}
                     <Link to="/getInvolved" className="jny-btn jny-btn-ghost">{t("ashramJourney.closing.ctaSupport")}</Link>
                 </div>
             </div>
@@ -578,6 +656,7 @@ export default function GurukulJourney() {
             <a href="#jny-main" className="jny-skip-link">{t("ashramJourney.skipLink")}</a>
             <Hero />
             <StorySection />
+            <YagyaSection />
             <CompareSlider />
             <StatsSection />
             <Closing />
