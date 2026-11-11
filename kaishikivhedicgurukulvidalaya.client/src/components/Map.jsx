@@ -1,5 +1,6 @@
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import PoiMarkers from './PoiMarkers.jsx';
+import { reportError } from '../api/errorLogger';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 //27.739539671761737, 85.4346320963112    ;
@@ -9,7 +10,10 @@ function GoogleMap() {
   return (
       <div className="map-placeholder">
           <div>
-              <APIProvider apiKey={API_KEY}>
+              <APIProvider
+                  apiKey={API_KEY}
+                  onError={() => reportError(new Error('Google Maps script failed to load'), { kind: 'maps' })}
+              >
                   <Map
                       style={{ width: '50vw', height: '50vh' }}
                       defaultZoom={20}
