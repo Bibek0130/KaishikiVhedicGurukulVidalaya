@@ -436,7 +436,8 @@ export function Footer() {
         ["/contact", "contact"],
         ["/getInvolved", "getInvolved"],
         ["/gallery", "gallery"],
-        ["/resources", "resources"],
+        // RESOURCES DISABLED — uncomment to bring the footer link back
+        // ["/resources", "resources"],
     ];
     return (
         <footer className="site-footer">

@@ -23,7 +23,8 @@ export const NAV_ITEMS = [
     { label: "Believes", href: "believes" },
     // ADMISSIONS DISABLED — uncomment to bring the Admission link back
     // { label: "Admission", href: "admission"},
-    { label: "Resources", href: "resources" },
+    // RESOURCES DISABLED — uncomment to bring the Resources link back
+    // { label: "Resources", href: "resources" },
     { label: "The Ashram", href: "ashram" },
     { label: "Founder", href: "founder" },
     { label: "Gallery", href: "gallery" },
