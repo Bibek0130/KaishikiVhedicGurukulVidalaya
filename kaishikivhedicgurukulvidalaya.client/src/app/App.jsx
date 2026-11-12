@@ -43,7 +43,9 @@ export default function App() {
                     <Route path="/activities" element={<Activities />} />
                     <Route path="/believes" element={<Believes />} />
                     <Route path="/ashram" element={<GurukulJourney />} />
+                    {/* RESOURCES DISABLED — uncomment to re-enable
                     <Route path="/resources" element={<Resources />} />
+                    */}
                     <Route path="/founder" element={<Founder />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/gallery" element={<Gallery />} />
